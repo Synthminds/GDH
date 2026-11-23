@@ -1,0 +1,21 @@
+{
+  "id": "v0",
+  "name": "v0 by Vercel",
+  "what": "Prompt-to-code builder for React apps and dashboards. A chat returns source files and a preview URL, accepts prompt or element-scoped edits, imports a Claude Design export as an editable code project, and deploys to Vercel. It writes application code. It is not a visual asset generator.",
+  "kind": "connector",
+  "capabilities": ["design-to-code", "ui-components", "dataviz", "templates", "deploy"],
+  "disciplines": ["website", "app", "dashboard", "dataviz"],
+  "install": "Attach the v0 connector in the host's connector settings, then sign in with the user's v0 account. When a call answers that the connection must be reconnected, the user reconnects it in the same settings.",
+  "auth": "oauth",
+  "spendsCredits": true,
+  "exposes": true,
+  "readOnly": false,
+  "toolPrefix": "mcp__v0__",
+  "firstCall": "usage_getSummary (connection preflight and credit state); no init tool exists",
+  "fallback": "21st-dev",
+  "card": "references/tools/v0.md",
+  "source": "https://v0.app/docs",
+  "verifiedAt": "2026-11-23",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "Tool schemas and server instructions read. The server was connected but its sign-in had lapsed: usage_getSummary and chats_list both answered that the connection must be reconnected. No live call succeeded. Every statement about credits, the generated stack, templates, import behavior and output quality is unverified."
+}

@@ -1,0 +1,21 @@
+{
+  "id": "rea",
+  "name": "REA (Reverse Engineer Anything)",
+  "what": "Local analysis server and CLI that returns evidence about software that already exists: page structure, accessibility roles, scripts, bundles, routes, event listeners, viewport screenshots and pixel diffs. Use it to learn structure and technique from a reference, then build an original. It returns no CSS, no computed styles and no tokens.",
+  "kind": "mcp-stdio",
+  "capabilities": ["reverse-engineer", "capture"],
+  "disciplines": ["reference", "website", "app", "dashboard", "ui-motion", "moodboard", "critique"],
+  "install": "npx rea-agents setup (registers the MCP server and installs the matching skill; it shows the planned changes and asks for approval; restart the agent after). Server start command: npx rea-agents mcp",
+  "auth": "none",
+  "spendsCredits": false,
+  "exposes": false,
+  "readOnly": false,
+  "toolPrefix": "mcp__rea__",
+  "firstCall": "list_browser_targets for website work, after a browser runs with a debugging port; none for static analysis of a local app directory",
+  "fallback": "none",
+  "card": "references/tools/rea.md",
+  "source": "https://www.npmjs.com/package/rea-agents",
+  "verifiedAt": "2026-11-23",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "Read from a repository checkout: README, license, disclaimer, server manifest and part of the docs. The server was not connected and the CLI was not installed. Tool input schemas were not loaded and the full tool catalog was not read. The DAM token builder that uses REA failed its own accuracy gate."
+}

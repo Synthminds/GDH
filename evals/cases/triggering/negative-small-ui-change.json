@@ -1,0 +1,16 @@
+{
+  "id": "negative-small-ui-change",
+  "kind": "triggering",
+  "skill": "none",
+  "prompt": "Add an email digest toggle to the settings page. Use the existing switch component and the tokens we already have.",
+  "expect": {
+    "skills_fired": [],
+    "skills_not_fired": [
+      "align",
+      "design-brief",
+      "mood-board",
+      "find-assets",
+      "design-critique"
+    ]
+  }
+}

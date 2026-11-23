@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Quality corpus: hand-made night shift console</title>
+<style>
+  /* Labelled eval page. A dark ground and one signal orange chosen for a night control room, a chosen face,
+     mono only for readings, real steps in an ordered list and one arrow where direction is the message. */
+  :root { --night: #101214; --panel: #181b1e; --text: #e6e3dc; --signal: #ff7a1a; --rule: #2c3136;
+          --face: "IBM Plex Sans", "Helvetica Neue", sans-serif; --mono: "IBM Plex Mono", monospace; }
+  body { margin: 0; background: var(--night); color: var(--text); font-family: var(--face); }
+  table { border-collapse: collapse; font-family: var(--mono); font-variant-numeric: tabular-nums; }
+  td, th { border-bottom: 1px solid var(--rule); padding: 0.3rem 0.6rem; text-align: left; }
+  .alarm { color: var(--signal); font-weight: 600; }
+</style>
+</head>
+<body>
+  <main>
+    <h1>Pump 3 pressure is rising</h1>
+    <p class="alarm">Inlet at 6.8 bar, limit 7.0 bar. Read at 02:14 from gauge P3.</p>
+    <table>
+      <tr><th>Time</th><th>Inlet</th><th>Outlet</th></tr>
+      <tr><td>02:00</td><td>6.1 bar</td><td>2.0 bar</td></tr>
+      <tr><td>02:14</td><td>6.8 bar</td><td>2.1 bar</td></tr>
+    </table>
+    <h2>Before the limit</h2>
+    <ol>
+      <li>Open bypass valve V12 one turn.</li>
+      <li>Confirm the outlet reading falls.</li>
+      <li>Call the duty engineer if it does not.</li>
+    </ol>
+    <a href="#pump-4">Next pump &rarr;</a>
+  </main>
+</body>
+</html>

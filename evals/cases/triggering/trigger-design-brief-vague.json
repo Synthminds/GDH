@@ -1,0 +1,12 @@
+{
+  "id": "trigger-design-brief-vague",
+  "kind": "triggering",
+  "skill": "design-brief",
+  "prompt": "Make the onboarding screens for our language app feel more premium. That is all the direction I have.",
+  "expect": {
+    "skills_fired": [
+      "align",
+      "design-brief"
+    ]
+  }
+}

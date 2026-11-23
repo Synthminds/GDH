@@ -1,0 +1,29 @@
+{
+  "id": "mermaid-chart",
+  "name": "Mermaid Chart",
+  "what": "Text-defined diagrams: flowchart, sequence, class, state, gantt, git graph, architecture and other Mermaid types. It serves the current syntax, validates and renders the code, searches vendor icons and saves diagrams to the user's Mermaid account. Side tools write to GitHub, Jira and Notion.",
+  "kind": "connector",
+  "capabilities": [
+    "diagram"
+  ],
+  "disciplines": [
+    "website",
+    "app",
+    "design-system",
+    "infographic",
+    "dataviz"
+  ],
+  "install": "Attach the Mermaid Chart connector in the host's connector settings, then sign in with the user's Mermaid account. The GitHub tools also need a GitHub token supplied to the connector.",
+  "auth": "oauth",
+  "spendsCredits": true,
+  "exposes": true,
+  "readOnly": false,
+  "toolPrefix": "mcp__Mermaid_Chart__",
+  "firstCall": "get_mermaid_syntax_document for the diagram type; every tool on the main server needs a clientName string",
+  "fallback": "excalidraw",
+  "card": "references/tools/mermaid-chart.md",
+  "source": "https://www.mermaidchart.com",
+  "verifiedAt": "2026-11-23",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "Free read calls made: list_tools, get_ai_credits_usage and list_mermaid_chart_projects, all of which succeeded on a signed-in account. About half of the tool schemas were loaded in full; the rest were read as names and short descriptions. No render, save, repair or AI call ran. GitHub, Jira and Notion tool auth was not tested. That repair spends an AI credit is inferred from the credits tool description."
+}

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Quality corpus: second-wave editorial template with motion</title>
+<style>
+  /* Labelled eval page. Second-wave habits: cream and terracotta, one italic word, mono kickers, fake steps. */
+  body { margin: 0; background: #f4efe6; color: #1f1b16; font-family: "Instrument Serif", Georgia, serif; }
+  h1 { font-size: 88px; font-weight: 400; }
+  h1 em { color: #c2410c; font-style: italic; }
+  .kicker { font-family: "JetBrains Mono", monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; }
+  a::after { content: " \2192"; }
+  section { opacity: 0; transform: translateY(24px); transition: opacity 0.6s, transform 0.6s; }
+  section.is-visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+  <section><p class="kicker">Studio</p><h1>Design that feels <em>inevitable</em></h1><a href="#work">See the work</a></section>
+  <section>
+    <div><span>01</span><h3>Listen</h3><p>We start with your story.</p></div>
+    <div><span>02</span><h3>Shape</h3><p>Ideas take form.</p></div>
+    <div><span>03</span><h3>Ship</h3><p>Launch with confidence.</p></div>
+  </section>
+  <section id="work">
+    <article><h3>Harvest app</h3><p>Case study &middot; Fintech &middot; 2026</p><a href="#">Read</a></article>
+    <article><h3>North rail</h3><p>Brand system &middot; Transport</p><a href="#">Read</a></article>
+  </section>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "id": "shopify-themes",
+  "name": "Shopify theme tools",
+  "what": "Edits a Shopify storefront theme in place: a sandboxed shell over the theme files (Liquid, JSON templates, sections, blocks, settings, assets), storefront screenshots of pending edits, one-version commits and a publish step, guided by the server's editing-themes skill.",
+  "kind": "connector",
+  "capabilities": [
+    "deploy",
+    "capture",
+    "design-system"
+  ],
+  "disciplines": [
+    "website"
+  ],
+  "install": "Attach the Shopify connector in the host's connector settings, then sign in with the user's Shopify account.",
+  "auth": "oauth",
+  "spendsCredits": false,
+  "exposes": true,
+  "readOnly": false,
+  "toolPrefix": "mcp__Shopify__theme_",
+  "firstCall": "use_skill with editing-themes (tool name mcp__Shopify__use_skill), once in a conversation, before the first theme change",
+  "fallback": "none",
+  "card": "references/tools/shopify-themes.md",
+  "source": "https://shopify.dev/docs/storefronts/themes",
+  "verifiedAt": "2026-11-23",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "The four theme tool schemas read. One free call made: use_skill, which returned the skill index and the editing-themes skill text. No store connection was checked and no theme tool ran. The skill's reference files (design task, motion, typography, accessibility, Shop Pay Installments) were listed but not read. The theme_editor tool that the skill names was absent from the session."
+}

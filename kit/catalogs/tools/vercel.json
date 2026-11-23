@@ -1,0 +1,21 @@
+{
+  "id": "vercel",
+  "name": "Vercel",
+  "what": "Hosting and review surface for design work: preview and production deployments, protected share links, static hosting of Claude Design, dashboard and motion artifacts, and Toolbar comment threads that an agent reads, answers and resolves. It makes no design content. The server holds many more tools for infrastructure; this entry covers the design subset.",
+  "kind": "connector",
+  "capabilities": ["deploy"],
+  "disciplines": ["website", "app", "dashboard"],
+  "install": "Attach the Vercel connector in the host's connector settings, then sign in with the user's Vercel account. The Vercel CLI is a separate fallback with its own credentials.",
+  "auth": "oauth",
+  "spendsCredits": true,
+  "exposes": true,
+  "readOnly": false,
+  "toolPrefix": "mcp__Vercel__",
+  "firstCall": "none; resolve scope first: read .vercel/project.json when the repository has one, otherwise call list_teams then list_projects",
+  "fallback": "none",
+  "card": "references/tools/vercel.md",
+  "source": "https://vercel.com/docs",
+  "verifiedAt": "2026-11-23",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "Tool schemas and server instructions read. Live read calls succeeded: list_teams, list_projects, list_toolbar_threads and search_vercel_documentation. get_auth_user failed with a 404. No deployment, import, share link, promotion or thread reply was made, so the main function (deploy) is not exercised. Plan tier, build limits and the size limits of create_deployment were not read."
+}

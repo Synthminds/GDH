@@ -1,0 +1,314 @@
+{
+  "version": 1,
+  "project": "Island ferry timetable (quality corpus: passing board) (default looks)",
+  "stage": "explore",
+  "date": "2026-11-23",
+  "brief": {
+    "subject": "A timetable and ticket app for one island ferry line",
+    "audience": "daily commuters and first-time visitors, outdoors, one hand on a rail",
+    "primaryJob": "see the next sailing and know that it runs",
+    "brandWords": [
+      "dependable",
+      "local",
+      "plain-spoken"
+    ]
+  },
+  "categoryDefault": {
+    "description": "A blue brand color on a white ground, a geometric sans, and a feed of rounded cards under a map.",
+    "accentHex": "#1a73e8",
+    "groundHex": "#ffffff",
+    "typeClass": "geometric-sans",
+    "layoutSkeleton": "card-list"
+  },
+  "feedbackQuestion": "For each direction and each part: keep, change or remove? Which direction is the base?",
+  "sampleCopy": {
+    "headline": "Next boat 7:40",
+    "body": "On time from Pier 2. The 8:10 is cancelled for wind.",
+    "cta": "Show my ticket"
+  },
+  "googleFontsHref": "",
+  "directions": [
+    {
+      "id": "a",
+      "name": "Departure Board",
+      "spread": "safe",
+      "concept": "The app is the quay-side departure board in your pocket: sailings are rows, and the next row is the biggest thing on screen.",
+      "adjectives": [
+        {
+          "word": "exact",
+          "opposite": "approximate"
+        },
+        {
+          "word": "public",
+          "opposite": "personal"
+        },
+        {
+          "word": "steady",
+          "opposite": "lively"
+        }
+      ],
+      "palette": [
+        {
+          "role": "bg",
+          "name": "Chalk",
+          "hex": "#f4efe6"
+        },
+        {
+          "role": "text",
+          "name": "Pitch",
+          "hex": "#1f1b16"
+        },
+        {
+          "role": "muted",
+          "name": "Slate",
+          "hex": "#4a443c"
+        },
+        {
+          "role": "accent",
+          "name": "Signal amber",
+          "hex": "#c2410c"
+        },
+        {
+          "role": "on-accent",
+          "name": "Pitch",
+          "hex": "#ffffff"
+        }
+      ],
+      "type": {
+        "class": "transitional-serif",
+        "display": {
+          "family": "Overpass",
+          "stack": "\"Overpass\", \"Helvetica Neue\", Arial, sans-serif",
+          "weight": 800
+        },
+        "body": {
+          "family": "Overpass",
+          "stack": "\"Overpass\", \"Helvetica Neue\", Arial, sans-serif",
+          "weight": 400
+        },
+        "source": "Google Fonts. Read the license page before use",
+        "googleFontsHref": "https://fonts.googleapis.com/css2?family=Overpass:wght@400;800&display=swap"
+      },
+      "imagery": "No photographs. Pictograms in the style of harbour signs: one stroke weight, squared ends.",
+      "texture": "Flat ground. Hairline rules between rows, like the slats of a board.",
+      "layout": {
+        "skeleton": "editorial-columns",
+        "shape": "Square corners. Full-width rows. Status sits in a boxed cell at the row end.",
+        "notes": "Time, pier, status. Three columns, tabular numerals.",
+        "radiusPx": 0
+      },
+      "motion": "A row flips once when its status changes. No easing bounce. With reduced motion the row swaps at once.",
+      "signature": "The next sailing as one full-width split-flap row.",
+      "sample": {
+        "kind": "hero",
+        "headline": "Next boat 7:40",
+        "body": "On time from Pier 2. The 8:10 is cancelled for wind.",
+        "cta": "Show my ticket",
+        "align": "left"
+      },
+      "references": [
+        {
+          "source": "Own photo of the departure board at the quay",
+          "license": "Own work. Reference only",
+          "note": "Row rhythm and the size of the first row."
+        },
+        {
+          "source": "https://example.org/archive/split-flap-display",
+          "license": "Terms as stated on the page. Reference only",
+          "note": "How one flap changes while the rest hold still."
+        }
+      ],
+      "differsFromOthers": "It reads as a public timetable in rows. B draws the whole day as one line, and C treats each trip as an object you hold.",
+      "differsFromDefault": "No map and no cards: one table of sailings in signage type, with the next sailing as the largest thing on screen.",
+      "notes": "Closest to what commuters know. Risk: it can feel like every transit board."
+    },
+    {
+      "id": "b",
+      "name": "Tide Line",
+      "spread": "expected",
+      "concept": "The day is one horizontal line, like a tide chart: sailings are marks on it, and wind and sea state ride on the same line.",
+      "adjectives": [
+        {
+          "word": "calm",
+          "opposite": "urgent"
+        },
+        {
+          "word": "natural",
+          "opposite": "engineered"
+        },
+        {
+          "word": "spacious",
+          "opposite": "dense"
+        }
+      ],
+      "palette": [
+        {
+          "role": "bg",
+          "name": "Sea mist",
+          "hex": "#0b0b0c"
+        },
+        {
+          "role": "text",
+          "name": "Deep water",
+          "hex": "#f2f0ea"
+        },
+        {
+          "role": "muted",
+          "name": "Kelp",
+          "hex": "#c9c6be"
+        },
+        {
+          "role": "accent",
+          "name": "Harbour green",
+          "hex": "#a3e635"
+        },
+        {
+          "role": "on-accent",
+          "name": "White",
+          "hex": "#0b0b0c"
+        }
+      ],
+      "type": {
+        "class": "grotesque-sans",
+        "display": {
+          "family": "Source Serif 4",
+          "stack": "\"Source Serif 4\", Georgia, \"Times New Roman\", serif",
+          "weight": 600
+        },
+        "body": {
+          "family": "Source Sans 3",
+          "stack": "\"Source Sans 3\", \"Segoe UI\", Arial, sans-serif",
+          "weight": 400
+        },
+        "source": "Google Fonts. Read the license page before use",
+        "googleFontsHref": "https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&family=Source+Serif+4:wght@600&display=swap"
+      },
+      "imagery": "Drawn curves from real tide and wind data. No stock sea photographs.",
+      "texture": "A fine paper grain on the ground, as on a printed almanac page.",
+      "layout": {
+        "skeleton": "split-screen",
+        "shape": "One long rail with round marks. Soft corners on sheets only.",
+        "notes": "The rail scrolls sideways. A fixed marker shows the present time.",
+        "radiusPx": 10
+      },
+      "motion": "The present-time marker drifts along the rail. One slow, continuous movement. With reduced motion it steps once a minute.",
+      "signature": "The day-long tide line with a moving marker for now.",
+      "sample": {
+        "kind": "hero",
+        "headline": "Next boat 7:40",
+        "body": "On time from Pier 2. The 8:10 is cancelled for wind.",
+        "cta": "Show my ticket",
+        "align": "left"
+      },
+      "references": [
+        {
+          "source": "Scan of the printed harbour tide table, supplied by the client",
+          "license": "Client material. Reference only, not cleared for reuse",
+          "note": "How a curve and a table share one page."
+        },
+        {
+          "source": "https://example.net/charts/wind-and-tide",
+          "license": "Terms as stated on the page. Reference only",
+          "note": "Marks on a time axis with few labels."
+        }
+      ],
+      "differsFromOthers": "It shows the whole day at once on a single line. A lists rows, and C stacks single trips.",
+      "differsFromDefault": "The timetable is a drawing, not a feed, and the weather shares the line with the sailings.",
+      "notes": "Best when weather decides the trip. Risk: a first-time visitor needs one line of help."
+    },
+    {
+      "id": "c",
+      "name": "Punched Ticket",
+      "spread": "outside",
+      "concept": "The ticket is the interface: each trip is a paper ticket you hold, stamped when you buy it and punched when you ride.",
+      "adjectives": [
+        {
+          "word": "tactile",
+          "opposite": "abstract"
+        },
+        {
+          "word": "frank",
+          "opposite": "polished"
+        },
+        {
+          "word": "owned",
+          "opposite": "shared"
+        }
+      ],
+      "palette": [
+        {
+          "role": "bg",
+          "name": "Ticket stock",
+          "hex": "#0b0b12"
+        },
+        {
+          "role": "text",
+          "name": "Print black",
+          "hex": "#f2f0ea"
+        },
+        {
+          "role": "muted",
+          "name": "Worn ink",
+          "hex": "#c9c6be"
+        },
+        {
+          "role": "accent",
+          "name": "Date-stamp red",
+          "hex": "#8b5cf6"
+        },
+        {
+          "role": "on-accent",
+          "name": "White",
+          "hex": "#0b0b0c"
+        }
+      ],
+      "type": {
+        "class": "geometric-sans",
+        "display": {
+          "family": "Zilla Slab",
+          "stack": "\"Zilla Slab\", Rockwell, \"Courier New\", serif",
+          "weight": 700
+        },
+        "body": {
+          "family": "IBM Plex Mono",
+          "stack": "\"IBM Plex Mono\", Menlo, Consolas, monospace",
+          "weight": 400
+        },
+        "source": "Google Fonts. Read the license page before use",
+        "googleFontsHref": "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Zilla+Slab:wght@700&display=swap"
+      },
+      "imagery": "Rubber-stamp marks and ticket-printer output. One-color line drawings of the two piers.",
+      "texture": "Card stock with a slight print misregistration. Perforated edges between tickets.",
+      "layout": {
+        "skeleton": "card-grid",
+        "shape": "Notched ticket outlines. A round punch hole marks a used trip.",
+        "notes": "Ticket stack: the top ticket is the next trip. Older tickets sit below it.",
+        "radiusPx": 4
+      },
+      "motion": "A stamp lands on purchase: one short press. A hole appears when the trip is used. With reduced motion both appear at once.",
+      "signature": "The punch hole that appears in a ticket when the trip is used.",
+      "sample": {
+        "kind": "card",
+        "headline": "Next boat 7:40",
+        "body": "On time from Pier 2. The 8:10 is cancelled for wind.",
+        "cta": "Show my ticket",
+        "align": "left"
+      },
+      "references": [
+        {
+          "source": "Own photo of a punched paper ferry ticket",
+          "license": "Own work. Reference only",
+          "note": "Notches, the punch hole and the printer type."
+        },
+        {
+          "source": "https://example.com/print/stamp-ink-on-card",
+          "license": "Terms as stated on the page. Reference only",
+          "note": "How stamp ink sits on colored card."
+        }
+      ],
+      "differsFromOthers": "It makes the ticket the interface and the trip a thing you own. A and B show the service, not your trip.",
+      "differsFromDefault": "The ground is ticket stock, the type is printed and stamped, and the structure is a stack of tickets instead of a feed.",
+      "notes": "Most memorable. Risk: the timetable is one tap away, so the first screen must still answer the primary job."
+    }
+  ]
+}

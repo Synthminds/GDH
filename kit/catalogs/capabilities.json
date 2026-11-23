@@ -1,0 +1,111 @@
+{
+  "version": 1,
+  "note": "The vocabulary is fixed. Extend it only through the add-design-tool skill. A skill routes by capability and names a tool only as an example.",
+  "capabilities": {
+    "image-gen": "Generate a new raster image from text or from reference images.",
+    "image-edit": "Change an existing raster image: crop, retouch, remove a background, expand, upscale.",
+    "vector": "Create or convert vector artwork (SVG): marks, icons, illustrations.",
+    "video-gen": "Generate video footage from text, an image or a reference clip.",
+    "video-compose": "Assemble a video from code, scenes, clips, type and audio, then render it.",
+    "avatar-video": "Produce a talking-head or presenter video from a script.",
+    "audio": "Generate or edit speech, music or sound effects, or transcribe audio.",
+    "3d-gen": "Generate, texture or remesh a 3D model.",
+    "3d-scene": "Compose, light and deliver a 3D scene, or place a model in a page.",
+    "motion": "Author interface motion or animated effects in code.",
+    "ui-components": "Find, read or adapt interface components and blocks.",
+    "templates": "Start from a ready layout, page or document template.",
+    "fonts": "Search, recommend, preview, pair or license typefaces.",
+    "logo-search": "Look up an existing brand logo or mark for reference or attribution.",
+    "critique": "Review a design against rules and return findings.",
+    "canvas": "Lay out a fixed-size composition: a board, a poster, a mockup, a page.",
+    "whiteboard": "Sketch freely on a board: flows, notes, rough layouts.",
+    "diagram": "Draw a structured diagram from a text description.",
+    "moodboard": "Collect and arrange references into comparable direction boards.",
+    "design-system": "Create, read or apply a token set and its component rules.",
+    "slides": "Build a slide deck.",
+    "dataviz": "Build a chart, a data view or a dashboard from data.",
+    "maps": "Build or style a geographic map.",
+    "asset-library": "Search and fetch stored assets: images, icons, models, prompts, brand files.",
+    "reverse-engineer": "Study a reference site or app for structure and technique.",
+    "capture": "Take a screenshot or a recording of a rendered result.",
+    "deploy": "Publish a site or an app to a host.",
+    "design-to-code": "Turn a design file or a frame into code.",
+    "code-to-design": "Turn code or a rendered page into an editable design file.",
+    "brand-kit": "Read or apply a stored brand kit: logo, palette, type, voice."
+  },
+  "disciplines": {
+    "brand": {
+      "skill": "logo-identity",
+      "capabilities": ["brand-kit", "design-system", "moodboard", "vector", "fonts", "logo-search", "image-gen"],
+      "note": "A full brand runs the new-brand flow in ask-gdh: design-brief, mood-board, logo-identity, typography, color, design-system."
+    },
+    "logo": {
+      "skill": "logo-identity",
+      "capabilities": ["vector", "image-gen", "image-edit", "fonts", "logo-search", "canvas"]
+    },
+    "typography": {
+      "skill": "typography",
+      "capabilities": ["fonts", "design-system", "canvas"]
+    },
+    "color": {
+      "skill": "color",
+      "capabilities": ["design-system", "brand-kit", "canvas"]
+    },
+    "website": {
+      "skill": "website-design",
+      "capabilities": ["design-system", "ui-components", "templates", "fonts", "image-gen", "motion", "capture", "critique", "design-to-code", "code-to-design", "deploy"]
+    },
+    "app": {
+      "skill": "app-design",
+      "capabilities": ["design-system", "ui-components", "canvas", "capture", "critique", "design-to-code", "code-to-design"]
+    },
+    "dashboard": {
+      "skill": "dashboard-design",
+      "capabilities": ["dataviz", "design-system", "ui-components", "canvas", "capture", "critique"]
+    },
+    "dataviz": {
+      "skill": "data-viz",
+      "capabilities": ["dataviz", "diagram", "maps", "canvas"]
+    },
+    "network-graph": {
+      "skill": "network-graph",
+      "capabilities": ["dataviz", "diagram", "canvas"]
+    },
+    "infographic": {
+      "skill": "infographic",
+      "capabilities": ["canvas", "vector", "dataviz", "diagram", "maps", "templates", "image-gen"]
+    },
+    "3d": {
+      "skill": "three-d",
+      "capabilities": ["asset-library", "3d-gen", "3d-scene", "image-gen", "capture"]
+    },
+    "ui-motion": {
+      "skill": "ui-motion",
+      "capabilities": ["motion", "ui-components", "capture"]
+    },
+    "motion-video": {
+      "skill": "motion-video",
+      "capabilities": ["video-compose", "video-gen", "motion", "audio", "avatar-video", "image-gen"]
+    },
+    "moodboard": {
+      "skill": "mood-board",
+      "capabilities": ["moodboard", "canvas", "whiteboard", "asset-library", "reverse-engineer", "image-gen"]
+    },
+    "design-system": {
+      "skill": "design-system",
+      "capabilities": ["design-system", "brand-kit", "fonts", "code-to-design", "design-to-code"]
+    },
+    "critique": {
+      "skill": "design-critique",
+      "capabilities": ["critique", "capture"]
+    },
+    "assets": {
+      "skill": "find-assets",
+      "capabilities": ["asset-library", "ui-components", "templates", "fonts", "logo-search"]
+    },
+    "reference": {
+      "skill": "reverse-engineer-reference",
+      "capabilities": ["reverse-engineer", "capture", "asset-library"]
+    }
+  }
+}

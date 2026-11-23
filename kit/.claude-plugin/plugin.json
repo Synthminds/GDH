@@ -1,0 +1,20 @@
+{
+  "name": "gdh",
+  "displayName": "Global Design Harness",
+  "version": "0.1.0",
+  "description": "Design skills, rules and tool catalogs for brand, web, app, dashboard, data, 3D and motion work.",
+  "author": {
+    "name": "Synthminds"
+  },
+  "homepage": "https://github.com/Synthminds/GDH",
+  "repository": "https://github.com/Synthminds/GDH",
+  "license": "UNLICENSED",
+  "keywords": [
+    "design",
+    "design-system",
+    "brand",
+    "dataviz",
+    "motion",
+    "skills"
+  ]
+}

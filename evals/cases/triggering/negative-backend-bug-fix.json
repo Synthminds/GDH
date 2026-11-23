@@ -1,0 +1,17 @@
+{
+  "id": "negative-backend-bug-fix",
+  "kind": "triggering",
+  "skill": "none",
+  "prompt": "The nightly export job fails with a timezone error when it parses order dates. Find the bug in the date parser, fix it and add a regression test.",
+  "expect": {
+    "skills_fired": [],
+    "skills_not_fired": [
+      "align",
+      "ask-gdh",
+      "design-brief",
+      "mood-board",
+      "find-assets",
+      "design-critique"
+    ]
+  }
+}

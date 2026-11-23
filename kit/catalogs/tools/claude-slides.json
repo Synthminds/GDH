@@ -1,0 +1,27 @@
+{
+  "id": "claude-slides",
+  "name": "Claude Slides (deck artifact type)",
+  "what": "Presentation decks at 16:9 or 4:3 that people present, edit in place and download as PowerPoint, PDF or PNG. Slides are HTML sections styled by one shared stylesheet, with CSS motion and no script. A deck installs brand tokens and fonts from a Design System artifact.",
+  "kind": "artifact-type",
+  "capabilities": [
+    "slides"
+  ],
+  "disciplines": [
+    "brand",
+    "infographic",
+    "dataviz"
+  ],
+  "install": "No install line. Artifacts and the Slides template must be on for the claude.ai account; on Team and Enterprise an organization Owner enables them in organization settings. In Claude Code, sign in with /login and a claude.ai account.",
+  "auth": "oauth",
+  "spendsCredits": false,
+  "exposes": true,
+  "readOnly": false,
+  "toolPrefix": "Artifact",
+  "firstCall": "Artifact quickstart with intent 'slides' when the host offers it, else an Artifact types list, to get the type link; then read the type's SKILL.md that the create call returns",
+  "fallback": "claude-design",
+  "card": "references/tools/claude-slides.md",
+  "source": "https://support.claude.com/en/articles/17153992",
+  "verifiedAt": "2026-11-23",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "Artifact read calls on the type's SKILL.md, craft, layout, styles, fonts, images and diagrams files succeeded. Public Help Center pages and the Claude Code command reference were read. NOT exercised: creating a deck, writing a slide, any download, PPTX fidelity, Send to, any partner import tool. No per-call credits; work draws from the shared plan usage pool. The fallback is a Design canvas with one fixed artboard for each slide; it helps only when artifacts are present."
+}

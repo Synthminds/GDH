@@ -1,0 +1,12 @@
+{
+  "id": "trigger-mood-board-options",
+  "kind": "triggering",
+  "skill": "mood-board",
+  "prompt": "The brief for the hiking club rebrand is confirmed in design/brief.md. Give me a few different looks to choose from.",
+  "expect": {
+    "skills_fired": [
+      "align",
+      "mood-board"
+    ]
+  }
+}

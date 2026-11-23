@@ -1,0 +1,21 @@
+{
+  "id": "anthropic-frontend-design",
+  "name": "Anthropic frontend-design",
+  "what": "Prose skill that sets a distinct visual direction for web and app interfaces: a subject check, a short design plan as a token system, a review of the plan against the brief, the build, then a critique. One file. No scripts, no hooks, no binaries.",
+  "kind": "skill",
+  "capabilities": ["design-system", "critique"],
+  "disciplines": ["website", "app", "moodboard", "typography", "color", "critique"],
+  "install": "Claude Code: /plugin install frontend-design@claude-plugins-official. Any host: npx skills add anthropics/skills --skill frontend-design. Check the skill list first: Claude apps can carry it as a built-in skill.",
+  "auth": "none",
+  "spendsCredits": false,
+  "exposes": false,
+  "readOnly": false,
+  "toolPrefix": "frontend-design",
+  "firstCall": "none",
+  "fallback": "impeccable",
+  "card": "references/tools/anthropic-frontend-design.md",
+  "source": "https://github.com/anthropics/skills",
+  "verifiedAt": "2026-11-23",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "The skill file was read in two public repositories (the skills repository and the official plugin marketplace) and the two copies matched. The related cookbook prompt and the Claude Code artifact guidance were read. The skill was not in the researched session and was not run. Sibling skill bodies were not read."
+}

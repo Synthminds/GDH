@@ -1,0 +1,21 @@
+{
+  "id": "framer",
+  "name": "Framer",
+  "what": "Hosted site builder driven through one program tool: canvas pages with breakpoints, CMS, components, style presets, motion effects, catalog shaders, stock image and icon search, screenshots and publishing to Framer hosting. The site lives in Framer, not in a code repository.",
+  "kind": "connector",
+  "capabilities": ["canvas", "templates", "motion", "fonts", "ui-components", "asset-library", "design-system", "capture", "deploy"],
+  "disciplines": ["website", "typography", "color", "ui-motion", "moodboard", "assets"],
+  "install": "Attach the Framer connector in the host's connector settings, then sign in with the user's Framer account. Do not run the @framer/agent CLI or load the local framer skills beside this server.",
+  "auth": "oauth",
+  "spendsCredits": false,
+  "exposes": true,
+  "readOnly": false,
+  "toolPrefix": "mcp__Framer__",
+  "firstCall": "open_project (returns the session handle and the full instructions), then read_docs with README.md",
+  "fallback": "v0",
+  "card": "references/tools/framer.md",
+  "source": "https://www.framer.com",
+  "verifiedAt": "2026-11-23",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "Tool schemas and server instructions read. Live read calls succeeded: list_workspaces, list_projects, open_project (session handle and full instruction set returned) and read_docs for README.md. No exec program ran, so no edit, screenshot, image search or publish was exercised. No guide or skill was read in full. Plan limits and whether exec calls are metered are not stated in anything that was read."
+}

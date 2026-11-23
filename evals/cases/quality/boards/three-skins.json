@@ -1,0 +1,314 @@
+{
+  "version": 1,
+  "project": "Island ferry timetable (quality corpus: three skins of one idea)",
+  "stage": "explore",
+  "date": "2026-11-23",
+  "brief": {
+    "subject": "A timetable and ticket app for one island ferry line",
+    "audience": "daily commuters and first-time visitors, outdoors, one hand on a rail",
+    "primaryJob": "see the next sailing and know that it runs",
+    "brandWords": [
+      "dependable",
+      "local",
+      "plain-spoken"
+    ]
+  },
+  "categoryDefault": {
+    "description": "A blue brand color on a white ground, a geometric sans, and a feed of rounded cards under a map.",
+    "accentHex": "#1a73e8",
+    "groundHex": "#ffffff",
+    "typeClass": "geometric-sans",
+    "layoutSkeleton": "card-list"
+  },
+  "feedbackQuestion": "For each direction and each part: keep, change or remove? Which direction is the base?",
+  "sampleCopy": {
+    "headline": "Next boat 7:40",
+    "body": "On time from Pier 2. The 8:10 is cancelled for wind.",
+    "cta": "Show my ticket"
+  },
+  "googleFontsHref": "",
+  "directions": [
+    {
+      "id": "a",
+      "name": "Departure Board",
+      "spread": "safe",
+      "concept": "The app is the quay-side departure board in your pocket: sailings are rows, and the next row is the biggest thing on screen.",
+      "adjectives": [
+        {
+          "word": "exact",
+          "opposite": "approximate"
+        },
+        {
+          "word": "public",
+          "opposite": "personal"
+        },
+        {
+          "word": "steady",
+          "opposite": "lively"
+        }
+      ],
+      "palette": [
+        {
+          "role": "bg",
+          "name": "Chalk",
+          "hex": "#f7f5ef"
+        },
+        {
+          "role": "text",
+          "name": "Pitch",
+          "hex": "#101820"
+        },
+        {
+          "role": "muted",
+          "name": "Slate",
+          "hex": "#4f5b66"
+        },
+        {
+          "role": "accent",
+          "name": "Signal amber",
+          "hex": "#ffb000"
+        },
+        {
+          "role": "on-accent",
+          "name": "Pitch",
+          "hex": "#101820"
+        }
+      ],
+      "type": {
+        "class": "grotesque-sans",
+        "display": {
+          "family": "Overpass",
+          "stack": "\"Overpass\", \"Helvetica Neue\", Arial, sans-serif",
+          "weight": 800
+        },
+        "body": {
+          "family": "Overpass",
+          "stack": "\"Overpass\", \"Helvetica Neue\", Arial, sans-serif",
+          "weight": 400
+        },
+        "source": "Google Fonts. Read the license page before use",
+        "googleFontsHref": "https://fonts.googleapis.com/css2?family=Overpass:wght@400;800&display=swap"
+      },
+      "imagery": "No photographs. Pictograms in the style of harbour signs: one stroke weight, squared ends.",
+      "texture": "Flat ground. Hairline rules between rows, like the slats of a board.",
+      "layout": {
+        "skeleton": "table-led",
+        "shape": "Square corners. Full-width rows. Status sits in a boxed cell at the row end.",
+        "notes": "Time, pier, status. Three columns, tabular numerals.",
+        "radiusPx": 0
+      },
+      "motion": "A row flips once when its status changes. No easing bounce. With reduced motion the row swaps at once.",
+      "signature": "The next sailing as one full-width split-flap row.",
+      "sample": {
+        "kind": "hero",
+        "headline": "Next boat 7:40",
+        "body": "On time from Pier 2. The 8:10 is cancelled for wind.",
+        "cta": "Show my ticket",
+        "align": "left"
+      },
+      "references": [
+        {
+          "source": "Own photo of the departure board at the quay",
+          "license": "Own work. Reference only",
+          "note": "Row rhythm and the size of the first row."
+        },
+        {
+          "source": "https://example.org/archive/split-flap-display",
+          "license": "Terms as stated on the page. Reference only",
+          "note": "How one flap changes while the rest hold still."
+        }
+      ],
+      "differsFromOthers": "It reads as a public timetable in rows. B draws the whole day as one line, and C treats each trip as an object you hold.",
+      "differsFromDefault": "No map and no cards: one table of sailings in signage type, with the next sailing as the largest thing on screen.",
+      "notes": "Closest to what commuters know. Risk: it can feel like every transit board."
+    },
+    {
+      "id": "b",
+      "name": "Departure Board Warm",
+      "spread": "expected",
+      "concept": "The app is the quay-side departure board in your pocket: sailings are rows, and the next row is the biggest thing on screen.",
+      "adjectives": [
+        {
+          "word": "exact",
+          "opposite": "approximate"
+        },
+        {
+          "word": "public",
+          "opposite": "personal"
+        },
+        {
+          "word": "steady",
+          "opposite": "lively"
+        }
+      ],
+      "palette": [
+        {
+          "role": "bg",
+          "name": "Chalk",
+          "hex": "#f7f5ef"
+        },
+        {
+          "role": "text",
+          "name": "Pitch",
+          "hex": "#101820"
+        },
+        {
+          "role": "muted",
+          "name": "Slate",
+          "hex": "#4f5b66"
+        },
+        {
+          "role": "accent",
+          "name": "Signal amber",
+          "hex": "#f59e0b"
+        },
+        {
+          "role": "on-accent",
+          "name": "Pitch",
+          "hex": "#101820"
+        }
+      ],
+      "type": {
+        "class": "grotesque-sans",
+        "display": {
+          "family": "Overpass",
+          "stack": "\"Overpass\", \"Helvetica Neue\", Arial, sans-serif",
+          "weight": 800
+        },
+        "body": {
+          "family": "Overpass",
+          "stack": "\"Overpass\", \"Helvetica Neue\", Arial, sans-serif",
+          "weight": 400
+        },
+        "source": "Google Fonts. Read the license page before use",
+        "googleFontsHref": "https://fonts.googleapis.com/css2?family=Overpass:wght@400;800&display=swap"
+      },
+      "imagery": "No photographs. Pictograms in the style of harbour signs: one stroke weight, squared ends.",
+      "texture": "Flat ground. Hairline rules between rows, like the slats of a board.",
+      "layout": {
+        "skeleton": "table-led",
+        "shape": "Square corners. Full-width rows. Status sits in a boxed cell at the row end.",
+        "notes": "Time, pier, status. Three columns, tabular numerals.",
+        "radiusPx": 0
+      },
+      "motion": "A row flips once when its status changes. No easing bounce. With reduced motion the row swaps at once.",
+      "signature": "The next sailing as one full-width split-flap row.",
+      "sample": {
+        "kind": "hero",
+        "headline": "Next boat 7:40",
+        "body": "On time from Pier 2. The 8:10 is cancelled for wind.",
+        "cta": "Show my ticket",
+        "align": "left"
+      },
+      "references": [
+        {
+          "source": "Own photo of the departure board at the quay",
+          "license": "Own work. Reference only",
+          "note": "Row rhythm and the size of the first row."
+        },
+        {
+          "source": "https://example.org/archive/split-flap-display",
+          "license": "Terms as stated on the page. Reference only",
+          "note": "How one flap changes while the rest hold still."
+        }
+      ],
+      "differsFromOthers": "It reads as a public timetable in rows. B draws the whole day as one line, and C treats each trip as an object you hold.",
+      "differsFromDefault": "No map and no cards: one table of sailings in signage type, with the next sailing as the largest thing on screen.",
+      "notes": "Closest to what commuters know. Risk: it can feel like every transit board."
+    },
+    {
+      "id": "c",
+      "name": "Departure Board Gold",
+      "spread": "outside",
+      "concept": "The app is the quay-side departure board in your pocket: sailings are rows, and the next row is the biggest thing on screen.",
+      "adjectives": [
+        {
+          "word": "exact",
+          "opposite": "approximate"
+        },
+        {
+          "word": "public",
+          "opposite": "personal"
+        },
+        {
+          "word": "steady",
+          "opposite": "lively"
+        }
+      ],
+      "palette": [
+        {
+          "role": "bg",
+          "name": "Chalk",
+          "hex": "#f7f5ef"
+        },
+        {
+          "role": "text",
+          "name": "Pitch",
+          "hex": "#101820"
+        },
+        {
+          "role": "muted",
+          "name": "Slate",
+          "hex": "#4f5b66"
+        },
+        {
+          "role": "accent",
+          "name": "Signal amber",
+          "hex": "#eab308"
+        },
+        {
+          "role": "on-accent",
+          "name": "Pitch",
+          "hex": "#101820"
+        }
+      ],
+      "type": {
+        "class": "grotesque-sans",
+        "display": {
+          "family": "Overpass",
+          "stack": "\"Overpass\", \"Helvetica Neue\", Arial, sans-serif",
+          "weight": 800
+        },
+        "body": {
+          "family": "Overpass",
+          "stack": "\"Overpass\", \"Helvetica Neue\", Arial, sans-serif",
+          "weight": 400
+        },
+        "source": "Google Fonts. Read the license page before use",
+        "googleFontsHref": "https://fonts.googleapis.com/css2?family=Overpass:wght@400;800&display=swap"
+      },
+      "imagery": "No photographs. Pictograms in the style of harbour signs: one stroke weight, squared ends.",
+      "texture": "Flat ground. Hairline rules between rows, like the slats of a board.",
+      "layout": {
+        "skeleton": "table-led",
+        "shape": "Square corners. Full-width rows. Status sits in a boxed cell at the row end.",
+        "notes": "Time, pier, status. Three columns, tabular numerals.",
+        "radiusPx": 0
+      },
+      "motion": "A row flips once when its status changes. No easing bounce. With reduced motion the row swaps at once.",
+      "signature": "The next sailing as one full-width split-flap row.",
+      "sample": {
+        "kind": "hero",
+        "headline": "Next boat 7:40",
+        "body": "On time from Pier 2. The 8:10 is cancelled for wind.",
+        "cta": "Show my ticket",
+        "align": "left"
+      },
+      "references": [
+        {
+          "source": "Own photo of the departure board at the quay",
+          "license": "Own work. Reference only",
+          "note": "Row rhythm and the size of the first row."
+        },
+        {
+          "source": "https://example.org/archive/split-flap-display",
+          "license": "Terms as stated on the page. Reference only",
+          "note": "How one flap changes while the rest hold still."
+        }
+      ],
+      "differsFromOthers": "It reads as a public timetable in rows. B draws the whole day as one line, and C treats each trip as an object you hold.",
+      "differsFromDefault": "No map and no cards: one table of sailings in signage type, with the next sailing as the largest thing on screen.",
+      "notes": "Closest to what commuters know. Risk: it can feel like every transit board."
+    }
+  ]
+}

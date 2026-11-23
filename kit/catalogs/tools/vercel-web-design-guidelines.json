@@ -1,0 +1,21 @@
+{
+  "id": "vercel-web-design-guidelines",
+  "name": "Vercel web-design-guidelines",
+  "what": "Prose skill that reviews web interface source code against a pinned rule set (the Web Interface Guidelines) and prints terse file and line findings. It reviews. It designs nothing and writes nothing.",
+  "kind": "skill",
+  "capabilities": ["critique"],
+  "disciplines": ["critique", "website", "app", "dashboard"],
+  "install": "npx skills add vercel-labs/agent-skills --skill web-design-guidelines",
+  "auth": "none",
+  "spendsCredits": false,
+  "exposes": false,
+  "readOnly": true,
+  "toolPrefix": "web-design-guidelines",
+  "firstCall": "none (the skill reads its own references/command.md first)",
+  "fallback": "none",
+  "card": "references/tools/vercel-web-design-guidelines.md",
+  "source": "https://github.com/vercel-labs/agent-skills",
+  "verifiedAt": "2026-11-23",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "Read from shallow clones of the two public repositories: the skill file, the pinned rule source and the licenses. Not installed. No review run. Sibling skills were read by description only."
+}

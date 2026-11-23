@@ -1,0 +1,257 @@
+{
+  "name": "gdh",
+  "displayName": "Global Design Harness",
+  "version": "0.1.0",
+  "description": "Design skills, rules and tool catalogs for brand, web, app, dashboard, data, 3D and motion work.",
+  "author": {
+    "name": "Synthminds"
+  },
+  "repository": "https://github.com/Synthminds/GDH",
+  "license": "UNLICENSED",
+  "budgets": {
+    "modelDescriptionChars": 5000,
+    "kernelLines": 60,
+    "momentsChars": 3500
+  },
+  "skills": {
+    "align": {
+      "invocation": "model",
+      "origin": "gdh",
+      "discipline": "alignment"
+    },
+    "ask-gdh": {
+      "invocation": "model",
+      "origin": "gdh",
+      "discipline": "router"
+    },
+    "design-brief": {
+      "invocation": "model",
+      "origin": "gdh",
+      "discipline": "brief"
+    },
+    "mood-board": {
+      "invocation": "model",
+      "origin": "gdh",
+      "discipline": "moodboard"
+    },
+    "find-assets": {
+      "invocation": "model",
+      "origin": "gdh",
+      "discipline": "assets"
+    },
+    "design-critique": {
+      "invocation": "model",
+      "origin": "gdh",
+      "discipline": "critique"
+    },
+    "design-system": {
+      "invocation": "user",
+      "origin": "gdh",
+      "discipline": "design-system"
+    },
+    "typography": {
+      "invocation": "user",
+      "origin": "gdh",
+      "discipline": "typography"
+    },
+    "color": {
+      "invocation": "user",
+      "origin": "gdh",
+      "discipline": "color"
+    },
+    "logo-identity": {
+      "invocation": "user",
+      "origin": "gdh",
+      "discipline": "logo"
+    },
+    "website-design": {
+      "invocation": "user",
+      "origin": "gdh",
+      "discipline": "website"
+    },
+    "app-design": {
+      "invocation": "user",
+      "origin": "gdh",
+      "discipline": "app"
+    },
+    "dashboard-design": {
+      "invocation": "user",
+      "origin": "gdh",
+      "discipline": "dashboard"
+    },
+    "data-viz": {
+      "invocation": "user",
+      "origin": "gdh",
+      "discipline": "dataviz"
+    },
+    "network-graph": {
+      "invocation": "user",
+      "origin": "gdh",
+      "discipline": "network-graph"
+    },
+    "infographic": {
+      "invocation": "user",
+      "origin": "gdh",
+      "discipline": "infographic"
+    },
+    "ui-motion": {
+      "invocation": "user",
+      "origin": "gdh",
+      "discipline": "ui-motion"
+    },
+    "motion-video": {
+      "invocation": "user",
+      "origin": "gdh",
+      "discipline": "motion-video"
+    },
+    "three-d": {
+      "invocation": "user",
+      "origin": "gdh",
+      "discipline": "3d"
+    },
+    "generate-media": {
+      "invocation": "user",
+      "origin": "gdh",
+      "discipline": "media"
+    },
+    "reverse-engineer-reference": {
+      "invocation": "user",
+      "origin": "gdh",
+      "discipline": "reference"
+    },
+    "claude-design": {
+      "invocation": "user",
+      "origin": "gdh",
+      "discipline": "claude-design"
+    },
+    "refine-round": {
+      "invocation": "user",
+      "origin": "gdh",
+      "discipline": "refinement"
+    },
+    "accessibility-gate": {
+      "invocation": "user",
+      "origin": "gdh",
+      "discipline": "accessibility"
+    },
+    "handoff-to-code": {
+      "invocation": "user",
+      "origin": "gdh",
+      "discipline": "handoff"
+    },
+    "add-design-tool": {
+      "invocation": "user",
+      "origin": "gdh",
+      "discipline": "evolution"
+    }
+  },
+  "agents": [
+    "art-director",
+    "design-critic",
+    "asset-scout",
+    "a11y-auditor"
+  ],
+  "moments": [
+    {
+      "when": "The first design-led request of a session arrives: a brand or logo, a mood board, the look of a site or app, a dashboard or chart design, an infographic, 3D, animation or motion graphics, or a design system",
+      "start": [
+        "align"
+      ],
+      "offer": []
+    },
+    {
+      "when": "`align` has closed in this session and the design work needs a plan, or the user asks what GDH can do",
+      "start": [
+        "ask-gdh"
+      ],
+      "offer": []
+    },
+    {
+      "when": "You are about to choose a look, a palette or a typeface and no confirmed brief exists, or the audience, job or brand changed",
+      "start": [
+        "align"
+      ],
+      "offer": []
+    },
+    {
+      "when": "A confirmed brief must change, or another skill needs to read or check the brief",
+      "start": [
+        "design-brief"
+      ],
+      "offer": []
+    },
+    {
+      "when": "You are about to build a full design and no direction is chosen",
+      "start": [
+        "mood-board"
+      ],
+      "offer": []
+    },
+    {
+      "when": "You need an outside image, icon, font, component, model or template",
+      "start": [
+        "find-assets"
+      ],
+      "offer": []
+    },
+    {
+      "when": "You are about to tell the user a design is done",
+      "start": [
+        "design-critique"
+      ],
+      "offer": [
+        "accessibility-gate"
+      ]
+    },
+    {
+      "when": "The user gives feedback on a design",
+      "start": [],
+      "offer": [
+        "refine-round"
+      ]
+    },
+    {
+      "when": "The user names a tool, connector or asset source that the catalog does not hold",
+      "start": [],
+      "offer": [
+        "add-design-tool"
+      ]
+    },
+    {
+      "when": "A design is approved and code work starts",
+      "start": [],
+      "offer": [
+        "handoff-to-code"
+      ]
+    }
+  ],
+  "wired": {
+    "impeccable": {
+      "name": "Impeccable",
+      "what": "design critique and polish for a screen",
+      "install": "/plugin marketplace add pbakaus/impeccable",
+      "source": "https://github.com/pbakaus/impeccable"
+    },
+    "design-taste-frontend": {
+      "name": "design-taste-frontend",
+      "what": "layout and visual taste for a landing page or a company site",
+      "install": "npx skills@1.8.1 add Leonxlnx/taste-skill@f6b76575f949707b4e3c37cd86cb44b0b98643e8 --skill design-taste-frontend",
+      "source": "https://github.com/Leonxlnx/taste-skill"
+    },
+    "deslop": {
+      "name": "DeSlop",
+      "what": "a scan for AI-writing tells in marketing copy and brand voice",
+      "install": [
+        "/plugin marketplace add ProfSynapse/synaptic-labs-plugins",
+        "/plugin install deslop@synaptic-labs"
+      ],
+      "source": "https://github.com/ProfSynapse/synaptic-labs-plugins"
+    }
+  },
+  "requires": {
+    "gch": {
+      "optional": true,
+      "note": "No hard requirement. GCH is a separate coding harness that is not part of this kit and is not distributed with it. When the GCH kernel is loaded, GCH governs code work."
+    }
+  }
+}

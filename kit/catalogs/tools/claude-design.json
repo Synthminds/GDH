@@ -1,0 +1,35 @@
+{
+  "id": "claude-design",
+  "name": "Claude Design (canvas artifact type)",
+  "what": "A canvas of live HTML artboards that a person edits by hand: direction boards, mood boards, mockups, landing-page comps, posters, social and print pieces, infographics, storyboards, diagrams and clickable prototypes. It installs brand tokens from a Design System artifact, exports PDF and PNG, and hands a design to partner apps through Send to.",
+  "kind": "artifact-type",
+  "capabilities": [
+    "canvas",
+    "moodboard",
+    "diagram"
+  ],
+  "disciplines": [
+    "moodboard",
+    "website",
+    "app",
+    "infographic",
+    "logo",
+    "typography",
+    "color",
+    "dashboard",
+    "motion-video"
+  ],
+  "install": "No install line. Artifacts and the Design template must be on for the claude.ai account; on Team and Enterprise an organization Owner enables them in organization settings. In Claude Code, sign in with /login and a claude.ai account.",
+  "auth": "oauth",
+  "spendsCredits": false,
+  "exposes": true,
+  "readOnly": false,
+  "toolPrefix": "Artifact",
+  "firstCall": "Artifact quickstart with intent 'design' when the host offers it, else an Artifact types list, to get the type link; then read the type's SKILL.md that the create call returns",
+  "fallback": "none",
+  "card": "references/tools/claude-design.md",
+  "source": "https://support.claude.com/en/articles/14604416-get-started-with-claude-design",
+  "verifiedAt": "2026-11-23",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "Artifact read calls on the type's SKILL.md and its reference files (format, craft, diagrams, print, shaders, design system components, make-from-this, view state) succeeded. File listings and canvas.json of four existing canvases were read. Public Help Center, product posts and Claude Code docs were read. NOT exercised: creating a canvas, writing an artboard, any export, Send to, any partner import tool. No per-call credits; work draws from the shared plan usage pool. With no artifacts in the session the fallback is local HTML, which has no catalog id."
+}

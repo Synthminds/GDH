@@ -1,0 +1,29 @@
+{
+  "id": "claude-design-system",
+  "name": "Claude Design System (artifact type)",
+  "what": "One browsable brand reference that agents read and build on: a brand-book README, tokens.json (color across themes, type, spacing, radius and more), components with previews and guidelines, assets, fonts and a cover. Design canvases, Slides decks and Data dashboards install or read it.",
+  "kind": "artifact-type",
+  "capabilities": [
+    "design-system",
+    "brand-kit"
+  ],
+  "disciplines": [
+    "design-system",
+    "brand",
+    "color",
+    "typography"
+  ],
+  "install": "No install line. Artifacts and the Design System template must be on for the claude.ai account; on Team and Enterprise an organization Owner enables them in organization settings. In Claude Code, sign in with /login and a claude.ai account.",
+  "auth": "oauth",
+  "spendsCredits": false,
+  "exposes": true,
+  "readOnly": false,
+  "toolPrefix": "Artifact",
+  "firstCall": "Artifact list with type 'Design System' to find an existing system; to create one, Artifact quickstart with intent 'other' when the host offers it, else an Artifact types list, then read the type's SKILL.md that the create call returns",
+  "fallback": "none",
+  "card": "references/tools/claude-design-system.md",
+  "source": "https://support.claude.com/en/articles/14604397-set-up-your-design-system-in-claude-design",
+  "verifiedAt": "2026-11-23",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "Artifact read calls on the type's SKILL.md, format, craft, cover, from-code and from-design-tool files succeeded. Five existing systems were read live (file listing, README, tokens or token stylesheets, index) and the copies matched the listed hashes, so reading a system by path is verified. NOT exercised: creating a system, writing tokens, a clean-up, a code sync, an install into a canvas or deck. The label stays DOCUMENTED because the type's main function, building a system, did not run. With no artifacts in the session the fallback is the local brand pack built by the design-system skill, which has no catalog id."
+}

@@ -1,0 +1,21 @@
+{
+  "id": "gamma",
+  "name": "Gamma",
+  "what": "Gamma's connector: prompt-driven presentations, documents, webpages and social posts hosted on gamma.app, plus search, outline reads and natural-language edits of the user's existing gammas. Visual control is at prompt level only, and it returns no code. The tool set differs by session: the researched session had no generate, read or export tool.",
+  "kind": "connector",
+  "capabilities": ["slides", "templates"],
+  "disciplines": ["brand", "infographic"],
+  "install": "Attach the Gamma connector in the host's connector settings, then sign in with the user's Gamma account.",
+  "auth": "oauth",
+  "spendsCredits": true,
+  "exposes": true,
+  "readOnly": false,
+  "toolPrefix": "mcp__Gamma__",
+  "firstCall": "none (no init tool). Call get_gamma_outline before edit_gamma, and search_templates then get_gamma_outline on the template before generate_from_template",
+  "fallback": "claude-slides",
+  "card": "references/tools/gamma.md",
+  "source": "https://gamma.app",
+  "verifiedAt": "2026-11-23",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "Server instructions and the schemas of the ten exposed tools read. One live read call succeeded: search_templates. The main function was not exercised: generate, generate_from_template, get_gammas, get_folders, read_gamma and every export tool were absent from the researched session. No edit, duplicate, move, panel or feedback call ran."
+}

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Quality corpus: brand-required gradient and glow</title>
+<style>
+  /* Labelled eval page. Its gradient and glow come from the brand tokens beside it. */
+  :root { --bg: #120d1f; --text: #f4f0ff; --violet: #7c3aed; --blue: #2563eb; }
+  body { margin: 0; font-family: "IBM Plex Sans", sans-serif; background: var(--bg); color: var(--text); }
+  h1 { font-family: "Space Grotesk", sans-serif; font-size: 56px; }
+  .hero { padding: 96px 24px; background: linear-gradient(120deg, #7c3aed, #2563eb); }
+  .cta { padding: 12px 24px; border-radius: 6px; background: var(--violet); color: var(--text); box-shadow: 0 0 40px rgba(124, 58, 237, 0.5); }
+</style>
+</head>
+<body>
+  <section class="hero">
+    <h1>Model evaluations your auditors can read</h1>
+    <p>Every score links to the run that produced it.</p>
+    <a class="cta" href="#runs">Open the run log</a>
+  </section>
+</body>
+</html>

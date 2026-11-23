@@ -1,0 +1,12 @@
+{
+  "id": "trigger-ask-gdh",
+  "kind": "triggering",
+  "skill": "ask-gdh",
+  "prompt": "We are a two-person bike repair shop and we have nothing yet: no logo, no colors, no site. Where do we start so it all looks like one brand?",
+  "expect": {
+    "skills_fired": [
+      "align",
+      "ask-gdh"
+    ]
+  }
+}

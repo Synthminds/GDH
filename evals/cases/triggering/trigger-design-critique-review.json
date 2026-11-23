@@ -1,0 +1,12 @@
+{
+  "id": "trigger-design-critique-review",
+  "kind": "triggering",
+  "skill": "design-critique",
+  "prompt": "Here is a screenshot of the new dashboard for our clinic schedulers. Tell me honestly what is weak about the design.",
+  "expect": {
+    "skills_fired": [
+      "align",
+      "design-critique"
+    ]
+  }
+}

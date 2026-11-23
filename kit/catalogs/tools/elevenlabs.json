@@ -1,0 +1,36 @@
+{
+  "id": "elevenlabs",
+  "name": "ElevenLabs creative tools",
+  "what": "Audio and media generation on one flow canvas: speech, designed voices, sound effects, music, dubbing, voice change, noise removal and mixing, plus image and video generation, lipsync, a timeline composition node, transcription with word timings and stored brand kits. The same server also holds voice-agent tools, which this entry does not cover.",
+  "kind": "connector",
+  "capabilities": [
+    "audio",
+    "video-gen",
+    "video-compose",
+    "avatar-video",
+    "image-gen",
+    "image-edit",
+    "vector",
+    "brand-kit"
+  ],
+  "disciplines": [
+    "motion-video",
+    "brand",
+    "moodboard",
+    "app",
+    "website"
+  ],
+  "install": "Attach the ElevenLabs connector in the host's connector settings, then sign in with the user's ElevenLabs account. Grant usage access at connect time so that the balance can be read.",
+  "auth": "oauth",
+  "spendsCredits": true,
+  "exposes": true,
+  "readOnly": false,
+  "toolPrefix": "mcp__ElevenLabs__creative_",
+  "firstCall": "creative_get_guide for any task with more than one tool call; creative_create_flow first when one output feeds another",
+  "fallback": "higgsfield",
+  "card": "references/tools/elevenlabs.md",
+  "source": "https://elevenlabs.io",
+  "verifiedAt": "2026-11-23",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "Tool schemas and server instructions read. Free read calls made: creative_get_guide (the index and three guides), creative_get_flow_node_types and creative_list_brand_kits, all of which succeeded. account_get_usage failed with a permissions error, so plan and balance were not read. No generation, estimate, voice design, sandbox, transcription or brand kit write ran. No per-model price and no model guide was read. Several update and delete schemas were not loaded. The upload tools that the server instructions name were absent from the session. Output audio formats are not stated. The capability avatar-video rests on the node list only: only the user can place an avatar node in the canvas, and no avatar job ran. The path an agent can drive is lipsync through a video model. Treat avatar-video here as UNTESTED."
+}

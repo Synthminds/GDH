@@ -1,0 +1,21 @@
+{
+  "id": "figma",
+  "name": "Figma",
+  "what": "Official Figma remote MCP server. It turns self-contained HTML into editable Figma layers, imports a code project as a code layer, authors and reads WebGPU shaders and canvas plugins, generates raster images and editable vectors, and reads review comments. The tool set differs by session: check which tools exist before you plan.",
+  "kind": "connector",
+  "capabilities": ["code-to-design", "canvas", "vector", "image-gen", "motion", "moodboard", "design-to-code"],
+  "disciplines": ["brand", "logo", "website", "app", "dashboard", "ui-motion", "moodboard"],
+  "install": "Attach the Figma connector in the host's connector settings, then sign in with the user's Figma account. Link the account to Weave in the Weave profile settings only when the Weave model tools are needed.",
+  "auth": "oauth",
+  "spendsCredits": true,
+  "exposes": true,
+  "readOnly": false,
+  "toolPrefix": "mcp__Figma__",
+  "firstCall": "create_session with the file key and a task description, once the file key is known; before shader, plugin or code import work, load the matching skill from skill://figma/<name>/SKILL.md",
+  "fallback": "framer",
+  "card": "references/tools/figma.md",
+  "source": "https://www.figma.com",
+  "verifiedAt": "2026-11-23",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "Tool schemas, server instructions, three docs resources and three skill files read. Live read calls succeeded: list_shaders and list_generative_plugins. weave_find_model answered that the account is not linked to Weave. No file key was available, so create_session, get_comments, list_file_shaders, html_to_figma and send_code_to_figma never ran. No generation, shader, plugin or branch was created. The researched session exposed only a subset of the documented tools: the design read tools behind design-to-code (get_design_context, get_screenshot, download_assets) and create_new_file were absent."
+}

@@ -1,0 +1,28 @@
+{
+  "id": "excalidraw",
+  "name": "Excalidraw",
+  "what": "Hand-drawn diagrams and animated explainers rendered inline in the chat from a JSON array of elements: shapes, labels, bound arrows, draw-on streaming and camera moves. No file, link or image comes back.",
+  "kind": "connector",
+  "capabilities": [
+    "diagram",
+    "whiteboard"
+  ],
+  "disciplines": [
+    "infographic",
+    "website",
+    "app"
+  ],
+  "install": "Attach the Excalidraw connector in the host's connector settings.",
+  "auth": "none",
+  "spendsCredits": false,
+  "exposes": false,
+  "readOnly": false,
+  "toolPrefix": "mcp__Excalidraw__",
+  "firstCall": "read_me, once in a conversation, before the first create_view",
+  "fallback": "tldraw",
+  "card": "references/tools/excalidraw.md",
+  "source": "https://excalidraw.com",
+  "verifiedAt": "2026-11-23",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "Both tool schemas read. One free call made: read_me, which returned the element format, the palette, the camera rules and examples, with no sign-in step. create_view was not called, so no diagram was rendered. No export path is documented. No pricing field exists in the schemas."
+}

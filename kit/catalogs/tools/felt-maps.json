@@ -1,0 +1,28 @@
+{
+  "id": "felt-maps",
+  "name": "Felt Maps",
+  "what": "Web maps: layers from data at a URL, choropleths, map-linked charts and filters, basemap and view settings, designed print pages, and image, PDF or SVG export. Access to the map tools depends on the workspace plan.",
+  "kind": "connector",
+  "capabilities": [
+    "maps",
+    "dataviz"
+  ],
+  "disciplines": [
+    "dataviz",
+    "infographic",
+    "dashboard"
+  ],
+  "install": "Attach the Felt Maps connector in the host's connector settings, then sign in with the user's Felt account. The Felt workspace plan must include MCP access; a workspace admin changes the plan in workspace settings.",
+  "auth": "oauth",
+  "spendsCredits": false,
+  "exposes": true,
+  "readOnly": false,
+  "toolPrefix": "mcp__Felt_Maps__",
+  "firstCall": "none as one init call; call the guidance tool for the job first: get_geocoding_guidance, get_print_item_guidance or get_sql_editing_guidance",
+  "fallback": "none",
+  "card": "references/tools/felt-maps.md",
+  "source": "https://felt.com",
+  "verifiedAt": "2026-11-23",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "Written from tool schemas alone. The one data call made (get_print_item_guidance) was refused: the workspace plan did not include MCP access. No map tool ran and no guidance text was read, so every map function is untested. developer_docs was not called. Several tools that the descriptions name, including any create-map tool, were absent from the session."
+}

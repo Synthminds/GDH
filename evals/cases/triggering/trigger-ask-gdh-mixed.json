@@ -1,0 +1,12 @@
+{
+  "id": "trigger-ask-gdh-mixed",
+  "kind": "triggering",
+  "skill": "ask-gdh",
+  "prompt": "I need a launch explainer video, a new pricing page and some charts for the investor update. The product is a sleep tracker. Plan it for me.",
+  "expect": {
+    "skills_fired": [
+      "align",
+      "ask-gdh"
+    ]
+  }
+}

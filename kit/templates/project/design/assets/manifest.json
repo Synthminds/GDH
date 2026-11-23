@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "fields": {
+    "id": "kebab-case id, unique in this file",
+    "sourceUrl": "the page the asset came from",
+    "license": "license name and the URL of the license text that was read",
+    "attribution": "the exact credit line, or \"none required\"",
+    "date": "YYYY-MM-DD the license was read",
+    "path": "file path inside the project",
+    "sha256": "hash of the file"
+  },
+  "assets": []
+}

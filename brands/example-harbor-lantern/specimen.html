@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="generator" content="ds.py specimen">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harbor Lantern specimen</title>
+<style>
+/* Generated from tokens.json by ds.py. Edit the token file, then run export again. */
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("fonts/IBMPlexSans-Regular-Latin1.woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("fonts/IBMPlexSans-Medium-Latin1.woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("fonts/IBMPlexSans-Bold-Latin1.woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Sans Condensed";
+  src: url("fonts/IBMPlexSansCondensed-SemiBold-Latin1.woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Sans Condensed";
+  src: url("fonts/IBMPlexSansCondensed-Bold-Latin1.woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("fonts/IBMPlexMono-Regular-Latin1.woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  /* color (theme: light) */
+  --bg: #f3f5f2;
+  --surface: #dfe9ea;
+  --border: #5f7178;
+  --text: #17242b;
+  --text-muted: #44555d;
+  --accent: #1d6b45;
+  --on-accent: #ffffff;
+  --danger: #a52a1c;
+  --lamp: #e3a72f;
+  /* type */
+  --font-text: "IBM Plex Sans", "Helvetica Neue", Arial, "Liberation Sans", sans-serif;
+  --font-condensed: "IBM Plex Sans Condensed", "IBM Plex Sans", "Arial Narrow", "Liberation Sans Narrow", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, "Liberation Mono", monospace;
+  --type-display-size: 44px;
+  --type-display-line-height: 1.05;
+  --type-display-weight: 700;
+  --type-heading-size: 28px;
+  --type-heading-line-height: 1.2;
+  --type-heading-weight: 700;
+  --type-title-size: 20px;
+  --type-title-line-height: 1.3;
+  --type-title-weight: 600;
+  --type-body-size: 16px;
+  --type-body-line-height: 1.5;
+  --type-body-weight: 400;
+  --type-small-size: 14px;
+  --type-small-line-height: 1.45;
+  --type-small-weight: 400;
+  --type-caption-size: 12px;
+  --type-caption-line-height: 1.4;
+  --type-caption-weight: 500;
+  --type-code-size: 14px;
+  --type-code-line-height: 1.5;
+  --type-code-weight: 400;
+  /* spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 32px;
+  /* radius */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-full: 999px;
+  /* shadow */
+  --shadow-sm: 0 1px 0 rgba(23, 36, 43, 0.10);
+  --shadow-md: 0 4px 10px rgba(23, 36, 43, 0.14);
+  /* motion */
+  --duration-fast: 120ms;
+  --duration-base: 180ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+}
+[data-theme="light"] {
+  --bg: #f3f5f2;
+  --surface: #dfe9ea;
+  --border: #5f7178;
+  --text: #17242b;
+  --text-muted: #44555d;
+  --accent: #1d6b45;
+  --on-accent: #ffffff;
+  --danger: #a52a1c;
+  --lamp: #e3a72f;
+}
+[data-theme="dark"] {
+  --bg: #0d171c;
+  --surface: #15232a;
+  --border: #70868e;
+  --text: #e4ebe8;
+  --text-muted: #a3b4b8;
+  --accent: #5fc58f;
+  --on-accent: #06140c;
+  --danger: #ff8b7b;
+  --lamp: #f0b847;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --bg: #0d171c;
+    --surface: #15232a;
+    --border: #70868e;
+    --text: #e4ebe8;
+    --text-muted: #a3b4b8;
+    --accent: #5fc58f;
+    --on-accent: #06140c;
+    --danger: #ff8b7b;
+    --lamp: #f0b847;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-text);font-size:var(--type-body-size);line-height:var(--type-body-line-height, normal);font-weight:var(--type-body-weight, inherit);}
+main{max-width:72rem;margin:0 auto;padding:var(--space-4);}
+h1{margin:0;font-size:var(--type-display-size);line-height:var(--type-display-line-height, normal);font-weight:var(--type-display-weight, inherit);}
+h2{font-size:var(--type-heading-size);line-height:var(--type-heading-line-height, normal);font-weight:var(--type-heading-weight, inherit);margin:var(--space-4) 0 var(--space-3);}
+h3{margin:0;font-size:var(--type-body-size);line-height:var(--type-body-line-height, normal);font-weight:var(--type-body-weight, inherit);}
+p{margin:0}
+.meta,.usage,.note{color:var(--text-muted);font-size:var(--type-caption-size);line-height:var(--type-caption-line-height, normal);font-weight:var(--type-caption-weight, inherit);}
+code,.mono{font-family:var(--font-mono);}
+.theme{background:var(--bg);color:var(--text);padding:var(--space-4);border:1px solid var(--border);border-radius:var(--radius-md);}
+.theme+.theme{margin-top:var(--space-4);}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(13rem,1fr));gap:var(--space-3);}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--space-3);}
+.chip{height:4rem;border:1px solid var(--border);border-radius:var(--radius-md);margin-bottom:var(--space-1);}
+.badge{display:inline-block;white-space:nowrap;border:1px solid currentColor;border-radius:var(--radius-md);padding:0 var(--space-1);margin-top:var(--space-1);}
+.fail{font-weight:700;text-decoration:underline}
+table{border-collapse:collapse;width:100%}
+th,td{text-align:left;vertical-align:top;padding:var(--space-1);border-bottom:1px solid var(--border);}
+.row{display:flex;align-items:baseline;flex-wrap:wrap;gap:var(--space-3);padding:var(--space-1) 0;border-bottom:1px solid var(--border);}
+.row .meta{flex:0 0 14rem}
+.bar{height:1rem;background:var(--accent);border-radius:var(--radius-md);}
+.box{width:6rem;height:6rem;background:var(--surface);border:1px solid var(--border);}
+.sample{overflow-wrap:anywhere;min-width:0;flex:1 1 20rem}
+</style>
+</head>
+<body>
+<main>
+<h1>Harbor Lantern</h1>
+<p class="meta">Token specimen for version 0.1.0. Generated from tokens.json by ds.py. Every color, size and space on this page is a token.</p>
+<h2>Color</h2>
+<section class="theme" data-theme="light">
+<h3>Theme: Light</h3>
+<div class="grid">
+<div class="card">
+<div class="chip" style="background:var(--bg)"></div>
+<h3 class="mono">bg</h3>
+<p class="meta mono">#f3f5f2</p>
+<p class="usage">Page ground. Deep-water white of a nautical chart in light; night water in dark.</p>
+</div>
+<div class="card">
+<div class="chip" style="background:var(--surface)"></div>
+<h3 class="mono">surface</h3>
+<p class="meta mono">#dfe9ea</p>
+<p class="usage">Raised ground for cards, panels and inputs. The shallow-water tint of a chart.</p>
+</div>
+<div class="card">
+<div class="chip" style="background:var(--border)"></div>
+<h3 class="mono">border</h3>
+<p class="meta mono">#5f7178</p>
+<p class="usage">Control outlines, dividers and chart hairlines. Border on bg and surface.</p>
+<span class="badge">on bg 4.64:1 PASS</span>
+<span class="badge">on surface 4.12:1 PASS</span>
+</div>
+<div class="card">
+<div class="chip" style="background:var(--text)"></div>
+<h3 class="mono">text</h3>
+<p class="meta mono">#17242b</p>
+<p class="usage">Wet slate. Headings and body copy. Text on bg and surface.</p>
+<span class="badge">on bg 14.47:1 PASS</span>
+<span class="badge">on surface 12.82:1 PASS</span>
+</div>
+<div class="card">
+<div class="chip" style="background:var(--text-muted)"></div>
+<h3 class="mono">text-muted</h3>
+<p class="meta mono">#44555d</p>
+<p class="usage">Secondary copy and captions. Text on bg and surface.</p>
+<span class="badge">on bg 7.08:1 PASS</span>
+<span class="badge">on surface 6.28:1 PASS</span>
+</div>
+<div class="card">
+<div class="chip" style="background:var(--accent)"></div>
+<h3 class="mono">accent</h3>
+<p class="meta mono">#1d6b45</p>
+<p class="usage">Starboard green, from the navigation light. The one primary action in a view, links and the focus ring. Text on bg and surface.</p>
+<span class="badge">on bg 5.90:1 PASS</span>
+<span class="badge">on surface 5.23:1 PASS</span>
+</div>
+<div class="card">
+<div class="chip" style="background:var(--on-accent)"></div>
+<h3 class="mono">on-accent</h3>
+<p class="meta mono">#ffffff</p>
+<p class="usage">Label of a filled accent control. Text on accent.</p>
+<span class="badge">on accent 6.47:1 PASS</span>
+</div>
+<div class="card">
+<div class="chip" style="background:var(--danger)"></div>
+<h3 class="mono">danger</h3>
+<p class="meta mono">#a52a1c</p>
+<p class="usage">Port red, from the navigation light. Error text and destructive actions. Always pair it with a word or an icon. Text on bg and surface.</p>
+<span class="badge">on bg 6.49:1 PASS</span>
+<span class="badge">on surface 5.76:1 PASS</span>
+</div>
+<div class="card">
+<div class="chip" style="background:var(--lamp)"></div>
+<h3 class="mono">lamp</h3>
+<p class="meta mono">#e3a72f</p>
+<p class="usage">Lantern amber. A fill behind the next-tide marker only. Never a text color and never a second accent.</p>
+</div>
+</div>
+<table><thead><tr><th>Pair</th><th>Sample</th><th>Ratio</th><th>Needs</th><th>Result</th></tr></thead><tbody>
+<tr><td class="mono">border on bg</td><td><span style="color:var(--border);background:var(--bg)">Sample 123</span></td><td>4.64:1</td><td>3:1 (ui)</td><td>PASS</td></tr>
+<tr><td class="mono">border on surface</td><td><span style="color:var(--border);background:var(--surface)">Sample 123</span></td><td>4.12:1</td><td>3:1 (ui)</td><td>PASS</td></tr>
+<tr><td class="mono">text on bg</td><td><span style="color:var(--text);background:var(--bg)">Sample 123</span></td><td>14.47:1</td><td>4.5:1 (text)</td><td>PASS</td></tr>
+<tr><td class="mono">text on surface</td><td><span style="color:var(--text);background:var(--surface)">Sample 123</span></td><td>12.82:1</td><td>4.5:1 (text)</td><td>PASS</td></tr>
+<tr><td class="mono">text-muted on bg</td><td><span style="color:var(--text-muted);background:var(--bg)">Sample 123</span></td><td>7.08:1</td><td>4.5:1 (text)</td><td>PASS</td></tr>
+<tr><td class="mono">text-muted on surface</td><td><span style="color:var(--text-muted);background:var(--surface)">Sample 123</span></td><td>6.28:1</td><td>4.5:1 (text)</td><td>PASS</td></tr>
+<tr><td class="mono">accent on bg</td><td><span style="color:var(--accent);background:var(--bg)">Sample 123</span></td><td>5.90:1</td><td>4.5:1 (text)</td><td>PASS</td></tr>
+<tr><td class="mono">accent on surface</td><td><span style="color:var(--accent);background:var(--surface)">Sample 123</span></td><td>5.23:1</td><td>4.5:1 (text)</td><td>PASS</td></tr>
+<tr><td class="mono">on-accent on accent</td><td><span style="color:var(--on-accent);background:var(--accent)">Sample 123</span></td><td>6.47:1</td><td>4.5:1 (text)</td><td>PASS</td></tr>
+<tr><td class="mono">danger on bg</td><td><span style="color:var(--danger);background:var(--bg)">Sample 123</span></td><td>6.49:1</td><td>4.5:1 (text)</td><td>PASS</td></tr>
+<tr><td class="mono">danger on surface</td><td><span style="color:var(--danger);background:var(--surface)">Sample 123</span></td><td>5.76:1</td><td>4.5:1 (text)</td><td>PASS</td></tr>
+</tbody></table>
+</section>
+<section class="theme" data-theme="dark">
+<h3>Theme: Dark</h3>
+<div class="grid">
+<div class="card">
+<div class="chip" style="background:var(--bg)"></div>
+<h3 class="mono">bg</h3>
+<p class="meta mono">#0d171c</p>
+<p class="usage">Page ground. Deep-water white of a nautical chart in light; night water in dark.</p>
+</div>
+<div class="card">
+<div class="chip" style="background:var(--surface)"></div>
+<h3 class="mono">surface</h3>
+<p class="meta mono">#15232a</p>
+<p class="usage">Raised ground for cards, panels and inputs. The shallow-water tint of a chart.</p>
+</div>
+<div class="card">
+<div class="chip" style="background:var(--border)"></div>
+<h3 class="mono">border</h3>
+<p class="meta mono">#70868e</p>
+<p class="usage">Control outlines, dividers and chart hairlines. Border on bg and surface.</p>
+<span class="badge">on bg 4.74:1 PASS</span>
+<span class="badge">on surface 4.20:1 PASS</span>
+</div>
+<div class="card">
+<div class="chip" style="background:var(--text)"></div>
+<h3 class="mono">text</h3>
+<p class="meta mono">#e4ebe8</p>
+<p class="usage">Wet slate. Headings and body copy. Text on bg and surface.</p>
+<span class="badge">on bg 15.00:1 PASS</span>
+<span class="badge">on surface 13.28:1 PASS</span>
+</div>
+<div class="card">
+<div class="chip" style="background:var(--text-muted)"></div>
+<h3 class="mono">text-muted</h3>
+<p class="meta mono">#a3b4b8</p>
+<p class="usage">Secondary copy and captions. Text on bg and surface.</p>
+<span class="badge">on bg 8.45:1 PASS</span>
+<span class="badge">on surface 7.48:1 PASS</span>
+</div>
+<div class="card">
+<div class="chip" style="background:var(--accent)"></div>
+<h3 class="mono">accent</h3>
+<p class="meta mono">#5fc58f</p>
+<p class="usage">Starboard green, from the navigation light. The one primary action in a view, links and the focus ring. Text on bg and surface.</p>
+<span class="badge">on bg 8.53:1 PASS</span>
+<span class="badge">on surface 7.55:1 PASS</span>
+</div>
+<div class="card">
+<div class="chip" style="background:var(--on-accent)"></div>
+<h3 class="mono">on-accent</h3>
+<p class="meta mono">#06140c</p>
+<p class="usage">Label of a filled accent control. Text on accent.</p>
+<span class="badge">on accent 8.86:1 PASS</span>
+</div>
+<div class="card">
+<div class="chip" style="background:var(--danger)"></div>
+<h3 class="mono">danger</h3>
+<p class="meta mono">#ff8b7b</p>
+<p class="usage">Port red, from the navigation light. Error text and destructive actions. Always pair it with a word or an icon. Text on bg and surface.</p>
+<span class="badge">on bg 7.98:1 PASS</span>
+<span class="badge">on surface 7.06:1 PASS</span>
+</div>
+<div class="card">
+<div class="chip" style="background:var(--lamp)"></div>
+<h3 class="mono">lamp</h3>
+<p class="meta mono">#f0b847</p>
+<p class="usage">Lantern amber. A fill behind the next-tide marker only. Never a text color and never a second accent.</p>
+</div>
+</div>
+<table><thead><tr><th>Pair</th><th>Sample</th><th>Ratio</th><th>Needs</th><th>Result</th></tr></thead><tbody>
+<tr><td class="mono">border on bg</td><td><span style="color:var(--border);background:var(--bg)">Sample 123</span></td><td>4.74:1</td><td>3:1 (ui)</td><td>PASS</td></tr>
+<tr><td class="mono">border on surface</td><td><span style="color:var(--border);background:var(--surface)">Sample 123</span></td><td>4.20:1</td><td>3:1 (ui)</td><td>PASS</td></tr>
+<tr><td class="mono">text on bg</td><td><span style="color:var(--text);background:var(--bg)">Sample 123</span></td><td>15.00:1</td><td>4.5:1 (text)</td><td>PASS</td></tr>
+<tr><td class="mono">text on surface</td><td><span style="color:var(--text);background:var(--surface)">Sample 123</span></td><td>13.28:1</td><td>4.5:1 (text)</td><td>PASS</td></tr>
+<tr><td class="mono">text-muted on bg</td><td><span style="color:var(--text-muted);background:var(--bg)">Sample 123</span></td><td>8.45:1</td><td>4.5:1 (text)</td><td>PASS</td></tr>
+<tr><td class="mono">text-muted on surface</td><td><span style="color:var(--text-muted);background:var(--surface)">Sample 123</span></td><td>7.48:1</td><td>4.5:1 (text)</td><td>PASS</td></tr>
+<tr><td class="mono">accent on bg</td><td><span style="color:var(--accent);background:var(--bg)">Sample 123</span></td><td>8.53:1</td><td>4.5:1 (text)</td><td>PASS</td></tr>
+<tr><td class="mono">accent on surface</td><td><span style="color:var(--accent);background:var(--surface)">Sample 123</span></td><td>7.55:1</td><td>4.5:1 (text)</td><td>PASS</td></tr>
+<tr><td class="mono">on-accent on accent</td><td><span style="color:var(--on-accent);background:var(--accent)">Sample 123</span></td><td>8.86:1</td><td>4.5:1 (text)</td><td>PASS</td></tr>
+<tr><td class="mono">danger on bg</td><td><span style="color:var(--danger);background:var(--bg)">Sample 123</span></td><td>7.98:1</td><td>4.5:1 (text)</td><td>PASS</td></tr>
+<tr><td class="mono">danger on surface</td><td><span style="color:var(--danger);background:var(--surface)">Sample 123</span></td><td>7.06:1</td><td>4.5:1 (text)</td><td>PASS</td></tr>
+</tbody></table>
+</section>
+<h2>Type</h2>
+<h3>Headings <span class="meta mono">&quot;IBM Plex Sans Condensed&quot;, &quot;IBM Plex Sans&quot;, &quot;Arial Narrow&quot;, &quot;Liberation Sans Narrow&quot;, sans-serif</span></h3>
+<div class="row"><div class="meta"><span class="mono">display<br>44px / 1.05 / 700</span><br>One hero headline in a view. Short lines, sentence case.</div><div class="sample" style="font-family:var(--font-condensed);font-size:var(--type-display-size);line-height:var(--type-display-line-height, normal);font-weight:var(--type-display-weight, normal);letter-spacing:var(--type-display-letter-spacing, normal)">display: Sphinx of black quartz, judge my vow. 0123456789</div></div>
+<div class="row"><div class="meta"><span class="mono">heading<br>28px / 1.2 / 700</span><br>Page and section titles.</div><div class="sample" style="font-family:var(--font-condensed);font-size:var(--type-heading-size);line-height:var(--type-heading-line-height, normal);font-weight:var(--type-heading-weight, normal);letter-spacing:var(--type-heading-letter-spacing, normal)">heading: Sphinx of black quartz, judge my vow. 0123456789</div></div>
+<div class="row"><div class="meta"><span class="mono">title<br>20px / 1.3 / 600</span><br>Card titles and dialog titles.</div><div class="sample" style="font-family:var(--font-condensed);font-size:var(--type-title-size);line-height:var(--type-title-line-height, normal);font-weight:var(--type-title-weight, normal);letter-spacing:var(--type-title-letter-spacing, normal)">title: Sphinx of black quartz, judge my vow. 0123456789</div></div>
+<h3>Text <span class="meta mono">&quot;IBM Plex Sans&quot;, &quot;Helvetica Neue&quot;, Arial, &quot;Liberation Sans&quot;, sans-serif</span></h3>
+<div class="row"><div class="meta"><span class="mono">body<br>16px / 1.5 / 400</span><br>All running text. The base size.</div><div class="sample" style="font-family:var(--font-text);font-size:var(--type-body-size);line-height:var(--type-body-line-height, normal);font-weight:var(--type-body-weight, normal);letter-spacing:var(--type-body-letter-spacing, normal)">body: Sphinx of black quartz, judge my vow. 0123456789</div></div>
+<div class="row"><div class="meta"><span class="mono">small<br>14px / 1.45 / 400</span><br>Secondary text, table cells and form help.</div><div class="sample" style="font-family:var(--font-text);font-size:var(--type-small-size);line-height:var(--type-small-line-height, normal);font-weight:var(--type-small-weight, normal);letter-spacing:var(--type-small-letter-spacing, normal)">small: Sphinx of black quartz, judge my vow. 0123456789</div></div>
+<div class="row"><div class="meta"><span class="mono">caption<br>12px / 1.4 / 500</span><br>Labels, captions and metadata, set in sentence case. Never for running text.</div><div class="sample" style="font-family:var(--font-text);font-size:var(--type-caption-size);line-height:var(--type-caption-line-height, normal);font-weight:var(--type-caption-weight, normal);letter-spacing:var(--type-caption-letter-spacing, normal)">caption: Sphinx of black quartz, judge my vow. 0123456789</div></div>
+<h3>Code <span class="meta mono">&quot;IBM Plex Mono&quot;, ui-monospace, Menlo, Consolas, &quot;Liberation Mono&quot;, monospace</span></h3>
+<div class="row"><div class="meta"><span class="mono">code<br>14px / 1.5 / 400</span><br>Code, identifiers and numbers that must align.</div><div class="sample" style="font-family:var(--font-mono);font-size:var(--type-code-size);line-height:var(--type-code-line-height, normal);font-weight:var(--type-code-weight, normal);letter-spacing:var(--type-code-letter-spacing, normal)">code: Sphinx of black quartz, judge my vow. 0123456789</div></div>
+<h2>Spacing</h2>
+<div class="row"><div class="meta mono">space-1<br>4px</div><div class="sample"><div class="bar" style="width:var(--space-1)"></div><p class="usage">Gap between an icon and its label.</p></div></div>
+<div class="row"><div class="meta mono">space-2<br>8px</div><div class="sample"><div class="bar" style="width:var(--space-2)"></div><p class="usage">Gap inside a control; gap between related items.</p></div></div>
+<div class="row"><div class="meta mono">space-3<br>16px</div><div class="sample"><div class="bar" style="width:var(--space-3)"></div><p class="usage">Padding of cards and inputs; gap between form fields.</p></div></div>
+<div class="row"><div class="meta mono">space-4<br>32px</div><div class="sample"><div class="bar" style="width:var(--space-4)"></div><p class="usage">Gap between sections; page gutter on wide screens.</p></div></div>
+<h2>Radius</h2>
+<div class="grid">
+<div><div class="box" style="border-radius:var(--radius-sm)"></div><h3 class="mono">radius-sm</h3><p class="meta mono">2px</p><p class="usage">Tags, chips and small controls.</p></div>
+<div><div class="box" style="border-radius:var(--radius-md)"></div><h3 class="mono">radius-md</h3><p class="meta mono">4px</p><p class="usage">Buttons, inputs and cards. Corners stay tight: the brand is exact, not soft.</p></div>
+<div><div class="box" style="border-radius:var(--radius-full)"></div><h3 class="mono">radius-full</h3><p class="meta mono">999px</p><p class="usage">Pills and avatars.</p></div>
+</div>
+<h2>Shadow</h2>
+<div class="grid">
+<div><div class="box" style="border:0;box-shadow:var(--shadow-sm)"></div><h3 class="mono">shadow-sm</h3><p class="meta mono">0 1px 0 rgba(23, 36, 43, 0.10)</p><p class="usage">A hairline lift under resting cards. Surfaces stay matte.</p></div>
+<div><div class="box" style="border:0;box-shadow:var(--shadow-md)"></div><h3 class="mono">shadow-md</h3><p class="meta mono">0 4px 10px rgba(23, 36, 43, 0.14)</p><p class="usage">Menus, popovers and raised cards.</p></div>
+</div>
+<h2>Motion</h2>
+<table><thead><tr><th>Token</th><th>Value</th><th>Use</th></tr></thead><tbody>
+<tr><td class="mono">duration-fast</td><td class="mono">120ms</td><td>Hover and press feedback on controls.</td></tr>
+<tr><td class="mono">duration-base</td><td class="mono">180ms</td><td>Menus, dialogs and panels that enter or leave.</td></tr>
+<tr><td class="mono">ease-standard</td><td class="mono">cubic-bezier(0.2, 0, 0, 1)</td><td>Default easing for every transition. No springs.</td></tr>
+</tbody></table>
+</main>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Quality corpus: support chat with emoji in messages</title>
+<style>
+  /* Labelled eval page. Emoji appear inside user messages, not as icons. */
+  :root { --ground: #f3f1ec; --ink: #22201c; --bubble: #ffffff; --own: #dfe8e1; --line: #c9c4b8;
+          --face: "Atkinson Hyperlegible", Verdana, sans-serif; }
+  body { margin: 0; background: var(--ground); color: var(--ink); font-family: var(--face); }
+  .thread { max-width: 34rem; margin: 0 auto; padding: 1rem; }
+  .msg { background: var(--bubble); border: 1px solid var(--line); padding: 0.6rem 0.8rem; margin: 0.5rem 0; border-radius: 4px; }
+  .msg.own { background: var(--own); margin-left: 3rem; }
+</style>
+</head>
+<body>
+  <main class="thread">
+    <p class="msg">My order came today, the jars are perfect 🎉</p>
+    <p class="msg own">Glad to hear it. Did the lids arrive sealed?</p>
+    <p class="msg">Yes all sealed 👍 thanks for packing them so well</p>
+    <p class="msg own">Thank you for telling us.</p>
+  </main>
+</body>
+</html>
