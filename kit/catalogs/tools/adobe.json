@@ -1,0 +1,21 @@
+{
+  "id": "adobe",
+  "name": "Adobe for creativity",
+  "what": "Adobe's creative connector: curated type palettes, font search and web-font CSS, Firefly Boards mood boards, image edits and raster-to-SVG conversion, Stock and Creative Cloud asset search, HTML designs imported into Adobe Express, video utilities, and Acrobat and InDesign document tools. It has no text-to-image tool in the researched session and it is not for responsive web, app or dashboard UI.",
+  "kind": "connector",
+  "capabilities": ["fonts", "moodboard", "vector", "image-edit", "asset-library", "canvas", "code-to-design", "templates", "video-compose", "audio"],
+  "disciplines": ["typography", "brand", "logo", "moodboard", "infographic", "assets", "motion-video"],
+  "install": "Attach the Adobe for creativity connector in the host's connector settings, then sign in with the user's Adobe account.",
+  "auth": "oauth",
+  "spendsCredits": true,
+  "exposes": true,
+  "readOnly": false,
+  "toolPrefix": "mcp__Adobe_for_creativity__",
+  "firstCall": "adobe_mandatory_init with no arguments, once per conversation, before any other tool on this server; then create_visual_design_express_skill before authoring any fixed-canvas design, and html_export_readiness_skill before every export or import",
+  "fallback": "none",
+  "card": "references/tools/adobe.md",
+  "source": "https://www.adobe.com",
+  "verifiedAt": "2026-11-23",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "Server instructions, the init text and tool schemas read. Live read calls succeeded: adobe_mandatory_init and get_account_type (a signed-in account). The two skill tools returned only a session id and no playbook text, so the HTML authoring rules are unread. No font, board, image, video, PDF, upload, export, import or Stock licence call ran. Fallback is none because no other catalog tool recommends and licenses type; the card names a fallback for each capability."
+}

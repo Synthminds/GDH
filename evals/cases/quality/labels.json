@@ -1,0 +1,259 @@
+{
+  "version": 1,
+  "labelledOn": "2026-11-23",
+  "labelledBy": "GDH build, one reviewer. Labels are human judgment of what a careful critic would flag. Two pages added on 2026-11-23 with the second-wave rules.",
+  "scanner": "kit/skills/design-critique/scripts/tells.py",
+  "cases": [
+    {
+      "id": "first-wave-saas",
+      "class": "generic-first-wave",
+      "page": "fixtures/first-wave-saas.html",
+      "expect": [
+        "TELL_PURPLE_GRADIENT",
+        "TELL_GRADIENT_TEXT",
+        "TELL_GLASS_EVERYWHERE",
+        "TELL_GLOW_SHADOW",
+        "TELL_HERO_THREE_CARDS",
+        "TELL_DEFAULT_FONT_ONLY",
+        "TELL_UNIFORM_RADIUS"
+      ],
+      "note": "Backdrop blur on four surfaces is labelled glass. One 20 px radius rounds every rounded element: three feature cards, the nav, the footer and the modal. Added 2026-11-23, when the scan began to count the elements that a style-block rule matches."
+    },
+    {
+      "id": "first-wave-emoji-features",
+      "class": "generic-first-wave",
+      "page": "fixtures/first-wave-emoji-features.html",
+      "expect": [
+        "TELL_DEFAULT_FONT_ONLY",
+        "TELL_EMOJI_ICON",
+        "TELL_HERO_THREE_CARDS",
+        "TELL_LEFT_BORDER_CARD",
+        "TELL_LOREM",
+        "TELL_PLACEHOLDER_COPY"
+      ],
+      "note": "The testimonial names an invented person and company."
+    },
+    {
+      "id": "first-wave-stats",
+      "class": "generic-first-wave",
+      "page": "fixtures/first-wave-stats.html",
+      "expect": [
+        "TELL_DEFAULT_FONT_ONLY",
+        "TELL_EYEBROW_EVERY_HEADING",
+        "TELL_GRADIENT_STAT_ROW",
+        "TELL_GRADIENT_TEXT",
+        "TELL_PURPLE_GRADIENT",
+        "TELL_INVENTED_STAT"
+      ],
+      "note": "Four figures with no source in view."
+    },
+    {
+      "id": "second-wave-cream-terracotta",
+      "class": "generic-second-wave",
+      "page": "fixtures/second-wave-cream-terracotta.html",
+      "expect": [
+        "TELL_EYEBROW_EVERY_HEADING",
+        "TELL_STAT_ROW",
+        "TELL_INVENTED_STAT",
+        "TELL_SECOND_WAVE_FONT",
+        "TELL_SECOND_WAVE_PALETTE"
+      ],
+      "note": "Cream ground, terracotta accent and Fraunces over Inter: the warm editorial look. The plain-number stat row has no source."
+    },
+    {
+      "id": "second-wave-near-black-orange",
+      "class": "generic-second-wave",
+      "page": "fixtures/second-wave-near-black-orange.html",
+      "expect": [
+        "TELL_EYEBROW_EVERY_HEADING",
+        "TELL_MONO_LABELS",
+        "TELL_SECOND_WAVE_FONT",
+        "TELL_SECOND_WAVE_PALETTE"
+      ],
+      "note": "Tinted near-black with one orange accent, Geist, and bracketed mono labels above every heading under the class name 'label'. The bento grid has no rule yet."
+    },
+    {
+      "id": "second-wave-soft-pastel",
+      "class": "generic-second-wave",
+      "page": "fixtures/second-wave-soft-pastel.html",
+      "expect": [
+        "TELL_PURPLE_GRADIENT",
+        "TELL_GLOW_SHADOW",
+        "TELL_HERO_THREE_CARDS",
+        "TELL_UNIFORM_RADIUS",
+        "TELL_SECOND_WAVE_FONT"
+      ],
+      "note": "One 28 px radius on the three cards, the button, the input rule and the nav: six uses once the scan counts the elements that each selector matches. Plus Jakarta Sans is the only face."
+    },
+    {
+      "id": "second-wave-editorial-motion",
+      "class": "generic-second-wave",
+      "page": "fixtures/second-wave-editorial-motion.html",
+      "expect": [
+        "TELL_SECOND_WAVE_PALETTE",
+        "TELL_SECOND_WAVE_FONT",
+        "TELL_ACCENT_WORD",
+        "TELL_MONO_LABELS",
+        "TELL_ARROW_EVERY_LINK",
+        "TELL_REVEAL_EVERY_SECTION",
+        "TELL_FAKE_SEQUENCE",
+        "TELL_MIDDOT_META"
+      ],
+      "note": "The review's generic-editorial page: one italic terracotta word, mono kickers, 01 to 03 markers on items with no order, an arrow on every link, a reveal on every section and middot meta lines. Written by the same hand that wrote the rules, so it shows coverage, not independent recall."
+    },
+    {
+      "id": "brand-violet",
+      "class": "brand-required",
+      "page": "fixtures/brand-violet/page.html",
+      "tokens": "fixtures/brand-violet/tokens.json",
+      "expect": [],
+      "expectBrandRequired": [
+        "TELL_PURPLE_GRADIENT",
+        "TELL_GLOW_SHADOW"
+      ],
+      "note": "The gradient and the glow are brand tokens. They are reported as brand-required, not as findings."
+    },
+    {
+      "id": "distinct-tide-card",
+      "class": "distinctive",
+      "page": "fixtures/distinct-tide-card.html",
+      "expect": []
+    },
+    {
+      "id": "distinct-chat-transcript",
+      "class": "distinctive",
+      "page": "fixtures/distinct-chat-transcript.html",
+      "expect": [],
+      "note": "Emoji sit inside user messages. They are content, not icons."
+    },
+    {
+      "id": "distinct-sourced-report",
+      "class": "distinctive",
+      "page": "fixtures/distinct-sourced-report.html",
+      "expect": [],
+      "note": "The one figure carries its source beside it."
+    },
+    {
+      "id": "distinct-ops-console",
+      "class": "distinctive",
+      "page": "fixtures/distinct-ops-console.html",
+      "expect": [],
+      "note": "A near-black ground with one signal orange, chosen for a night control room, set in IBM Plex. Mono only for readings, real steps in an ordered list and one arrow. A precision check for the second-wave rules, written by the same hand."
+    }
+  ],
+  "baseline": {
+    "measuredOn": "2026-11-23",
+    "rule": "The unit test fails when a rule's precision or recall drops below these values. Raise a value when a rule improves.",
+    "pageRecall": 1.0,
+    "pagePrecision": 1.0,
+    "brandRequiredExact": true,
+    "ruleRecall": {
+      "TELL_ACCENT_WORD": 1.0,
+      "TELL_ARROW_EVERY_LINK": 1.0,
+      "TELL_DEFAULT_FONT_ONLY": 1.0,
+      "TELL_EMOJI_ICON": 1.0,
+      "TELL_EYEBROW_EVERY_HEADING": 1.0,
+      "TELL_FAKE_SEQUENCE": 1.0,
+      "TELL_GLASS_EVERYWHERE": 1.0,
+      "TELL_GLOW_SHADOW": 1.0,
+      "TELL_GRADIENT_STAT_ROW": 1.0,
+      "TELL_GRADIENT_TEXT": 1.0,
+      "TELL_HERO_THREE_CARDS": 1.0,
+      "TELL_INVENTED_STAT": 1.0,
+      "TELL_LEFT_BORDER_CARD": 1.0,
+      "TELL_LOREM": 1.0,
+      "TELL_MIDDOT_META": 1.0,
+      "TELL_MONO_LABELS": 1.0,
+      "TELL_PLACEHOLDER_COPY": 1.0,
+      "TELL_PURPLE_GRADIENT": 1.0,
+      "TELL_REVEAL_EVERY_SECTION": 1.0,
+      "TELL_SECOND_WAVE_FONT": 1.0,
+      "TELL_SECOND_WAVE_PALETTE": 1.0,
+      "TELL_STAT_ROW": 1.0,
+      "TELL_UNIFORM_RADIUS": 1.0
+    },
+    "rulePrecision": {
+      "TELL_ACCENT_WORD": 1.0,
+      "TELL_ARROW_EVERY_LINK": 1.0,
+      "TELL_DEFAULT_FONT_ONLY": 1.0,
+      "TELL_EMOJI_ICON": 1.0,
+      "TELL_EYEBROW_EVERY_HEADING": 1.0,
+      "TELL_FAKE_SEQUENCE": 1.0,
+      "TELL_GLASS_EVERYWHERE": 1.0,
+      "TELL_GLOW_SHADOW": 1.0,
+      "TELL_GRADIENT_STAT_ROW": 1.0,
+      "TELL_GRADIENT_TEXT": 1.0,
+      "TELL_HERO_THREE_CARDS": 1.0,
+      "TELL_INVENTED_STAT": 1.0,
+      "TELL_LEFT_BORDER_CARD": 1.0,
+      "TELL_LOREM": 1.0,
+      "TELL_MIDDOT_META": 1.0,
+      "TELL_MONO_LABELS": 1.0,
+      "TELL_PLACEHOLDER_COPY": 1.0,
+      "TELL_PURPLE_GRADIENT": 1.0,
+      "TELL_REVEAL_EVERY_SECTION": 1.0,
+      "TELL_SECOND_WAVE_FONT": 1.0,
+      "TELL_SECOND_WAVE_PALETTE": 1.0,
+      "TELL_STAT_ROW": 1.0,
+      "TELL_UNIFORM_RADIUS": 1.0
+    }
+  },
+  "boards": [
+    {
+      "id": "passing-ferry",
+      "board": "boards/passing-ferry.json",
+      "verdicts": [
+        "distinct",
+        "distinct",
+        "distinct"
+      ],
+      "errors": [],
+      "pass": true,
+      "note": "The worked ferry board: three ideas that differ in palette family, type class and layout skeleton."
+    },
+    {
+      "id": "three-skins",
+      "board": "boards/three-skins.json",
+      "verdicts": [
+        "near-identical",
+        "near-identical",
+        "near-identical"
+      ],
+      "errors": [
+        "MB_NEAR_IDENTICAL"
+      ],
+      "pass": false,
+      "note": "One idea with three amber accents. Only the color changes."
+    },
+    {
+      "id": "three-defaults",
+      "board": "boards/three-defaults.json",
+      "verdicts": [
+        "near-identical",
+        "near-identical",
+        "near-identical"
+      ],
+      "errors": [
+        "MB_KNOWN_DEFAULT",
+        "MB_NEAR_IDENTICAL",
+        "MB_SAME_AS_CATEGORY_DEFAULT"
+      ],
+      "pass": false,
+      "note": "Three blue-on-white geometric card lists: the category default three times. It also matches the blue-product known default look."
+    },
+    {
+      "id": "three-default-looks",
+      "board": "boards/three-default-looks.json",
+      "verdicts": [
+        "distinct",
+        "distinct",
+        "distinct"
+      ],
+      "errors": [
+        "MB_KNOWN_DEFAULT"
+      ],
+      "pass": false,
+      "note": "The review's board: warm editorial, night signal and a violet glass kit. The three differ from each other, so only the known-default table catches them. Before the table, diff passed this board."
+    }
+  ]
+}

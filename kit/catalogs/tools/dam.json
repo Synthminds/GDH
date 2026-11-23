@@ -1,0 +1,21 @@
+{
+  "id": "dam",
+  "name": "DAM (design asset manager)",
+  "what": "Owner-built, read-only design library behind a local MCP server: design systems with a DESIGN.md and a tokens.json each, self-contained HTML and React components, cover images, principle documents and idea cards. It generates nothing.",
+  "kind": "mcp-stdio",
+  "capabilities": ["asset-library", "design-system", "ui-components"],
+  "disciplines": ["assets", "design-system", "moodboard", "brand", "typography", "color", "website", "app", "dashboard", "dataviz", "ui-motion"],
+  "install": "Private repository: needs a DAM checkout on the same machine. Run npm ci in the checkout once. Then add a stdio server named dam to the project's .mcp.json: command <DAM checkout>/node_modules/.bin/tsx, args [<DAM checkout>/scripts/mcp/server.ts], plus --owner for owner mode. Use absolute paths.",
+  "auth": "none",
+  "spendsCredits": false,
+  "exposes": false,
+  "readOnly": true,
+  "toolPrefix": "mcp__dam__",
+  "firstCall": "none (no init call). Call list_facets before a style or pattern filter. In owner mode call list_principles, then get_principles, before design work in a discipline.",
+  "fallback": "21st-dev",
+  "card": "references/tools/dam.md",
+  "source": "none",
+  "verifiedAt": "2026-11-23",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "Read from a repository checkout: the MCP server source, the collection manifest and the docs. The server was not connected and could not start (dependencies not installed). No live tools/list and no tool call ran. Item totals come from a manifest dated 2026-11-09 and disagree with the repository docs."
+}

@@ -1,0 +1,26 @@
+{
+  "id": "claude-data",
+  "name": "Claude Data (dashboard artifact type)",
+  "what": "Dashboards, metrics pages, KPI trackers, recurring reports, scroll stories and one to two minute played data shorts, drawn with d3. Every number is marked with its source. A dataset is a live connector query, an uploaded file or rows saved on the page.",
+  "kind": "artifact-type",
+  "capabilities": [
+    "dataviz"
+  ],
+  "disciplines": [
+    "dashboard",
+    "dataviz"
+  ],
+  "install": "No install line. Artifacts and the Data template must be on for the claude.ai account; on Team and Enterprise an organization Owner enables them in organization settings. In Claude Code, sign in with /login and a claude.ai account.",
+  "auth": "oauth",
+  "spendsCredits": false,
+  "exposes": true,
+  "readOnly": false,
+  "toolPrefix": "Artifact and ArtifactData",
+  "firstCall": "Artifact quickstart with intent 'other' when the host offers it, else an Artifact types list, to get the type link; then read the type's SKILL.md that the create call returns",
+  "fallback": "none",
+  "card": "references/tools/claude-data.md",
+  "source": "https://support.claude.com/en/articles/17153992",
+  "verifiedAt": "2026-11-23",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "Artifact read calls on the type's SKILL.md, design-defaults, visual-short, design-system, looks and exporting files succeeded. Public Help Center pages on artifacts were read. NOT exercised: creating a dashboard, any ArtifactData write, a live connector dataset, PDF or CSV export, the Vercel snapshot import. The type itself has no per-call credits, but a live dataset re-runs its connector query for every reader, and a metered connector can then spend; that billing is unverified. With no artifacts in the session the fallback is a static chart page in code, which has no catalog id."
+}

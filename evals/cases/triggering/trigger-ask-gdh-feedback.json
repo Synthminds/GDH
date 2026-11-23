@@ -1,0 +1,9 @@
+{
+  "id": "trigger-ask-gdh-feedback",
+  "kind": "triggering",
+  "skill": "ask-gdh",
+  "prompt": "The hero you made last round feels a bit timid. Can you make it bolder?",
+  "expect": {
+    "skills_fired": ["ask-gdh"]
+  }
+}

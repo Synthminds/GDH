@@ -1,0 +1,14 @@
+{
+  "id": "trigger-align-returning",
+  "kind": "triggering",
+  "skill": "align",
+  "prompt": "Morning. Let us pick up the clinic dashboard redesign where we left it last week. The brief in design/brief.md is confirmed.",
+  "expect": {
+    "skills_fired": [
+      "align"
+    ],
+    "skills_not_fired": [
+      "mood-board"
+    ]
+  }
+}

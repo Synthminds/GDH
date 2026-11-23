@@ -1,0 +1,12 @@
+{
+  "id": "trigger-mood-board",
+  "kind": "triggering",
+  "skill": "mood-board",
+  "prompt": "We open a bakery next month. Show me what the shop site could look like before you build anything.",
+  "expect": {
+    "skills_fired": [
+      "align",
+      "mood-board"
+    ]
+  }
+}

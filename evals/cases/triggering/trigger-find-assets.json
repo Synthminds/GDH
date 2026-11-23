@@ -1,0 +1,12 @@
+{
+  "id": "trigger-find-assets",
+  "kind": "triggering",
+  "skill": "find-assets",
+  "prompt": "I need an icon set for the settings screens of a commercial app. It must be free to use and need no credit line.",
+  "expect": {
+    "skills_fired": [
+      "align",
+      "find-assets"
+    ]
+  }
+}

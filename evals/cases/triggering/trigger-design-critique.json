@@ -1,0 +1,12 @@
+{
+  "id": "trigger-design-critique",
+  "kind": "triggering",
+  "skill": "design-critique",
+  "prompt": "The checkout page is built and I think it is finished. Before I tell the client, does it look generic or off anywhere?",
+  "expect": {
+    "skills_fired": [
+      "align",
+      "design-critique"
+    ]
+  }
+}

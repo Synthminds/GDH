@@ -1,0 +1,21 @@
+{
+  "id": "hyperframes",
+  "name": "HyperFrames by HeyGen",
+  "what": "HTML video: a composition is one HTML file with a paused GSAP timeline that renders to MP4, WebM or MOV. Two paths: a hosted MCP for chat clients and local skills plus a CLI for coding agents. The owner calls this tool \"HeyGen\". It is not an avatar-video tool.",
+  "kind": "connector",
+  "capabilities": ["video-compose"],
+  "disciplines": ["motion-video", "infographic", "dataviz"],
+  "install": "Hosted path: attach the HyperFrames by HeyGen connector in the host's connector settings. Local path: npx skills add heygen-com/hyperframes (in scripts: npx hyperframes skills update).",
+  "auth": "oauth",
+  "spendsCredits": true,
+  "exposes": true,
+  "readOnly": false,
+  "toolPrefix": "mcp__HyperFrames_by_HeyGen__",
+  "firstCall": "get-send-to-hyperframes-guide before authoring a composition for import; local path: read the installed /hyperframes skill; otherwise none",
+  "fallback": "21st-dev",
+  "card": "references/tools/hyperframes.md",
+  "source": "https://github.com/heygen-com/hyperframes",
+  "verifiedAt": "2026-11-23",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "Tool schemas, server instructions, the Send to HyperFrames guide and the public README read. One live read call (list_projects) succeeded. No compose, render, import or feedback call ran. Local skills were not installed. No HeyGen avatar-video connector was found in the researched session."
+}

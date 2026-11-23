@@ -1,0 +1,21 @@
+{
+  "id": "higgsfield",
+  "name": "Higgsfield",
+  "what": "Media generation hub: images, SVG marks, video, audio and 3D models from many models on one credit balance, plus a hosted Blender scene builder, a brand asset workflow and a hosted website builder.",
+  "kind": "connector",
+  "capabilities": ["image-gen", "image-edit", "vector", "video-gen", "audio", "3d-gen", "3d-scene", "brand-kit", "deploy"],
+  "disciplines": ["brand", "logo", "website", "3d", "motion-video", "moodboard", "infographic"],
+  "install": "Attach the Higgsfield connector in the host's connector settings, then sign in with the user's Higgsfield account.",
+  "auth": "oauth",
+  "spendsCredits": true,
+  "exposes": true,
+  "readOnly": false,
+  "toolPrefix": "mcp__Higgsfield__",
+  "firstCall": "get_workflow_instructions (no argument lists the workflows); for a 3D scene, get_preset_instructions with preset /3d-jutsu",
+  "fallback": "none",
+  "card": "references/tools/higgsfield.md",
+  "source": "https://higgsfield.ai",
+  "verifiedAt": "2026-11-23",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "Live tool schemas read. Free read calls made: workflow catalog and three workflows, one bundle file, preset catalog and the 3D scene preset, model lists, website categories, app search, and five cost estimates. No generation, upload, deploy or publish call ran."
+}

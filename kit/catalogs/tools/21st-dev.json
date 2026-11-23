@@ -1,0 +1,21 @@
+{
+  "id": "21st-dev",
+  "name": "21st.dev",
+  "what": "Community catalog of React and shadcn components, themes (token CSS) and templates, with preview images and clips. Also Remotion video blocks with a hosted video editor, a brand logo lookup, and handoff of designs the user generated on 21st.",
+  "kind": "connector",
+  "capabilities": ["ui-components", "design-system", "templates", "video-compose", "logo-search", "asset-library"],
+  "disciplines": ["website", "app", "dashboard", "design-system", "color", "motion-video", "moodboard", "assets"],
+  "install": "Attach the 21st.dev connector in the host's connector settings, or register the remote MCP server https://21st.dev/api/mcp with a bearer token read from the environment variable API_KEY_21ST.",
+  "auth": "oauth",
+  "spendsCredits": true,
+  "exposes": true,
+  "readOnly": false,
+  "toolPrefix": "mcp__21st_Dev__",
+  "firstCall": "get_usage",
+  "fallback": "none",
+  "card": "references/tools/21st-dev.md",
+  "source": "https://21st.dev",
+  "verifiedAt": "2026-11-23",
+  "evidence": "VERIFIED",
+  "evidenceNote": "Live successful calls: search (components, themes, templates), get_inspiration, get_theme, get_usage, video_list_blocks, list_teams, list_bookmark_lists. NOT exercised: get_component (metered source retrieval), every video project, snapshot and export call, take handoff. search_logo ran and returned empty results."
+}

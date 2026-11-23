@@ -1,0 +1,11 @@
+{
+  "id": "trigger-align-full",
+  "kind": "triggering",
+  "skill": "align",
+  "prompt": "Our audience has changed from home cooks to restaurant buyers. Run the full interview again before you touch the catalog design.",
+  "expect": {
+    "skills_fired": [
+      "align"
+    ]
+  }
+}

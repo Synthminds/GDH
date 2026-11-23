@@ -1,0 +1,21 @@
+{
+  "id": "emil-kowalski-skills",
+  "name": "Emil Kowalski skills",
+  "what": "Set of prose skills for interface motion and design engineering on the web and on mobile: decide whether to animate, choose curve and duration, choreograph groups, audit, remove and tune animations, build gestures, and turn design corrections into rules.",
+  "kind": "skill",
+  "capabilities": ["motion", "critique"],
+  "disciplines": ["ui-motion", "website", "app", "critique", "design-system"],
+  "install": "npx skills@latest add emilkowalski/skills (the line in the README; the repository read is emilkowalski/skill). Pin a skills CLI version and a commit before you add the line to a project.",
+  "auth": "none",
+  "spendsCredits": false,
+  "exposes": false,
+  "readOnly": false,
+  "toolPrefix": "skill names with no shared prefix, for example emil-design-eng, animate, choreograph",
+  "firstCall": "none (ask-emil is the router skill)",
+  "fallback": "impeccable",
+  "card": "references/tools/emil-kowalski-skills.md",
+  "source": "https://github.com/emilkowalski/skill",
+  "verifiedAt": "2026-11-23",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "Read from a shallow clone of the public repository: README, license and the skill list with descriptions. Not installed. No skill run. The research saw no hooks but did not audit every skill file."
+}

@@ -1,0 +1,20 @@
+{
+  "name": "synthminds-gdh",
+  "interface": {
+    "displayName": "Global Design Harness"
+  },
+  "plugins": [
+    {
+      "name": "gdh",
+      "source": {
+        "source": "local",
+        "path": "./kit"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Creativity"
+    }
+  ]
+}

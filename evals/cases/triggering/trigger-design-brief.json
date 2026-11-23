@@ -1,0 +1,12 @@
+{
+  "id": "trigger-design-brief",
+  "kind": "triggering",
+  "skill": "design-brief",
+  "prompt": "Pick a color palette and a typeface for my new meal-planning app for busy parents. I have not written anything down about it yet.",
+  "expect": {
+    "skills_fired": [
+      "align",
+      "design-brief"
+    ]
+  }
+}

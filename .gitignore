@@ -1,0 +1,19 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+Thumbs.db
+*.swp
+*.tmp
+.venv/
+node_modules/
+.env
+.env.*
+.gch/
+.pytest_cache/
+
+# Brand packs are private by default. Only the README, the template and the
+# fictional example are public. A new pack under brands/ is ignored with no edit here.
+brands/*
+!brands/README.md
+!brands/_template/
+!brands/example-harbor-lantern/

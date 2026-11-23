@@ -1,0 +1,26 @@
+{
+  "id": "design-sync",
+  "name": "Design sync (/design-sync and the DesignSync tool)",
+  "what": "Keeps a repository's React component library and one Claude design-system project in step, one component at a time, under a plan that the user approves. It is the bridge from real component code to a Design System artifact. It makes no design.",
+  "kind": "cli",
+  "capabilities": [
+    "design-system",
+    "code-to-design"
+  ],
+  "disciplines": [
+    "design-system"
+  ],
+  "install": "No install line. /design-sync and /design-login are bundled with Claude Code. The user runs /design-login in an interactive session to authorize design-system access.",
+  "auth": "oauth",
+  "spendsCredits": false,
+  "exposes": true,
+  "readOnly": false,
+  "toolPrefix": "/design-sync",
+  "firstCall": "/design-login when the session has no design authorization (the user types it); then DesignSync list_projects",
+  "fallback": "claude-design-system",
+  "card": "references/tools/design-sync.md",
+  "source": "https://code.claude.com/docs/en/commands.md",
+  "verifiedAt": "2026-11-23",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "The DesignSync tool description (methods and required order), the Claude Code command reference and the Design System type's SKILL.md and from-code file were read. NOT exercised: every method. The tool was present but not authorized in the researched session, so no call ran. The command reference ties both commands to the standalone design site, which closes on 2026-12-14; the target after that date is unknown. No per-call credits; a first sync can run for hours on the shared plan usage pool."
+}

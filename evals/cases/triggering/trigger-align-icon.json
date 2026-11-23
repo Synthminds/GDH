@@ -1,0 +1,15 @@
+{
+  "id": "trigger-align-icon",
+  "kind": "triggering",
+  "skill": "align",
+  "prompt": "I need one app icon for a habit tracker. Nothing else.",
+  "expect": {
+    "skills_fired": [
+      "align"
+    ],
+    "skills_not_fired": [
+      "mood-board",
+      "design-critique"
+    ]
+  }
+}

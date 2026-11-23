@@ -1,0 +1,41 @@
+{
+  "id": "getlayers",
+  "name": "GetLayers",
+  "what": "Curated library and generator for design-led websites: Styles, Sections, WebGL Scenes, Backgrounds, Templates and Gradients as real source, effect workbenches for motion, an authoring guide for original 3D scenes, and paid generation of pictures, clips and GLB models with texture, remesh, upscale and background removal.",
+  "kind": "connector",
+  "capabilities": [
+    "3d-scene",
+    "3d-gen",
+    "motion",
+    "templates",
+    "ui-components",
+    "asset-library",
+    "fonts",
+    "image-gen",
+    "image-edit",
+    "video-gen"
+  ],
+  "disciplines": [
+    "website",
+    "3d",
+    "ui-motion",
+    "moodboard",
+    "assets",
+    "motion-video",
+    "typography",
+    "color"
+  ],
+  "install": "Attach the GetLayers connector in the host's connector settings, then sign in with the user's GetLayers account.",
+  "auth": "oauth",
+  "spendsCredits": true,
+  "exposes": true,
+  "readOnly": false,
+  "toolPrefix": "mcp__GetLayers__",
+  "firstCall": "getlayers_start, first in every conversation; before any spend call, getlayers_generation_models",
+  "fallback": "higgsfield",
+  "card": "references/tools/getlayers.md",
+  "source": "https://getlayers.ai",
+  "verifiedAt": "2026-11-23",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "Tool schemas and server instructions read. Free read calls made: getlayers_start, getlayers_tools, getlayers_generation_models and getlayers_state_schema. Search, plan, compositions, materialize, palettes, fonts, scene lab, tool look, favourites and model lists were read as schemas only. No generation, upscale, texture, remesh, background removal or upload call ran, so run time, output quality and file formats are untested."
+}

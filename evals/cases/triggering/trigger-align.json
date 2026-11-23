@@ -1,0 +1,11 @@
+{
+  "id": "trigger-align",
+  "kind": "triggering",
+  "skill": "align",
+  "prompt": "I am opening a small pottery studio next spring. Design a logo and a one-page site for it.",
+  "expect": {
+    "skills_fired": [
+      "align"
+    ]
+  }
+}

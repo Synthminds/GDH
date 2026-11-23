@@ -1,0 +1,28 @@
+{
+  "id": "claude-whiteboard",
+  "name": "Claude Whiteboard (board artifact type)",
+  "what": "A shared infinite board of shapes, arrows, sections, tables, text, hand-style drawings and small embeds that people rearrange together live. It serves sitemaps, user flows, journey maps, brainstorms, votes and rough storyboards.",
+  "kind": "artifact-type",
+  "capabilities": [
+    "whiteboard",
+    "diagram"
+  ],
+  "disciplines": [
+    "moodboard",
+    "app",
+    "website"
+  ],
+  "install": "No install line. Artifacts and the Whiteboard template must be on for the claude.ai account; on Team and Enterprise an organization Owner enables them in organization settings. In Claude Code, sign in with /login and a claude.ai account.",
+  "auth": "oauth",
+  "spendsCredits": false,
+  "exposes": true,
+  "readOnly": false,
+  "toolPrefix": "Artifact and ArtifactData",
+  "firstCall": "Artifact quickstart with intent 'other' when the host offers it, else an Artifact types list, to get the type link; then read the type's SKILL.md that the create call returns",
+  "fallback": "excalidraw",
+  "card": "references/tools/claude-whiteboard.md",
+  "source": "https://support.claude.com/en/articles/17153992",
+  "verifiedAt": "2026-11-23",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "Artifact read calls on the type's SKILL.md and drawing file succeeded. Public Help Center pages on artifacts were read. NOT exercised: creating a board, any ArtifactData write, a claim, a drawing, an export, the Canva import. No export path and no design system use are documented. No per-call credits; work draws from the shared plan usage pool."
+}

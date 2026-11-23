@@ -1,0 +1,21 @@
+{
+  "id": "picsart",
+  "name": "Picsart Media Studio",
+  "what": "Picsart's scene engine: a scene is a JSON document of layers, keyframes, effects and looks that renders to video, GIF, stills or an image sequence. It makes motion graphics, kinetic type, animated UI demos, captioned walkthroughs and clips from the user's footage, converts 3D models to GLB and renders turntables, transcribes audio, and reads a Picsart Brand Kit as data. It returns rendered media and scene JSON, not front-end code or vector brand files.",
+  "kind": "connector",
+  "capabilities": ["video-compose", "3d-scene", "audio", "templates", "brand-kit"],
+  "disciplines": ["motion-video", "3d", "infographic", "brand"],
+  "install": "Attach the Picsart Media Studio connector in the host's connector settings, then sign in with the user's Picsart account.",
+  "auth": "oauth",
+  "spendsCredits": true,
+  "exposes": true,
+  "readOnly": false,
+  "toolPrefix": "mcp__Picsart_Media_Studio__",
+  "firstCall": "picsart_scene_capabilities with no sections (the index), then picsart_scene_recipe with no name (the guide index); picsart_scene_fonts before any text layer",
+  "fallback": "hyperframes",
+  "card": "references/tools/picsart.md",
+  "source": "https://picsart.com",
+  "verifiedAt": "2026-11-23",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "Server instructions and tool schemas read. Live read calls succeeded: picsart_balance, the capability index and four of its sections (limits, export, layer content kinds, generative templates), the recipe index and the get-started recipe. No scene was built, validated, rendered or exported. No upload, Drive write, analysis, model import or social call ran. No generation tool was in the researched session. The scene JSON Schema and the effect, look, motion preset and text animation catalogs are unread."
+}

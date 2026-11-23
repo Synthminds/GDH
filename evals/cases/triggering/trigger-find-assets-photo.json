@@ -1,0 +1,12 @@
+{
+  "id": "trigger-find-assets-photo",
+  "kind": "triggering",
+  "skill": "find-assets",
+  "prompt": "Find a hero photo of a mountain trail at dawn that we may use on a paid product site, and tell me what the license asks of us.",
+  "expect": {
+    "skills_fired": [
+      "align",
+      "find-assets"
+    ]
+  }
+}

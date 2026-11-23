@@ -1,0 +1,21 @@
+{
+  "id": "design-taste-frontend",
+  "name": "design-taste-frontend (tasteskill)",
+  "what": "Skill that builds marketing and company websites with dealt hero layouts, palettes and font pairings, licensed stand-in photographs and a browser gate that must pass before the work stops. Web pages only. It declares a Stop hook.",
+  "kind": "skill",
+  "capabilities": ["templates", "critique", "fonts", "asset-library", "motion", "capture"],
+  "disciplines": ["website", "typography", "color", "assets", "critique"],
+  "install": "npx skills@1.8.1 add Leonxlnx/taste-skill@f6b76575f949707b4e3c37cd86cb44b0b98643e8 --skill design-taste-frontend. Offer it and wait for the user's yes: it declares a Stop hook.",
+  "auth": "none",
+  "spendsCredits": false,
+  "exposes": false,
+  "readOnly": false,
+  "toolPrefix": "design-taste-frontend",
+  "firstCall": "scripts/gate.mjs with --start, --kind, --category and --primary (arm the gate before any page exists)",
+  "fallback": "anthropic-frontend-design",
+  "card": "references/tools/design-taste-frontend.md",
+  "source": "https://github.com/Leonxlnx/taste-skill",
+  "verifiedAt": "2026-11-23",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "Read from a shallow clone of the public repository: the skill file, the changelog and the photo reference. Not installed. No script and no gate run. Companion skills by the same author were not read."
+}

@@ -1,0 +1,28 @@
+{
+  "id": "tldraw",
+  "name": "tldraw",
+  "what": "A live whiteboard canvas in the chat that the agent drives with JavaScript against the tldraw Editor API: shapes, arrows, notes, text and groups for sitemaps, user flows, rough wireframes and annotated boards that the user rearranges by hand.",
+  "kind": "connector",
+  "capabilities": [
+    "whiteboard",
+    "diagram"
+  ],
+  "disciplines": [
+    "moodboard",
+    "website",
+    "app"
+  ],
+  "install": "Attach the tldraw connector in the host's connector settings.",
+  "auth": "none",
+  "spendsCredits": false,
+  "exposes": false,
+  "readOnly": false,
+  "toolPrefix": "mcp__tldraw__",
+  "firstCall": "search, to read the Editor API spec before the first exec",
+  "fallback": "none",
+  "card": "references/tools/tldraw.md",
+  "source": "https://tldraw.dev",
+  "verifiedAt": "2026-11-23",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "Both tool schemas and the server instructions read. One free call made: search over the Editor API spec, which succeeded with no sign-in step. exec was not called, so no canvas was created. Image shapes, frames, persistence, share links and file export are unverified. No pricing field exists in the schemas."
+}

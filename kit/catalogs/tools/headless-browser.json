@@ -1,0 +1,21 @@
+{
+  "id": "headless-browser",
+  "name": "Local headless browser (Playwright or Chrome)",
+  "what": "A local command that opens a page in a headless browser and writes a screenshot file. It captures a coded design at each width of the view matrix and in each color scheme, for the rendered review. It runs on the user's machine, sends nothing out and spends nothing.",
+  "kind": "cli",
+  "capabilities": ["capture"],
+  "disciplines": ["website", "app", "dashboard", "dataviz", "infographic", "ui-motion", "critique", "design-system"],
+  "install": "npx playwright install chromium (once), then npx playwright screenshot. A local Chrome or Chromium binary with --headless=new --screenshot is the second route.",
+  "auth": "none",
+  "spendsCredits": false,
+  "exposes": false,
+  "readOnly": true,
+  "toolPrefix": "playwright screenshot",
+  "firstCall": "playwright --version, or google-chrome --version, to confirm a browser is present",
+  "fallback": "none",
+  "card": "references/tools/headless-browser.md",
+  "source": "https://playwright.dev/docs/cli",
+  "verifiedAt": "2026-11-23",
+  "evidence": "VERIFIED",
+  "evidenceNote": "On 2026-11-23 the example brand specimen was captured from a file URL: Playwright 1.63 full-page at 390 px wide with the dark color scheme, and Chrome --headless=new at 390 and 1440 px wide. Each run wrote a PNG of the asked width. No network was used. A page that sets its theme with a data-theme attribute ignores the color-scheme flag; that case needs a script or a query parameter."
+}

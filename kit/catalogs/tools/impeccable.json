@@ -1,0 +1,21 @@
+{
+  "id": "impeccable",
+  "name": "Impeccable",
+  "what": "Design critique, audit and polish skill for interfaces that already exist in code. It has named single-axis commands (type, color, layout, motion), a browser variant loop and a deterministic detector CLI for generic-AI tells. It installs a launcher binary and hooks.",
+  "kind": "plugin",
+  "capabilities": ["critique", "design-system", "motion", "capture"],
+  "disciplines": ["critique", "website", "app", "dashboard", "typography", "color", "ui-motion", "design-system"],
+  "install": "/plugin marketplace add pbakaus/impeccable, then install from /plugin. Any host: npx impeccable install. Offer it and wait for the user's yes: it registers hooks and runs a native binary.",
+  "auth": "none",
+  "spendsCredits": false,
+  "exposes": false,
+  "readOnly": false,
+  "toolPrefix": "/impeccable",
+  "firstCall": "/impeccable init (once for each project; writes PRODUCT.md). For existing code, then /impeccable document (writes DESIGN.md).",
+  "fallback": "vercel-web-design-guidelines",
+  "card": "references/tools/impeccable.md",
+  "source": "https://github.com/pbakaus/impeccable",
+  "verifiedAt": "2026-11-23",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "Read from a shallow clone of the public repository: README, skill source, the craft floor reference, part of the critique rubric, the plugin hooks file and the npm record. Not installed. No command and no detector run. The site catalog, the full rule list and the rubric severity bands were not read."
+}

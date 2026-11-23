@@ -1,0 +1,21 @@
+{
+  "id": "canva",
+  "name": "Canva",
+  "what": "Canva's connector: generates editable fixed-canvas designs from a brief with a stored Brand Kit applied, edits them inside a transaction, fills Brand Templates from data, generates and edits images, makes short storyboarded films, converts public files and flat images into editable designs, and exports PDF, PNG, JPG, GIF, PPTX, MP4 and CSV. It returns no HTML, CSS, SVG or tokens, and it cannot read the contents of a Brand Kit.",
+  "kind": "connector",
+  "capabilities": ["canvas", "templates", "brand-kit", "slides", "image-gen", "image-edit", "video-gen", "code-to-design"],
+  "disciplines": ["brand", "infographic", "motion-video"],
+  "install": "Attach the Canva connector in the host's connector settings, then sign in with the user's Canva account. The optional Canva plugin adds local skills such as canva:edit-design and canva:brand-check.",
+  "auth": "oauth",
+  "spendsCredits": true,
+  "exposes": true,
+  "readOnly": false,
+  "toolPrefix": "mcp__Canva__",
+  "firstCall": "none (no init tool). Call list-brand-kits before on-brand generation, get-export-formats before export-design, and get-video-production-guide before create-video",
+  "fallback": "claude-design",
+  "card": "references/tools/canva.md",
+  "source": "https://www.canva.com",
+  "verifiedAt": "2026-11-23",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "Tool schemas read. Live read calls succeeded: list-brand-kits and the get-video-production-guide list. No single guide body was read. No design, image, video, edit, upload, import, export, autofill or comment call ran. The mood-board-as-collage path is inferred and UNTESTED, so the moodboard capability is not claimed."
+}

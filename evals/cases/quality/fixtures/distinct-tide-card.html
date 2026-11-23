@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Quality corpus: hand-made tide card</title>
+<style>
+  /* Labelled eval page. Choices traced to a tide almanac. Values are local custom properties. */
+  :root { --paper: #eeeae0; --ink: #1b2329; --slate: #4b5660; --buoy: #b43a1e; --rule: #9aa3a8;
+          --serif: "Source Serif 4", Georgia, serif; --mono: "IBM Plex Mono", monospace; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--serif); }
+  .almanac { max-width: 36rem; margin: 0 auto; padding: 2rem 1rem; }
+  table { width: 100%; border-collapse: collapse; font-family: var(--mono); font-variant-numeric: tabular-nums; }
+  td, th { border-bottom: 1px solid var(--rule); padding: 0.4rem 0; text-align: left; }
+  .window { border-top: 3px solid var(--buoy); padding-top: 0.5rem; color: var(--slate); }
+</style>
+</head>
+<body>
+  <main class="almanac">
+    <h1>Can you leave at 14:00?</h1>
+    <p class="window">Yes, until 15:20. Depth at the dock stays above 1.4 m.</p>
+    <table>
+      <tr><th>Time</th><th>Height</th><th>Event</th></tr>
+      <tr><td>08:12</td><td>0.6 m</td><td>Low water</td></tr>
+      <tr><td>14:31</td><td>4.1 m</td><td>High water</td></tr>
+      <tr><td>20:40</td><td>0.8 m</td><td>Low water</td></tr>
+    </table>
+    <p>Source: harbor tide gauge, read at 09:15.</p>
+  </main>
+</body>
+</html>
