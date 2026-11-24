@@ -58,6 +58,7 @@ Capabilities, in preference order: `dataviz`, `design-system`, `ui-components`, 
 | Read or apply the design system | `design-system` | [claude-design-system](../../references/tools/claude-design-system.md), [dam](../../references/tools/dam.md) |
 | A static mockup to react to | `canvas`, through `claude-design` | [claude-design](../../references/tools/claude-design.md) |
 | A second review, offered only | `critique` | [impeccable](../../references/tools/impeccable.md) |
+| Playbooks, component patterns and a screenshot QA pass, offered only | `dataviz`, `critique` | [dashboard-design-skill](../../references/tools/dashboard-design-skill.md) |
 
 Pick the tool by kernel rule 8. Read its card before the first call. Read prices and limits live. With no data tool, build in project code with the project's chart library; `find-assets` reads a new library's license first.
 

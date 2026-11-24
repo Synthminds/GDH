@@ -1,0 +1,29 @@
+{
+  "id": "dashboard-design-skill",
+  "name": "Dashboard Design (skill)",
+  "what": "Dashboard method skill: one question per screen, ten dashboard playbooks, eight named layouts, component patterns with React and SwiftUI snippets, every state, and a screenshot QA pass with known totals, a words audit and a salience test.",
+  "kind": "plugin",
+  "capabilities": [
+    "dataviz",
+    "critique",
+    "ui-components"
+  ],
+  "disciplines": [
+    "dashboard",
+    "dataviz",
+    "critique"
+  ],
+  "install": "/plugin marketplace add abdiraimov-otabek/dashboard-design-skill, then /plugin install dashboard-design@dashboard-design-skill. Offer it and wait for the user's yes.",
+  "auth": "none",
+  "spendsCredits": false,
+  "exposes": false,
+  "readOnly": false,
+  "toolPrefix": "dashboard-design:dashboard-design",
+  "firstCall": "Read its SKILL.md, then the playbook closest to the dashboard type (references/playbooks.md).",
+  "fallback": "impeccable",
+  "card": "references/tools/dashboard-design-skill.md",
+  "source": "https://github.com/abdiraimov-otabek/dashboard-design-skill",
+  "verifiedAt": "2026-11-24",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "Read from a shallow clone of the public repository at commit a122998 (version 2.2.1): LICENSE (MIT), both plugin manifests, SKILL.md, references/playbooks.md and references/qa.md, and a search of every skill file for install, fetch and network lines. Docs only: no script, no hook, no binary. Not installed. No call was exercised."
+}

@@ -33,5 +33,6 @@ Ask one question with the host question tool. Put the recommended option first. 
 These skills are not in this kit. Name one only with its install line.
 
 - `impeccable`: design critique and polish for a screen. Install: `/plugin marketplace add pbakaus/impeccable`. Source: https://github.com/pbakaus/impeccable
+- `dashboard-design-skill`: dashboard playbooks, layouts, component patterns and a screenshot QA pass. Install: `/plugin marketplace add abdiraimov-otabek/dashboard-design-skill`, then `/plugin install dashboard-design@dashboard-design-skill`. Source: https://github.com/abdiraimov-otabek/dashboard-design-skill
 - `design-taste-frontend`: layout and visual taste for a landing page or a company site. Install: `npx skills@1.8.1 add Leonxlnx/taste-skill@f6b76575f949707b4e3c37cd86cb44b0b98643e8 --skill design-taste-frontend`. Source: https://github.com/Leonxlnx/taste-skill
 - `deslop`: a scan for AI-writing tells in marketing copy and brand voice. Install: `/plugin marketplace add ProfSynapse/synaptic-labs-plugins`, then `/plugin install deslop@synaptic-labs`. Source: https://github.com/ProfSynapse/synaptic-labs-plugins
