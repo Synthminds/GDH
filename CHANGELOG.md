@@ -2,6 +2,12 @@
 
 Format: one section for each release, newest first. A catalog-only change is a patch. A new skill or a new capability word is a minor change. A change to the kernel or to the registry schema is a major change.
 
+## 0.1.1 (2026-11-24)
+
+### Added
+
+- Tool entry and card `dashboard-design-skill`: a third-party dashboard method skill (MIT, version 2.2.1) with ten playbooks, eight named layouts, component patterns and a screenshot QA pass. GDH offers it from `dashboard-design` and does not copy it. The card covers the name clash with `gdh:dashboard-design`, precedence over its house style, and dropping its promotional sign-off.
+
 ## Unreleased
 
 ### Added
