@@ -114,6 +114,9 @@ The kit holds 26 skills. Six are model-invoked: the agent starts them from the t
 | `accessibility-gate` | user | accessibility | Runs the accessibility checks for the medium of a design and writes a pass or fail report. |
 | `handoff-to-code` | user | handoff | Packages an approved design for the coding harness or any coding agent. |
 | `add-design-tool` | user | evolution | Vets, catalogs, exercises and wires a new design tool, connector or asset source. |
+| `design-principles` | user | critique | Selects the design principles that apply to a task from the GDH principles canon, by discipline and stage, and lists each as a gate or a default with its source. |
+| `concept-forge` | model | moodboard | Generates original design concepts from the subject's own world before any style choice. |
+| `originality-gate` | model | critique | Tests whether a design is derivative before it is called done. |
 [//]: # (gdh-catalog:end)
 
 The kit also ships four subagents: `art-director` writes direction files; `design-critic` and `a11y-auditor` are read-only reviewers; `asset-scout` searches and reads licenses. It ships a catalog of design tools with one card for each, and a catalog of free asset sources with license notes.

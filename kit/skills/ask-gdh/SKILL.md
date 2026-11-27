@@ -10,9 +10,9 @@ This skill is the router. It classifies a design request, runs the pre-flight, s
 ## Before you start
 
 - Input: the user's request, in their words, and the closing report of `align`.
-- Read, when present: `DESIGN.md`, `design/brief.md`, `design/decisions.md`. A file with `status: template` counts as absent. The brief is confirmed only when its status line says so.
+- Read, when present: `DESIGN.md`, `design/brief.md`, `design/decisions.md`. A `status: template` file counts as absent. A brief is confirmed only when its status line says so.
 - Precedence: follow the user first, then the project design system, then the brief, then GDH defaults.
-- Model-invoked: `align`, `ask-gdh`, `design-brief`, `mood-board`, `find-assets`, `design-critique`. All other GDH skills are user-invoked. The Skill tool cannot start them.
+- Model-invoked: `align`, `ask-gdh`, `design-brief`, `concept-forge`, `mood-board`, `find-assets`, `design-critique`, `originality-gate`. The rest are user-invoked; the Skill tool cannot start them.
 
 ## Procedure
 
@@ -28,7 +28,7 @@ This skill is the router. It classifies a design request, runs the pre-flight, s
 8. State the plan in three to six lines, in the format under Output.
 9. Start the first skill. Tell the user in one line which skill runs now. Give it the restated request and the pre-flight result.
    - A model-invoked skill: start it by name.
-   - A user-invoked skill: read `../<name>/SKILL.md` from this skill's folder. The plugin, the repository and an export share this layout. Follow it as if the skill had started.
+   - A user-invoked skill: read `../<name>/SKILL.md` from this skill's folder and follow it as if the skill had started.
    - When the file cannot be read, print the command for the user to type, such as `/gdh:refine-round`, and wait.
 10. When a skill ends, read its closing report. Start the next skill the same way. Stop when a gate failed or the user redirects.
 11. GATE: this skill never spends and never publishes. Name each foreseeable spend and exposure point in the plan.
@@ -41,7 +41,8 @@ This skill is the router. It classifies a design request, runs the pre-flight, s
 | Audience, job or brand changed later in the session | `align`, escalation only | the request that changed it | `ask-gdh` |
 | Any design-led request after `align`; "what can GDH do" | `ask-gdh` | `align` | first skill of the plan |
 | Write, check or amend the brief; read a brief field | `design-brief` | `align` | `mood-board` |
-| Look undecided; "show me options" | `mood-board` | `design-brief` | `design-system` |
+| Ideas before looks; directions feel generic | `concept-forge` | `design-brief` | `mood-board` |
+| Look undecided; "show me options" | `mood-board` | `concept-forge` | `design-system` |
 | Create, import or extend tokens and `DESIGN.md` | `design-system` | chosen direction, or an existing brand | any build skill |
 | Choose, pair, scale or license type | `typography` | `design-brief`, direction | `design-system` |
 | Palette, themes, semantic color, contrast | `color` | `design-brief`, direction | `design-system` |
@@ -59,7 +60,9 @@ This skill is the router. It classifies a design request, runs the pre-flight, s
 | Outside font, icon, photo, component, model | `find-assets` | brief or design system | the skill that asked |
 | "Make it like this site": study a reference | `reverse-engineer-reference` | `design-brief` | `mood-board` |
 | Claude artifact types: canvas, slides, data, whiteboard | `claude-design` | `design-system` | `design-critique` |
-| Judge work; before you say "done" | `design-critique` | any build skill | `refine-round` |
+| Judge work; before you say "done" | `design-critique` | any build skill | `originality-gate` |
+| Is it original or derivative? | `originality-gate` | `design-critique` | `refine-round` |
+| Which design rules apply here? | `design-principles` | `design-brief` | the asking skill |
 | Feedback on the look of GDH work: "make the hero bolder" | `refine-round` | `design-critique` or feedback | next round, or the gates |
 | Accessibility check for the medium | `accessibility-gate` | any build skill | `handoff-to-code` |
 | Approved design goes to code | `handoff-to-code` | critique and gate pass | the coding harness |
@@ -71,7 +74,7 @@ Seven flows: new brand, new website or app, dashboard, infographic, motion piece
 
 ### When GCH is installed
 
-GCH governs code work, and its `ux-laws` numbers hold for screens. The pre-flight detects GCH. Its section 5 maps GCH skills to steps and gives the fallback.
+GCH governs code work; its `ux-laws` numbers hold for screens. Pre-flight section 5 maps GCH skills to steps.
 
 ## Tools
 
@@ -115,8 +118,8 @@ Gates ahead: spend <where or none>; exposure <where or none>
 ## References
 
 - [references/preflight.md](references/preflight.md): read at step 2. The search order, the tool presence check and the report format.
-- [references/routing.md](references/routing.md): read at steps 3 to 5 when the request is mixed or unclear. Signals, the feedback rule, the exit, mode, path, examples.
-- [references/flows.md](references/flows.md): read at step 6. The seven flows with the brief each needs, skip rules, gates and reasons.
+- [references/routing.md](references/routing.md): read at steps 3 to 5 when the request is mixed or unclear.
+- [references/flows.md](references/flows.md): read at step 6. The seven flows, with skip rules and gates.
 
 ## Sources
 

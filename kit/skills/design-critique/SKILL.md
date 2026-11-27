@@ -27,6 +27,7 @@ This skill judges a design and writes a review. It critiques the work, not the m
 6. Check brief coverage. Mark each requirement met, partly met or missing.
 7. Run the precedence pass. List each choice the user or the design system requires.
 8. Run the tell scan from the project root: `TELLS <paths> --tokens design/tokens.json --design DESIGN.md`. Drop `--tokens` or `--design` when that file does not exist. Then read [references/tells.md](references/tells.md) for the tells that no script can see.
+   Then score captivation with [references/captivation.md](references/captivation.md). At stage finalize, also run the `originality-gate` skill: read [../originality-gate/SKILL.md](../originality-gate/SKILL.md) and follow it.
 9. Run the checks of the discipline. The owning skill holds them. Cite the check for each finding.
 10. Check the gates listed under Checks.
 11. Write each finding as observation, impact and suggestion, with evidence and severity. The format is in [references/critique-format.md](references/critique-format.md).
@@ -101,6 +102,7 @@ Next: refine-round on <chosen findings> | accessibility-gate | mood-board | desi
 
 - [references/critique-format.md](references/critique-format.md): read at step 11. Finding format, severity scale, evidence rules, wording rules, the review file template, a worked review.
 - [references/rubric.md](references/rubric.md): read at step 13. Five scored dimensions, band descriptors, viewer passes, verdict bands.
+- [references/captivation.md](references/captivation.md): read at step 8, after the scan. Six scores from 0 to 3 for subject truth, personality, signature moment, surprise, emotional fit and craft.
 - [references/tells.md](references/tells.md): read at step 8. Each tell, why it reads as generic, the counter-move, and the tells the script cannot see.
 - [scripts/tells.py](scripts/tells.py): the scan. `--list` prints the rules. `--json` prints one object.
 

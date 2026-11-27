@@ -1,0 +1,17 @@
+{
+  "id": "negative-design-principles-lint",
+  "kind": "triggering",
+  "skill": "none",
+  "prompt": "Our ESLint config flags unused imports as errors and the CI build fails. Change that rule to a warning and explain the principle of least surprise in our lint setup.",
+  "expect": {
+    "skills_fired": [],
+    "skills_not_fired": [
+      "align",
+      "ask-gdh",
+      "design-brief",
+      "mood-board",
+      "find-assets",
+      "design-critique"
+    ]
+  }
+}

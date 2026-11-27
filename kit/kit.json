@@ -1,7 +1,7 @@
 {
   "name": "gdh",
   "displayName": "Global Design Harness",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Design skills, rules and tool catalogs for brand, web, app, dashboard, data, 3D and motion work.",
   "author": {
     "name": "Synthminds"
@@ -143,13 +143,29 @@
       "invocation": "user",
       "origin": "gdh",
       "discipline": "evolution"
+    },
+    "design-principles": {
+      "invocation": "user",
+      "origin": "gdh",
+      "discipline": "critique"
+    },
+    "concept-forge": {
+      "invocation": "model",
+      "origin": "gdh",
+      "discipline": "moodboard"
+    },
+    "originality-gate": {
+      "invocation": "model",
+      "origin": "gdh",
+      "discipline": "critique"
     }
   },
   "agents": [
     "art-director",
     "design-critic",
     "asset-scout",
-    "a11y-auditor"
+    "a11y-auditor",
+    "originality-auditor"
   ],
   "moments": [
     {
@@ -183,9 +199,17 @@
     {
       "when": "You are about to build a full design and no direction is chosen",
       "start": [
+        "concept-forge",
         "mood-board"
       ],
       "offer": []
+    },
+    {
+      "when": "You start a direction, a build or a review and need the rules that apply",
+      "start": [],
+      "offer": [
+        "design-principles"
+      ]
     },
     {
       "when": "You need an outside image, icon, font, component, model or template",
@@ -197,7 +221,8 @@
     {
       "when": "You are about to tell the user a design is done",
       "start": [
-        "design-critique"
+        "design-critique",
+        "originality-gate"
       ],
       "offer": [
         "accessibility-gate"

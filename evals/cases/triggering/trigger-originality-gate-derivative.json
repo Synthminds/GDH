@@ -1,0 +1,12 @@
+{
+  "id": "trigger-originality-gate-derivative",
+  "kind": "triggering",
+  "skill": "originality-gate",
+  "prompt": "The landing page for our seed library is built in site/index.html. Before we ship it, check whether it is just another template or actually ours.",
+  "expect": {
+    "skills_fired": [
+      "align",
+      "originality-gate"
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "negative-concept-forge-naming",
+  "kind": "triggering",
+  "skill": "none",
+  "prompt": "Brainstorm six names for the internal command-line tool that rotates our database credentials. Plain text is fine, no logo or visuals needed.",
+  "expect": {
+    "skills_fired": [],
+    "skills_not_fired": [
+      "align",
+      "ask-gdh",
+      "design-brief",
+      "mood-board",
+      "concept-forge"
+    ]
+  }
+}

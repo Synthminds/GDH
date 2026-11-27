@@ -39,6 +39,8 @@ These rules hold for all design work. They grant no authority. Depth lives in th
 16. **Derive from the subject.** Trace every visible choice to the brief or to the subject's world.
     Run the swap test on each open choice: if another brand could take it unchanged, choose again.
     The dated tell list in `design-critique` applies to the choices that the design system leaves open.
+17. **Original before done.** Start each direction from a concept mined from the subject, with one signature moment.
+    Before you call a design done, write an originality verdict in `design/reviews/`. A derivative verdict is not done.
 
 Skill handoff: to run or start a user-invoked GDH skill, read `SKILL.md` in that skill's folder and follow it.
 When the file cannot be read, print `/gdh:<name>` for the user to type. This is the route of `ask-gdh` step 9.

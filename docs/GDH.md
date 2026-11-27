@@ -13,7 +13,7 @@ README.md  CHANGELOG.md  AGENTS.md
 kit/                                the plugin
   kit.json                          the registry
   canon/KERNEL.md  PRINCIPLES.md  MOMENTS.md (generated)
-  hooks/hooks.json  hooks/session_start.py
+  hooks/hooks.json  hooks/session_start.py  hooks/post_edit.py  hooks/stop_gate.py
   skills/<name>/SKILL.md            plus references/, scripts/, protocols/, templates/
   agents/<name>.md
   catalogs/capabilities.json  catalogs/tools/<id>.json  catalogs/assets.json
@@ -230,6 +230,27 @@ $DS specimen  brands/<slug>/tokens.json -o brands/<slug>/specimen.html
 ## 11. Evals
 
 `evals/cases/triggering/` holds one JSON file for each case. `evals/cases/quality/` holds the labelled corpus that `evals/quality.py` scores in the unit suite. `check` validates the form: the id equals the file name, the skill is model-invoked or `none`, and `expect.skills_fired` holds the skill. GDH ships no runner. See [evals/README.md](../evals/README.md).
+
+## 12. Hooks
+
+[kit/hooks/hooks.json](../kit/hooks/hooks.json) registers three hooks. Each runs as `python3 -I -S "${CLAUDE_PLUGIN_ROOT}/hooks/<file>"`, so no module loads from the project folder. The reasons are in [ADR 0006](adr/0006-hooks-scan-edits-and-gate-the-stop.md).
+
+| Hook | Event | Does | Blocks |
+| --- | --- | --- | --- |
+| `session_start.py` | SessionStart | Prints the kernel, then the moments, 9,000 characters at most. | Never |
+| `post_edit.py` | PostToolUse, matcher `Write\|Edit\|MultiEdit` | Scans the edited file with `tells.py --json`, with `design/tokens.json` and `DESIGN.md` when they exist, and runs `originality.py check` when that script exists. Returns the top findings as `additionalContext`, 12 lines at most. | Never |
+| `stop_gate.py` | Stop | Holds the stop with `decision: "block"` when a design file changed after the newest `design/reviews/` file with an `Originality:` line, or, with no such file, changed in the last 24 hours. | Until a verdict or today's override exists |
+
+Rules of the two enforcement hooks:
+
+- They act only when the project has a `design/` folder. The search runs from `cwd` up to the git root. Without a git root, only `cwd` counts.
+- Design files have the extensions `.html`, `.htm`, `.css`, `.scss`, `.jsx`, `.tsx`, `.svg`, `.vue` and `.svelte`. The folders `node_modules`, `.git`, `dist` and `build` do not count. Neither do files in `design/reviews/`.
+- The override is one line in `design/decisions.md`: `Override: originality-gate <YYYY-MM-DD> <reason>`. Only a line dated today counts.
+- The Stop hook passes when `stop_hook_active` is true.
+- Both fail open: any error, a timeout or a missing script gives exit 0 and no output. Default: 8 seconds of work for each. Default: the Stop hook looks at 2,000 files at most. The registered timeout is 15 seconds.
+- Two environment variables serve tests and local runs only. `GDH_PLUGIN_ROOT` points `post_edit.py` at another plugin folder, such as one with stub scripts. `GDH_HOOK_TIMEOUT` sets the time budget of both hooks in seconds.
+- Tests: `tests/test_hooks_post_edit.py` and `tests/test_hooks_stop_gate.py` run each hook as a subprocess with crafted input.
+- Evidence: the input and output fields follow the Claude Code hooks reference, DOCUMENTED on 2026-11-27. The unit tests are VERIFIED. No live session has run the two new hooks yet; that is UNTESTED.
 
 ## State on 2026-11-23
 
