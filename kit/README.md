@@ -79,4 +79,5 @@ Each script uses the Python standard library only, makes no network call, and ex
 | `design-principles` | user | critique | Selects the design principles that apply to a task from the GDH principles canon, by discipline and stage, and lists each as a gate or a default with its source. |
 | `concept-forge` | model | moodboard | Generates original design concepts from the subject's own world before any style choice. |
 | `originality-gate` | model | critique | Tests whether a design is derivative before it is called done. |
+| `print-design` | user | fabrication | Designs a part or object for FDM 3D printing, from concept to a checked, sliced job file. |
 [//]: # (gdh-catalog:end)

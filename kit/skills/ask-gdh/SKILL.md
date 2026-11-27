@@ -26,7 +26,7 @@ This skill is the router: it classifies a design request, runs the pre-flight, p
 7. ASK: only when two disciplines fit equally, or the deliverable is unclear. Ask one question. Put the recommended answer first.
    A brief that does not cover this request goes back to `align` as an escalation. Do not interview here.
 8. State the plan in three to six lines, in the format under Output.
-9. Start the first skill. Tell the user in one line which skill runs now. Give it the restated request and the pre-flight result.
+9. Start the first skill. Name it in one line. Give it the restated request and the pre-flight result.
    - A model-invoked skill: start it by name.
    - A user-invoked skill: read `../<name>/SKILL.md` from this skill's folder and follow it as if the skill had started.
    - When the file cannot be read, print the command for the user to type, such as `/gdh:refine-round`, and wait.
@@ -56,6 +56,7 @@ This skill is the router: it classifies a design request, runs the pre-flight, p
 | Transitions, micro-interactions, motion tokens | `ui-motion` | `design-system`, a built screen | `handoff-to-code` |
 | Video, motion graphic, animated explainer | `motion-video` | `mood-board` (styleframes) | `design-critique` |
 | 3D model, hero scene, product viewer | `three-d` | `mood-board` | `website-design` |
+| 3D-printed part, print file, printable model | `print-design` | `design-brief` | the user prints |
 | Generate an image, a clip, a voice or music | `generate-media` | chosen direction | `find-assets` record |
 | Outside font, icon, photo, component, model | `find-assets` | brief or design system | the skill that asked |
 | "Make it like this site": study a reference | `reverse-engineer-reference` | `design-brief` | `mood-board` |
@@ -125,6 +126,4 @@ Gates ahead: spend <where or none>; exposure <where or none>
 ## Sources
 
 - GDH kernel and principles: `kit/canon/KERNEL.md`, `kit/canon/PRINCIPLES.md`.
-- Design Leadership Handbook (DesignBetter), ch. 3: name the mode, exploration or refinement.
-- DesignOps Handbook (DesignBetter), ch. 5: visible intake before work starts.
-- Principles of Product Design (DesignBetter), ch. 3: low fidelity first.
+- DesignBetter handbooks: Design Leadership ch. 3 (name the mode), DesignOps ch. 5 (visible intake), Principles of Product Design ch. 3 (low fidelity first).

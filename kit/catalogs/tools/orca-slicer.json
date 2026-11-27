@@ -1,0 +1,21 @@
+{
+  "id": "orca-slicer",
+  "name": "OrcaSlicer",
+  "what": "An open-source desktop slicer with a documented command line. It turns a checked 3MF into a printer job with bundled profiles for many printers, the Bambu Lab P2S and the Flashforge Adventurer 5M and 5M Pro among them. It runs on the user's machine and sends nothing out when used from the command line.",
+  "kind": "cli",
+  "capabilities": ["fabricate"],
+  "disciplines": ["fabrication", "3d"],
+  "install": "The user installs the desktop app from the project's GitHub releases. The command line is the same binary: orca-slicer on Linux, or OrcaSlicer inside the macOS app bundle.",
+  "auth": "none",
+  "spendsCredits": false,
+  "exposes": false,
+  "readOnly": false,
+  "toolPrefix": "orca-slicer",
+  "firstCall": "orca-slicer --help, to confirm the installed version and its flags",
+  "fallback": "bambu-studio",
+  "card": "references/tools/orca-slicer.md",
+  "source": "https://www.orcaslicer.com/wiki/cli/cli_mode",
+  "verifiedAt": "2026-11-27",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "On 2026-11-27 the command-line wiki pages and the bundled printer profile folders on the main branch were read. The latest release seen was 2.5.2. AGPL-3.0. No slice ran in a GDH session."
+}

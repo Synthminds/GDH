@@ -2,6 +2,20 @@
 
 Format: one section for each release, newest first. A catalog-only change is a patch. A new skill or a new capability word is a minor change. A change to the kernel or to the registry schema is a major change.
 
+## 1.2.0 (2026-11-27)
+
+Minor: a new capability word, a new discipline and a new skill.
+
+Added:
+- Capability word `fabricate`: make a model ready for a physical machine (mesh check and repair, slicing, cut or stitch files). Discipline `fabrication`, owned by the new skill.
+- `print-design` skill (user-invoked): FDM 3D print design from concept to a checked, sliced job file. Parametric, generated and hybrid modeling routes; design-for-print defaults for walls, overhangs, bridges, fits, holes, orientation, splitting and materials; a print-profile template; slicing commands; a send gate so the user starts every print.
+- `print_check.py`: a standard-library mesh check for STL and 3MF. Watertightness, non-manifold and misoriented edges, degenerate and inverted faces, overhang share, and fit to a printer's build volume.
+- Printer profiles: Bambu Lab P2S, Flashforge Adventurer 5M and 5M Pro, and a generic default, from the makers' pages.
+- Tool entries and cards: `orca-slicer`, `bambu-studio`, `meshy` (generation and print tools; spends; output license depends on the plan).
+- The FreeCAD and 3MF harnesses now serve `fabricate`.
+
+Not added: the laser and embroidery harnesses. They come from separate publishers outside the pinned upstream and need their own vetting.
+
 ## 1.1.0 (2026-11-27)
 
 Minor: a new catalog file, a probe script and a check code. No new skill and no new capability word.

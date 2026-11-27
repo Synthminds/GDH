@@ -42,6 +42,7 @@ Free. No harness in the list spends credits. ComfyUI uses the user's own GPU and
 | image-gen | comfyui (localhost) |
 | 3d-scene | blender |
 | 3d-gen | blender, freecad, threemf |
+| fabricate | threemf (repair, hole sizing), freecad (mesh repair, STEP and 3MF export) |
 | diagram | drawio, mermaid (exposes) |
 | video-compose | kdenlive, shotcut, openscreen |
 | slides | libreoffice |
@@ -74,7 +75,8 @@ Command groups differ per harness. Run `cli-anything-<program> --help` and read 
 ## Handoffs
 
 - `logo-identity` and `infographic`: vector work through Inkscape, then `design-critique`.
-- `three-d`: Blender renders and glTF, FreeCAD and 3MF parts for print, then `website-design` for a page that shows them.
+- `three-d`: Blender renders and glTF, then `website-design` for a page that shows them.
+- `print-design`: FreeCAD parts, 3MF repair and hole sizing before a slicer.
 - `motion-video`: MLT renders after `mood-board` styleframes.
 - `find-assets`: a harness makes a file; it does not license one. Assets the harness reads still need a license.
 
