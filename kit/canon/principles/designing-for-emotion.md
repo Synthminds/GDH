@@ -19,7 +19,7 @@ Every other principle is a default. Query them with the `design-principles` skil
 
 **P-EMO-06 Pleasure only where needs meet.** Tie every reward, streak or notification to a benefit for the user, and remove any whose only beneficiary is the business. Test: Each reward, streak and notification has a written user benefit.
 
-**P-EMO-07 Do not ship framework defaults.** Never call a look finished while its type, color, spacing and components are all the unmodified defaults of the framework or library used. Test: At least one of type, color, spacing or component styling differs from the library default, or the design system prescribes the default.
+**P-EMO-07 Do not ship framework defaults.** Never call a look finished while its type or its color is the unmodified default of the framework or library used. Test: Type and color each differ from the library default, or the design system prescribes the default.
 
 ## Chapter 2: Design for humans
 

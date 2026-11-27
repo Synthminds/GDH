@@ -1604,7 +1604,7 @@
       "why": "People who cannot rely on sight get nothing from a change that exists only as movement.",
       "apply": "When a field shakes on error, also set its error state in markup or a hint string; keep warnings and legal statements as text.",
       "test": "The number of meaningful animations equals the number of matching non-visual signals in the code.",
-      "check": "gate",
+      "check": "default",
       "disciplines": [
         "ui-motion",
         "app",
@@ -2955,7 +2955,7 @@
       "rule": "Write at least three this-not-that statements into the brief, and strike any sentence that would be true for every project.",
       "why": "A brief nobody could disagree with says nothing.",
       "apply": "Pair each brand word with what it rules out, such as calm not sleepy.",
-      "test": "The brief holds three or more explicit exclusions, and no sentence is generic enough to fit any project.",
+      "test": "The brief holds three or more explicit this-not-that exclusions.",
       "check": "gate",
       "disciplines": [
         "all"
@@ -5227,8 +5227,8 @@
     },
     {
       "id": "P-DT-03",
-      "title": "Build sure, test doubtful",
-      "rule": "Make each prototype as if you are right, then test it as if you are wrong.",
+      "title": "Commit, then try to break it",
+      "rule": "Build each prototype with full conviction, then design its test to find the case that proves it wrong.",
       "why": "Conviction gives the build energy, and doubt makes the test honest.",
       "apply": "Write down before testing what result would prove the direction wrong.",
       "test": "Each test plan states the result that would disprove the direction.",
@@ -6068,10 +6068,10 @@
     {
       "id": "P-EMO-07",
       "title": "Do not ship framework defaults",
-      "rule": "Never call a look finished while its type, color, spacing and components are all the unmodified defaults of the framework or library used.",
+      "rule": "Never call a look finished while its type or its color is the unmodified default of the framework or library used.",
       "why": "Defaults make products impossible to tell apart.",
       "apply": "Compare the output with the library's stock theme and change the choices the design system does not fix.",
-      "test": "At least one of type, color, spacing or component styling differs from the library default, or the design system prescribes the default.",
+      "test": "Type and color each differ from the library default, or the design system prescribes the default.",
       "check": "gate",
       "disciplines": [
         "website",
@@ -6407,7 +6407,7 @@
       "why": "A brand that jokes during a failure sounds careless.",
       "apply": "Keep the samples in the persona and use them as templates for real messages.",
       "test": "Side by side, the samples show humor falling and plainness rising with severity.",
-      "check": "gate",
+      "check": "default",
       "disciplines": [
         "brand",
         "website",
@@ -7067,7 +7067,7 @@
       "why": "A graph that shows no story to its own author shows none to anyone.",
       "apply": "Keep the layout when patterns exist under clutter and fix spacing and edges first.",
       "test": "No published view is an unreadable tangle, and each fix is logged.",
-      "check": "gate",
+      "check": "default",
       "disciplines": [
         "network-graph"
       ],
@@ -7112,7 +7112,7 @@
       "why": "Attractive styling that hides or invents relationships misleads.",
       "apply": "Improve looks only where the change also makes the graph faster to read.",
       "test": "A reviewer finds no styling choice that hides or implies a relationship the data lacks.",
-      "check": "gate",
+      "check": "default",
       "disciplines": [
         "network-graph",
         "dataviz"

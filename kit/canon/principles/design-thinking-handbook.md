@@ -11,7 +11,7 @@ Every other principle is a default. Query them with the `design-principles` skil
 
 **P-DT-02 Start where the project stands.** When a draft or product already exists, start by testing it as a prototype instead of restarting from research. Test: The plan names its entry phase and the reason for it.
 
-**P-DT-03 Build sure, test doubtful.** Make each prototype as if you are right, then test it as if you are wrong. Test: Each test plan states the result that would disprove the direction.
+**P-DT-03 Commit, then try to break it.** Build each prototype with full conviction, then design its test to find the case that proves it wrong. Test: Each test plan states the result that would disprove the direction.
 
 ## Chapter 2: Empathize
 

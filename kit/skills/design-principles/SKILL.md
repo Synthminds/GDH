@@ -82,7 +82,7 @@ Closing report in the chat: the counts of gates and defaults, any failed gate, a
 - [scripts/principles.py](scripts/principles.py): read before step 1. Run it with `--help` for every flag.
 - [kit/canon/principles.json](../../canon/principles.json): the canon. Each principle has rule, why, apply, test, check, scope and source.
 - Book lists, one per book, matching the canon word for word: [design systems](../../canon/principles/design-systems-handbook.md), [design engineering](../../canon/principles/design-engineering-handbook.md), [animation](../../canon/principles/animation-handbook.md), [collaboration](../../canon/principles/collaboration-handbook.md), [product design](../../canon/principles/principles-of-product-design.md), [leadership](../../canon/principles/design-leadership-handbook.md), [DesignOps](../../canon/principles/designops-handbook.md), [design thinking](../../canon/principles/design-thinking-handbook.md), [emotion](../../canon/principles/designing-for-emotion.md), [Gephi](../../canon/principles/mastering-gephi.md), [AI app](../../canon/principles/ai-app-5-steps.md), [MCP mapping](../../canon/principles/mapping-to-mcps.md). Read one at step 7 when a principle needs its neighbors for context.
-- [docs/PRINCIPLES-COVERAGE.md](../../../docs/PRINCIPLES-COVERAGE.md): which chapter of each book yields which ids, and why a chapter was not used. Read it before proposing a new principle.
+- `docs/PRINCIPLES-COVERAGE.md` in the GDH repository (not shipped in the plugin): which chapter of each book yields which ids, and why a chapter was not used. Read it before proposing a new principle.
 
 ## Sources
 

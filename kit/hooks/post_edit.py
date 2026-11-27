@@ -4,17 +4,18 @@
 Claude Code runs this hook after a Write, Edit or MultiEdit call and passes the call as JSON on stdin.
 The hook acts only when the edited file has a design extension and the project has a `design/` folder.
 The project root is the first folder that holds `design/`, searched from `cwd` up to the git root.
-Then it runs the tell scan of `design-critique` on that one file, and the `originality-gate` check
-when that script exists. Findings come back as `hookSpecificOutput.additionalContext`, 12 lines at most.
+Then it runs the tell scan of `design-critique` on that one file. On a markup file it also runs the
+`originality-gate` check when that script exists. Findings come back as `hookSpecificOutput.additionalContext`, 12 lines at most.
 
 The hook never blocks the edit. It fails open: any error, a timeout or a missing file means exit 0
 with no output. Default: 8 seconds in total for both scans.
 It writes nothing and calls no network. Child scripts run as `python3 -I -S`, so no module loads
 from the project folder.
 
-Environment, for tests and local runs only:
-  GDH_PLUGIN_ROOT    the plugin folder that holds `skills/`; default: the parent of this script's folder.
-  GDH_HOOK_TIMEOUT   the total time budget in seconds; default 8.
+Environment:
+  GDH_PLUGIN_ROOT    override of the plugin folder that holds `skills/`; default: the parent of this
+                     script's folder. Tests point it at stub scripts.
+  GDH_HOOK_TIMEOUT   the total time budget in seconds, for tests and local runs; default 8.
 """
 import json
 import os
@@ -23,7 +24,10 @@ import sys
 import time
 
 DESIGN_EXT = {".html", ".htm", ".css", ".scss", ".jsx", ".tsx", ".svg", ".vue", ".svelte"}
-EXCLUDED_DIRS = {"node_modules", ".git", "dist", "build"}
+MARKUP_EXT = {".html", ".htm", ".jsx", ".tsx", ".vue", ".svelte"}
+# Every folder whose name starts with a dot is skipped as well.
+SKIPPED_DIRS = {"node_modules", "dist", "build", "coverage", "htmlcov", "out", "storybook-static", "vendor",
+                "target"}
 EDIT_TOOLS = {"Write", "Edit", "MultiEdit"}
 DEFAULT_BUDGET = 8.0
 MAX_STDIN = 32 * 1024 * 1024
@@ -127,8 +131,7 @@ def summary(rel, tells, originality):
         lines.append("- " + text)
     if total > room:
         lines.append("- and %d more; run the scan with --json for the full list." % (total - room))
-    lines.append("Fix each finding before you go on, or record a brand-required reason for it in "
-                 "design/decisions.md.")
+    lines.append("Review each finding; fix it or record a brand-required reason in design/decisions.md.")
     return "\n".join(lines[:MAX_LINES])
 
 
@@ -166,7 +169,8 @@ def main():
     except ValueError:
         return 0
     parts = rel.split(os.sep)
-    if rel.startswith("..") or any(part in EXCLUDED_DIRS for part in parts[:-1]):
+    if rel == ".." or rel.startswith(".." + os.sep) or \
+            any(part.startswith(".") or part in SKIPPED_DIRS for part in parts[:-1]):
         return 0
     if not os.path.isfile(path):
         return 0
@@ -190,7 +194,7 @@ def main():
             tells = findings_of(result, "tells")
     originality = None
     gate_script = os.path.join(plugin, ORIGINALITY)
-    if os.path.isfile(gate_script):
+    if os.path.splitext(path)[1].lower() in MARKUP_EXT and os.path.isfile(gate_script):
         result = run_json([python, "-I", "-S", gate_script, "check", path, "--json"], real_root, deadline)
         if result is not None:
             originality = findings_of(result, "originality")

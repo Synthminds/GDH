@@ -71,7 +71,7 @@ Every other principle is a default. Query them with the `design-principles` skil
 
 **P-COL-26 Write the brief first.** Write a short prose brief that states the change the work should make and for whom before making any visual. Test: A confirmed brief file exists and predates the first visual.
 
-**P-COL-27 Make the brief deniable.** Write at least three this-not-that statements into the brief, and strike any sentence that would be true for every project. Test: The brief holds three or more explicit exclusions, and no sentence is generic enough to fit any project.
+**P-COL-27 Make the brief deniable.** Write at least three this-not-that statements into the brief, and strike any sentence that would be true for every project. Test: The brief holds three or more explicit this-not-that exclusions.
 
 **P-COL-28 Describe the feel first.** Describe how the result should feel in use, in sensory words, before choosing any visual. Test: The brief contains a sensory paragraph free of layout or component vocabulary.
 

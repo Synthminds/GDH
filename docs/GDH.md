@@ -233,24 +233,30 @@ $DS specimen  brands/<slug>/tokens.json -o brands/<slug>/specimen.html
 
 ## 12. Hooks
 
-[kit/hooks/hooks.json](../kit/hooks/hooks.json) registers three hooks. Each runs as `python3 -I -S "${CLAUDE_PLUGIN_ROOT}/hooks/<file>"`, so no module loads from the project folder. The reasons are in [ADR 0006](adr/0006-hooks-scan-edits-and-gate-the-stop.md).
+[kit/hooks/hooks.json](../kit/hooks/hooks.json) registers three hooks. Each runs as `python3 -I -S "${CLAUDE_PLUGIN_ROOT}/hooks/<file>"`, so no module loads from the project folder. The two enforcement commands end with `|| true`, so a launch failure exits 0 and never reads as a block. The reasons are in [ADR 0006](adr/0006-hooks-scan-edits-and-gate-the-stop.md).
 
 | Hook | Event | Does | Blocks |
 | --- | --- | --- | --- |
 | `session_start.py` | SessionStart | Prints the kernel, then the moments, 9,000 characters at most. | Never |
-| `post_edit.py` | PostToolUse, matcher `Write\|Edit\|MultiEdit` | Scans the edited file with `tells.py --json`, with `design/tokens.json` and `DESIGN.md` when they exist, and runs `originality.py check` when that script exists. Returns the top findings as `additionalContext`, 12 lines at most. | Never |
-| `stop_gate.py` | Stop | Holds the stop with `decision: "block"` when a design file changed after the newest `design/reviews/` file with an `Originality:` line, or, with no such file, changed in the last 24 hours. | Until a verdict or today's override exists |
+| `post_edit.py` | PostToolUse, matcher `Write\|Edit\|MultiEdit` | Scans the edited file with `tells.py --json`, with `design/tokens.json` and `DESIGN.md` when they exist. On a markup file it also runs `originality.py check` when that script exists. Returns the top findings as `additionalContext`, 12 lines at most, and asks the agent to review each one: fix it or record a brand-required reason. | Never |
+| `stop_gate.py` | Stop | Holds the stop with `decision: "block"` when a design file that this session edited changed after the newest passing verdict in `design/reviews/`, or, with no passing verdict, changed in the last 24 hours. | Once per turn, until a passing verdict or today's override exists |
 
 Rules of the two enforcement hooks:
 
 - They act only when the project has a `design/` folder. The search runs from `cwd` up to the git root. Without a git root, only `cwd` counts.
-- Design files have the extensions `.html`, `.htm`, `.css`, `.scss`, `.jsx`, `.tsx`, `.svg`, `.vue` and `.svelte`. The folders `node_modules`, `.git`, `dist` and `build` do not count. Neither do files in `design/reviews/`.
-- The override is one line in `design/decisions.md`: `Override: originality-gate <YYYY-MM-DD> <reason>`. Only a line dated today counts.
-- The Stop hook passes when `stop_hook_active` is true.
-- Both fail open: any error, a timeout or a missing script gives exit 0 and no output. Default: 8 seconds of work for each. Default: the Stop hook looks at 2,000 files at most. The registered timeout is 15 seconds.
-- Two environment variables serve tests and local runs only. `GDH_PLUGIN_ROOT` points `post_edit.py` at another plugin folder, such as one with stub scripts. `GDH_HOOK_TIMEOUT` sets the time budget of both hooks in seconds.
-- Tests: `tests/test_hooks_post_edit.py` and `tests/test_hooks_stop_gate.py` run each hook as a subprocess with crafted input.
-- Evidence: the input and output fields follow the Claude Code hooks reference, DOCUMENTED on 2026-11-27. The unit tests are VERIFIED. No live session has run the two new hooks yet; that is UNTESTED.
+- Design files have the extensions `.html`, `.htm`, `.css`, `.scss`, `.jsx`, `.tsx`, `.svg`, `.vue` and `.svelte`. Markup files are the same list without `.css`, `.scss` and `.svg`.
+- Every dot-folder is skipped, and so are `node_modules`, `dist`, `build`, `coverage`, `htmlcov`, `out`, `storybook-static`, `vendor` and `target`. Files in `design/reviews/` never count as design changes.
+- The Stop hook reads `transcript_path`, and the subagent transcripts in `<transcript stem>/subagents/`, for Write, Edit and MultiEdit calls on design files inside the project. A session with no such call is never held.
+- When the transcript cannot be read, the Stop hook walks the project, but only when `design/brief.md` exists. Default: the walk looks at 2,000 files at most.
+- A passing verdict is a line `Originality: original` or `Originality: watch` in a file under `design/reviews/`. A derivative verdict does not pass. The block reason names the review file `design/reviews/<today>-originality.md`.
+- A file time more than 60 seconds in the future is ignored. Default: 60 seconds.
+- The block fires once per turn. On the retry `stop_hook_active` is true and the stop goes through. The reason says: when this turn hands over a draft for feedback rather than finished work, say so in one line and stop; before calling the design done, run the gate. It tells the agent to start the `originality-gate` skill and gives the absolute path of its `SKILL.md` as a fallback.
+- The reason echoes 5 file names at most. Control characters are stripped and each name is cut to 120 characters.
+- The override is one line in `design/decisions.md`: `Override: originality-gate <YYYY-MM-DD> <reason>`. Only a line dated today with a reason counts.
+- Both fail open: any error, a timeout or a missing script gives exit 0 and no output. Default: 8 seconds of work for each. The registered timeout is 15 seconds.
+- `GDH_PLUGIN_ROOT` overrides the plugin folder that `post_edit.py` reads the scan scripts from. The tests point it at stub scripts. `GDH_HOOK_TIMEOUT` sets the time budget of both hooks in seconds, for tests and local runs.
+- Tests: `tests/test_hooks_post_edit.py` and `tests/test_hooks_stop_gate.py` run each hook as a subprocess with crafted input and transcripts, and run the registered command strings through a shell.
+- Evidence: the input and output fields follow the Claude Code hooks reference, DOCUMENTED on 2026-11-27. The transcript shape (`tool_use` entries with `name` and `input.file_path`) was VERIFIED against one real Claude Code transcript on 2026-11-27. The unit tests are VERIFIED. No live session has run the two new hooks yet; that is UNTESTED.
 
 ## State on 2026-11-23
 

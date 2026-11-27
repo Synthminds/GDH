@@ -92,7 +92,7 @@ class PostEditHookTests(unittest.TestCase):
         self.assertIn("src/index.html", text)
         self.assertIn("TELL_STUB_0", text)
         self.assertLess(text.index("TELL_STUB_0"), text.index("TELL_STUB_1"))
-        self.assertIn("brand-required", text)
+        self.assertIn("Review each finding; fix it or record a brand-required reason", text)
         self.assertLessEqual(len(text.splitlines()), 12)
 
     def test_edit_and_multiedit_also_scan(self):
@@ -132,6 +132,17 @@ class PostEditHookTests(unittest.TestCase):
         write(vendored, "a{}\n")
         self.assert_silent(self.run_hook(self.payload(path=vendored)))
 
+    def test_dot_and_tool_folders_are_ignored(self):
+        for folder in (".storybook", "coverage", "vendor/lib", "storybook-static"):
+            page = os.path.join(self.project, folder, "a.html")
+            write(page, "<p>x</p>\n")
+            self.assert_silent(self.run_hook(self.payload(path=page)))
+
+    def test_dot_dot_prefix_inside_project_is_scanned(self):
+        page = os.path.join(self.project, "..page.html")
+        write(page, "<p>x</p>\n")
+        self.assertIn("TELL_STUB_0", self.context(self.run_hook(self.payload(path=page))))
+
     def test_relative_path_resolves_against_cwd(self):
         self.assertIn("TELL_STUB_0", self.context(self.run_hook(self.payload(path="src/index.html"))))
 
@@ -158,6 +169,18 @@ class PostEditHookTests(unittest.TestCase):
         text = self.context(self.run_hook(self.payload(), {"STUB_COUNT": "0"}))
         self.assertIn("ORIG_STUB", text)
         self.assertIn("1 originality finding(s)", text)
+
+    def test_originality_runs_on_markup_only(self):
+        write(os.path.join(self.plugin, "skills", "originality-gate", "scripts", "originality.py"), STUB_ORIGINALITY)
+        for name in ("a.css", "a.scss", "a.svg"):
+            sheet = os.path.join(self.project, "src", name)
+            write(sheet, "a{}\n")
+            text = self.context(self.run_hook(self.payload(path=sheet)))
+            self.assertNotIn("ORIG_STUB", text)
+            self.assertNotIn("originality finding", text)
+        component = os.path.join(self.project, "src", "Card.tsx")
+        write(component, "export const Card = () => null;\n")
+        self.assertIn("ORIG_STUB", self.context(self.run_hook(self.payload(path=component))))
 
     def test_absent_originality_script_is_tolerated(self):
         text = self.context(self.run_hook(self.payload()))
@@ -206,9 +229,43 @@ class HooksJsonTests(unittest.TestCase):
                          'python3 -I -S "${CLAUDE_PLUGIN_ROOT}/hooks/session_start.py"')
         post = self.hooks["PostToolUse"][0]
         self.assertEqual(post["matcher"], "Write|Edit|MultiEdit")
-        self.assertEqual(post["hooks"][0]["command"], 'python3 -I -S "${CLAUDE_PLUGIN_ROOT}/hooks/post_edit.py"')
+        self.assertEqual(post["hooks"][0]["command"],
+                         'python3 -I -S "${CLAUDE_PLUGIN_ROOT}/hooks/post_edit.py" || true')
         stop = self.hooks["Stop"][0]["hooks"][0]
-        self.assertEqual(stop["command"], 'python3 -I -S "${CLAUDE_PLUGIN_ROOT}/hooks/stop_gate.py"')
+        self.assertEqual(stop["command"], 'python3 -I -S "${CLAUDE_PLUGIN_ROOT}/hooks/stop_gate.py" || true')
+
+    def run_command(self, event, plugin_root, stdin, guard=True):
+        env = {key: value for key, value in os.environ.items() if key != "CLAUDE_PLUGIN_ROOT"}
+        if plugin_root is not None:
+            env["CLAUDE_PLUGIN_ROOT"] = plugin_root
+        command = self.hooks[event][0]["hooks"][0]["command"]
+        if not guard:
+            command = command[:-len(" || true")]
+        return subprocess.run(["/bin/sh", "-c", command], input=stdin, stdout=subprocess.PIPE,
+                              stderr=subprocess.PIPE, universal_newlines=True, env=env, timeout=60)
+
+    @unittest.skipUnless(os.path.exists("/bin/sh"), "needs a POSIX shell")
+    def test_launch_failure_exits_zero(self):
+        stdin = json.dumps({"hook_event_name": "Stop", "stop_hook_active": False, "cwd": REPO})
+        with tempfile.TemporaryDirectory() as empty:
+            for event in ("PostToolUse", "Stop"):
+                for root in (None, "", empty, os.path.join(empty, "missing")):
+                    result = self.run_command(event, root, stdin)
+                    self.assertEqual((result.returncode, result.stdout), (0, ""), (event, root))
+                    # Without the guard, python exits 2, which a Stop hook reads as a block.
+                    self.assertNotEqual(self.run_command(event, root, stdin, guard=False).returncode, 0)
+
+    @unittest.skipUnless(os.path.exists("/bin/sh"), "needs a POSIX shell")
+    def test_command_runs_the_real_script(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            os.makedirs(os.path.join(tmp, ".git"))
+            os.makedirs(os.path.join(tmp, "design"))
+            page = os.path.join(tmp, "a.html")
+            write(page, '<div class="bg-gradient-to-r from-purple-500 to-indigo-600"></div>\n')
+            stdin = json.dumps({"tool_name": "Write", "cwd": tmp, "tool_input": {"file_path": page}})
+            result = self.run_command("PostToolUse", os.path.join(REPO, "kit"), stdin)
+            self.assertEqual(result.returncode, 0)
+            self.assertIn("TELL_PURPLE_GRADIENT", result.stdout)
 
     def test_timeouts_cover_the_internal_budget(self):
         for event in ("PostToolUse", "Stop"):

@@ -40,7 +40,8 @@ These rules hold for all design work. They grant no authority. Depth lives in th
     Run the swap test on each open choice: if another brand could take it unchanged, choose again.
     The dated tell list in `design-critique` applies to the choices that the design system leaves open.
 17. **Original before done.** Start each direction from a concept mined from the subject, with one signature moment.
-    Before you call a design done, write an originality verdict in `design/reviews/`. A derivative verdict is not done.
+    Before you call a design done, run `originality-gate`. Only an original or watch verdict counts as done.
+    A draft handed over for feedback is not done; say so when you hand it over.
 
 Skill handoff: to run or start a user-invoked GDH skill, read `SKILL.md` in that skill's folder and follow it.
 When the file cannot be read, print `/gdh:<name>` for the user to type. This is the route of `ask-gdh` step 9.

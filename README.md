@@ -83,7 +83,7 @@ To see what a finished design system looks like, open `brands/example-harbor-lan
 
 ## Skill catalog
 
-The kit holds 26 skills. Six are model-invoked: the agent starts them from the task. `align` opens every session. The other 20 are user-invoked: the user types their command, or `ask-gdh` reads their `SKILL.md` and follows it.
+The kit holds 29 skills. Eight are model-invoked: the agent starts them from the task. `align` opens every session. The other 21 are user-invoked: the user types their command, or `ask-gdh` reads their `SKILL.md` and follows it.
 
 [//]: # (gdh-catalog:start)
 | Skill | Invocation | Discipline | What it does |
@@ -119,7 +119,7 @@ The kit holds 26 skills. Six are model-invoked: the agent starts them from the t
 | `originality-gate` | model | critique | Tests whether a design is derivative before it is called done. |
 [//]: # (gdh-catalog:end)
 
-The kit also ships four subagents: `art-director` writes direction files; `design-critic` and `a11y-auditor` are read-only reviewers; `asset-scout` searches and reads licenses. It ships a catalog of design tools with one card for each, and a catalog of free asset sources with license notes.
+The kit also ships five subagents: `art-director` writes direction files; `design-critic`, `a11y-auditor` and `originality-auditor` are read-only reviewers; `asset-scout` searches and reads licenses. It ships a catalog of design tools with one card for each, and a catalog of free asset sources with license notes.
 
 ## How GDH evolves
 
