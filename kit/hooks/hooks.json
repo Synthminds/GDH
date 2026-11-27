@@ -10,6 +10,29 @@
           }
         ]
       }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -I -S \"${CLAUDE_PLUGIN_ROOT}/hooks/post_edit.py\" || true",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -I -S \"${CLAUDE_PLUGIN_ROOT}/hooks/stop_gate.py\" || true",
+            "timeout": 15
+          }
+        ]
+      }
     ]
   }
 }

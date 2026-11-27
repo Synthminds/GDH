@@ -130,7 +130,7 @@ Change the cause, not the surface. A new accent color on the same structure is s
 
 ## The report
 
-Write `design/reviews/<YYYY-MM-DD>-originality.md`.
+Write `design/reviews/<YYYY-MM-DD>-reference-check.md`.
 
 ```
 # Originality check: <scope>, <date>

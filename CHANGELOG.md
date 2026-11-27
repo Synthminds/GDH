@@ -2,6 +2,24 @@
 
 Format: one section for each release, newest first. A catalog-only change is a patch. A new skill or a new capability word is a minor change. A change to the kernel or to the registry schema is a major change.
 
+## 1.0.0 (2026-11-27)
+
+Major: the kernel gains rule 17, so this release is a major change under the format rule above.
+
+Added:
+- Principles canon: 325 principles in GDH's own words from the 12 source books (78 gates, 247 defaults), in `kit/canon/principles.json` with a readable list per book and a chapter coverage audit in `docs/PRINCIPLES-COVERAGE.md`.
+- `design-principles` skill and `principles.py`: selects the principles for a discipline and stage, and validates the canon.
+- `concept-forge` skill (model-invoked): concepts mined from the subject before style, forced divergence on named axes, one signature moment for each direction.
+- `originality-gate` skill (model-invoked) and `originality.py`: fingerprints a design and compares it with 11 generic archetypes and earlier work. Stacking rules make a generic skeleton with stock copy or the generic gradient derivative. Five human tests, and an `Originality:` verdict line in `design/reviews/`.
+- `originality-auditor` agent: argues the case that a design is derivative and names what it copies.
+- Captivation rubric in `design-critique`.
+- Hooks: `post_edit.py` scans each design-file edit; `stop_gate.py` holds the stop until an originality verdict exists or a dated override is recorded. Both act only in a project with a `design/` folder and fail open. See ADR 0006.
+- Kernel rule 17, "Original before done".
+
+Changed:
+- `art-director` reads `design/concepts/` and names a signature moment for each direction.
+- Moments: a build starts with `concept-forge`; "done" starts `design-critique` and `originality-gate`.
+
 ## 0.1.1 (2026-11-24)
 
 ### Added

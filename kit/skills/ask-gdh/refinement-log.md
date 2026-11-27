@@ -10,3 +10,4 @@ Format: `YYYY-MM-DD | observation | change | files`
 2026-11-23 | review: flows lived in two drifting copies and three extra H2 sections broke the skill shape | flows only in flows.md; routing table and flows as H3 under Procedure; GCH detail moved to the pre-flight | SKILL.md, references/preflight.md
 2026-11-23 | review: new-brand flow asked for a direction twice | mood-board chooses the direction once; logo-identity chooses a mark inside it; mark-only requests skip mood-board | references/flows.md
 2026-11-23 | review: the align gate used GATE for a precondition; lead-ins drifted | step 0 is a STOP; step 9 names ../<name>/SKILL.md; one Defaults lead-in; short description sentences; preflight accepts the ended-early status | SKILL.md, references/preflight.md
+2026-11-26 | GDH 0.2.0 adds concept-forge, originality-gate and design-principles | Routed them in the table; shortened three lines to stay in the word budget | SKILL.md

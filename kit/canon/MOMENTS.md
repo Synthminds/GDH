@@ -13,12 +13,13 @@ Start the skill before the work. Say so in one line.
 - `align` has closed in this session and the design work needs a plan, or the user asks what GDH can do. Start `ask-gdh`.
 - You are about to choose a look, a palette or a typeface and no confirmed brief exists, or the audience, job or brand changed. Start `align`.
 - A confirmed brief must change, or another skill needs to read or check the brief. Start `design-brief`.
-- You are about to build a full design and no direction is chosen. Start `mood-board`.
+- You are about to build a full design and no direction is chosen. Start `concept-forge`, `mood-board`.
 - You need an outside image, icon, font, component, model or template. Start `find-assets`.
-- You are about to tell the user a design is done. Start `design-critique`.
+- You are about to tell the user a design is done. Start `design-critique`, `originality-gate`.
 
 ## Offer
 
+- You start a direction, a build or a review and need the rules that apply. Offer `design-principles`.
 - You are about to tell the user a design is done. Offer `accessibility-gate`.
 - The user gives feedback on a design. Offer `refine-round`.
 - The user names a tool, connector or asset source that the catalog does not hold. Offer `add-design-tool`.

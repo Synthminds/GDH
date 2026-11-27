@@ -1,0 +1,15 @@
+{
+  "id": "negative-originality-gate-plagiarism",
+  "kind": "triggering",
+  "skill": "none",
+  "prompt": "Check whether any source file in our backend copies code from a GPL library, and list the license of each npm dependency in package.json.",
+  "expect": {
+    "skills_fired": [],
+    "skills_not_fired": [
+      "align",
+      "ask-gdh",
+      "design-critique",
+      "originality-gate"
+    ]
+  }
+}

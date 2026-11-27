@@ -37,7 +37,7 @@ Boundary. It takes nothing from a reference: no code, no asset, no wording, no d
 13. Write the sheet from [templates/teardown-sheet.md](templates/teardown-sheet.md) to `design/directions/references/<slug>/teardown.md`. Label each line VERIFIED, DOCUMENTED or UNTESTED.
 14. ASK: show three lessons at most for each reference, and the list of what stays with the reference. Record the answer in `design/decisions.md`.
 15. Hand the confirmed lessons to `mood-board`, `design-system` or the build skill.
-16. After the first full build, and again before delivery, run [references/originality-check.md](references/originality-check.md) against every reference. Write `design/reviews/<date>-originality.md`.
+16. After the first full build, and again before delivery, run [references/originality-check.md](references/originality-check.md) against every reference. Write `design/reviews/<date>-reference-check.md`.
 17. A result of `too close` goes to `refine-round` with the axis named. Report in the format under Output.
 
 The user's own product is a special case. Its code, assets and tokens belong to the user. Capture it freely. Mark a token set drawn from it as unreviewed until a person checks each value.
@@ -85,7 +85,7 @@ Files:
 
 - `design/directions/references/<slug>/teardown.md`, and `shots/` and `inventory.json` beside it.
 - One entry in `design/decisions.md` for the confirmed lessons.
-- `design/reviews/<date>-originality.md` after the check.
+- `design/reviews/<date>-reference-check.md` after the check.
 
 Closing report:
 

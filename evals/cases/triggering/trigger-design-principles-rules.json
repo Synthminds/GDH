@@ -1,0 +1,13 @@
+{
+  "id": "trigger-design-principles-rules",
+  "kind": "triggering",
+  "skill": "ask-gdh",
+  "routes_to": "design-principles",
+  "prompt": "Before we start the three homepage directions for our tea subscription site, which design rules from the books actually apply at this stage, and which of them are hard checks?",
+  "expect": {
+    "skills_fired": [
+      "align",
+      "ask-gdh"
+    ]
+  }
+}

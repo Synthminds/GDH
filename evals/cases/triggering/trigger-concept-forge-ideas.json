@@ -1,0 +1,12 @@
+{
+  "id": "trigger-concept-forge-ideas",
+  "kind": "triggering",
+  "skill": "concept-forge",
+  "prompt": "The brief for our beekeeping supply shop is confirmed in design/brief.md. Before anyone picks colors or fonts, I want real ideas that come from beekeeping itself, not another generic shop look.",
+  "expect": {
+    "skills_fired": [
+      "align",
+      "concept-forge"
+    ]
+  }
+}

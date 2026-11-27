@@ -595,9 +595,9 @@ class CheckTests(FixtureCase):
     def test_real_registry_is_valid(self):
         kit = gdh.load_kit(REPO)
         self.assertEqual(gdh.kit_problems(kit), [])
-        self.assertEqual(len(kit["skills"]), 26)
+        self.assertEqual(len(kit["skills"]), 29)
         model = sorted(n for n, e in kit["skills"].items() if e["invocation"] == "model")
-        self.assertEqual(model, ["align", "ask-gdh", "design-brief", "design-critique", "find-assets", "mood-board"])
+        self.assertEqual(model, ["align", "ask-gdh", "concept-forge", "design-brief", "design-critique", "find-assets", "mood-board", "originality-gate"])
         self.assertEqual(kit["moments"][0]["start"], ["align"])
         self.assertLessEqual(len(gdh.render_moments(kit)), kit["budgets"]["momentsChars"])
         for entry in kit["moments"]:
