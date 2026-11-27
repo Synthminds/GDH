@@ -257,6 +257,15 @@
       "install": "/plugin marketplace add pbakaus/impeccable",
       "source": "https://github.com/pbakaus/impeccable"
     },
+    "dashboard-design-skill": {
+      "name": "Dashboard Design (skill)",
+      "what": "dashboard playbooks, layouts, component patterns and a screenshot QA pass",
+      "install": [
+        "/plugin marketplace add abdiraimov-otabek/dashboard-design-skill",
+        "/plugin install dashboard-design@dashboard-design-skill"
+      ],
+      "source": "https://github.com/abdiraimov-otabek/dashboard-design-skill"
+    },
     "design-taste-frontend": {
       "name": "design-taste-frontend",
       "what": "layout and visual taste for a landing page or a company site",
