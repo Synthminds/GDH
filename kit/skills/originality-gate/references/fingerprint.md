@@ -56,7 +56,20 @@ Read the skeleton as a shape, not a label. Two pages with the same skeleton tell
 
 ## 3. How `compare` scores
 
-Each dimension scores 0 to 1. The total is the weighted mean of the dimensions that both sides can score. A dimension with no data on either side is `n/a` and drops out of the mean.
+Each dimension scores 0 to 1. The total is the weighted mean of the dimensions that hold evidence, with the weights re-normalised over them.
+
+Absence is not similarity. When neither side holds evidence for a dimension, the dimension is `n/a` and drops out of the mean. Two pages with no gradient, no shadow, no motion or no declared face do not score alike for that. When only one side holds the evidence, the dimension scores low, because one page uses what the other does not.
+
+| Dimension | `n/a` when |
+| --- | --- |
+| `skeleton` | Either side has no skeleton |
+| `palette` | Either side has no color |
+| `type` | Neither side declares a face |
+| `gradient`, `shadow`, `fontSizes` | Neither side has one |
+| `effects`, `motion` | Neither side has any glass, blob or glow; neither side has a transition or an animation. Only the flags present on a side count |
+| `radius` | Neither side sets a radius |
+| `copy` | Neither side has a marketing phrase |
+| `hueSpread` | Neither side has a chromatic color |
 
 | Dimension | Weight (Default) | Score |
 | --- | --- | --- |
@@ -86,16 +99,17 @@ The generic sections are the archetypes that make up templates: `sidebar-nav`, `
 - Containment: the run as a share of the shorter list of generic sections. A run shorter than three counts in proportion. Containment can raise the skeleton score, never lower it, so identical skeletons still score 1.0.
 - Run floor. Default: a run of three or more sets the skeleton score to at least 0.75, plus 0.08 for each further section, up to 1.0.
 
-The stacking rules make a pair derivative whatever the weighted average says. Each one needs a generic run of three or more. Default: the run length, the phrase count and the violet share are GDH starting values.
+The stacking rules make a pair derivative whatever the weighted average says. Each one needs a generic run of three or more. Default: the run lengths, the phrase count and the violet share are GDH starting values.
 
 | Rule | Also needs, on both sides |
 | --- | --- |
+| `STACK_SKELETON_RUN` | Nothing more: a shared generic run of five or more is a template on its own |
 | `STACK_SKELETON_COPY` | Two or more marketing phrases from the list |
 | `STACK_SKELETON_GRADIENT` | One or more gradients, and half or more of the chromatic mass in the violet band (hue bins 7 to 10, about 210 to 330 degrees) |
 
 `compare` reports `genericRun` and `stacking` for each pair. The rules read both sides the same way, so the result stays symmetric.
 
-## 5. Verdicts
+## 5. Script verdicts
 
 | Nearest similarity | Script verdict | Exit code |
 | --- | --- | --- |
@@ -103,10 +117,15 @@ The stacking rules make a pair derivative whatever the weighted average says. Ea
 | 0.60 or more (Default, `--watch`) | watch | 0 |
 | below 0.60 | original | 0 |
 | any score, with a stacking rule on any match | derivative | 1 |
+| no skeleton: the files hold no page structure | none | 0 |
+
+A `none` result gives no score, no nearest match and no findings. A CSS file alone, an SVG mark or an empty file gives `none`. It is not a pass. Fingerprint the page markup with its CSS, or a saved render.
+
+Exit 2 means a usage error, a file that cannot be read, a fingerprint or library file of the wrong shape, or an internal error. It never means derivative.
 
 When the nearest match by score is below the threshold and another match meets a stacking rule, `check` names that match as the nearest and reports its own similarity. The score is never raised to fit the verdict. The text output prints the generic run and the rules met.
 
-`check --json` prints `verdict`, `score`, `nearest` (with its per-dimension scores and drivers), `matches` (every reference, best first), `line` (the verdict line) and `findings`. A derivative verdict gives one finding of severity high with code `ORIG_DERIVATIVE`. Its message names any stacking rule. A watch verdict gives one of severity medium with code `ORIG_WATCH`. An original verdict gives an empty list.
+`check --json` prints `verdict`, `score`, `nearest` (with its per-dimension scores and drivers), `matches` (every reference, best first), `line` (the verdict line) and `findings`. A derivative verdict gives one finding of severity high with code `ORIG_DERIVATIVE`. Its message names any stacking rule. A watch verdict gives one of severity medium with code `ORIG_WATCH`. An original or none verdict gives an empty list.
 
 ## 6. Reading a result
 

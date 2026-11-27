@@ -20,7 +20,8 @@ html.parser. It renders nothing. A low score does not prove original work, and
 a high score is a lead for a reviewer, not a verdict on its own.
 
 Python 3.9+, standard library only. No network calls. Writes only the path given to -o.
-Exit codes: 0 pass, 1 derivative verdict, 2 usage error or no file read.
+Exit codes: 0 pass (original, watch, or none for a file with no page structure),
+1 derivative verdict, 2 usage error, bad input, no file read or an internal error.
 """
 
 import argparse
@@ -70,6 +71,8 @@ STACK_CLICHES = 2
 # The run plus a gradient on each side whose chromatic mass sits this much in the violet band is derivative.
 STACK_VIOLET_SHARE = 0.5
 VIOLET_BINS = (7, 8, 9, 10)
+# A shared run of generic sections this long is derivative on its own.
+STACK_RUN_ALONE = 5
 
 # ---------------------------------------------------------------------------
 # Vocabulary
@@ -309,10 +312,12 @@ class Node:
         return [c for c in self.children if isinstance(c, Node)]
 
     def walk(self):
-        for child in self.elements():
-            yield child
-            for sub in child.walk():
-                yield sub
+        """Yield every descendant element in document order. Iterative, so deep trees cannot overflow."""
+        stack = list(reversed(self.elements()))
+        while stack:
+            node = stack.pop()
+            yield node
+            stack.extend(reversed(node.elements()))
 
     def classes(self):
         raw = (self.attrs.get("class") or "") + " " + (self.attrs.get("classname") or "")
@@ -328,9 +333,11 @@ class Node:
 
     def all_text(self):
         parts = list(self.text)
-        for child in self.elements():
-            if child.tag not in SKIP_TAGS:
-                parts.append(child.all_text())
+        stack = list(reversed([c for c in self.elements() if c.tag not in SKIP_TAGS]))
+        while stack:
+            node = stack.pop()
+            parts.extend(node.text)
+            stack.extend(reversed([c for c in node.elements() if c.tag not in SKIP_TAGS]))
         return " ".join(p for p in parts if p)
 
     def count(self, *tags):
@@ -417,7 +424,15 @@ def has_content(node):
         or node.tag in ("img", "svg", "video", "picture", "canvas")
 
 
-def collect(node, ctx, out):
+MAX_DEPTH = 200
+
+
+def collect(node, ctx, out, depth=0):
+    """Split a node into blocks. Past MAX_DEPTH levels a node is taken whole, as one block."""
+    if depth > MAX_DEPTH:
+        if has_content(node):
+            out.append(node)
+        return
     buffer = []
 
     def flush():
@@ -438,12 +453,12 @@ def collect(node, ctx, out):
         if is_candidate(child):
             flush()
             if candidates_below(child, True) >= 2 and child.tag not in ("form",):
-                collect(child, ctx, out)
+                collect(child, ctx, out, depth + 1)
             else:
                 out.append(child)
         elif inner >= 1 or child.tag in ("main", "body", "html"):
             flush()
-            collect(child, ctx, out)
+            collect(child, ctx, out, depth + 1)
         elif has_content(child):
             buffer.append(child)
     flush()
@@ -972,7 +987,13 @@ def type_classes(families):
     return set(FAMILY_TO_CLASS.get(f, "own:" + f) for f in names)
 
 
+# Each sim_* function returns None when neither side holds evidence for the dimension.
+# compare() then drops the dimension and re-normalises the remaining weights, so two
+# fingerprints never look alike because both lack something.
+
 def sim_type(a, b):
+    if not a.get("typefaces") and not b.get("typefaces"):
+        return None
     fa = set(a.get("typefaces") or ["(default)"])
     fb = set(b.get("typefaces") or ["(default)"])
     exact = len(fa & fb) / float(len(fa | fb))
@@ -982,6 +1003,8 @@ def sim_type(a, b):
 
 
 def sim_palette(a, b):
+    if not a.get("palette") or not b.get("palette"):
+        return None
     ha, hb = a.get("hueHistogram") or [0] * 12, b.get("hueHistogram") or [0] * 12
     ca, cb = a.get("chromaShare") or 0.0, b.get("chromaShare") or 0.0
     if not any(ha) and not any(hb):
@@ -992,14 +1015,15 @@ def sim_palette(a, b):
         hue = sum(min(x, y) for x, y in zip(ha, hb))
     neutral = 1.0 - abs(ca - cb)
     ga, gb = a.get("ground", "unknown"), b.get("ground", "unknown")
-    ground = 1.0 if ga == gb else (0.5 if "unknown" in (ga, gb) else 0.0)
-    return 0.55 * hue + 0.2 * neutral + 0.25 * ground
+    if "unknown" in (ga, gb):
+        return (0.55 * hue + 0.2 * neutral) / 0.75
+    return 0.55 * hue + 0.2 * neutral + 0.25 * (1.0 if ga == gb else 0.0)
 
 
 def sim_hue_spread(a, b):
     sa, sb = a.get("hueSpread"), b.get("hueSpread")
     if sa is None and sb is None:
-        return 1.0
+        return None
     if sa is None or sb is None:
         return 0.0
     return 1.0 - min(abs(sa - sb), 180.0) / 180.0
@@ -1007,7 +1031,7 @@ def sim_hue_spread(a, b):
 
 def _presence(x, y):
     if not x and not y:
-        return 1.0
+        return None
     if not x or not y:
         return 0.0
     return 0.6 + 0.4 * min(x, y) / float(max(x, y))
@@ -1018,8 +1042,9 @@ def sim_gradient(a, b):
 
 
 def sim_effects(a, b):
-    keys = ("backdropBlur", "decorBlobs", "glowShadows")
-    return sum(_presence(a.get(k, 0), b.get(k, 0)) for k in keys) / len(keys)
+    values = [_presence(a.get(k, 0), b.get(k, 0)) for k in ("backdropBlur", "decorBlobs", "glowShadows")]
+    values = [v for v in values if v is not None]
+    return sum(values) / len(values) if values else None
 
 
 def radius_bucket(value):
@@ -1040,6 +1065,8 @@ BUCKET_ORDER = ["square", "small", "medium", "large", "pill"]
 
 
 def sim_radius(a, b):
+    if not a.get("radii") and not b.get("radii"):
+        return None
     da, db = radius_bucket(a.get("dominantRadius")), radius_bucket(b.get("dominantRadius"))
     if da == db:
         dominant = 1.0
@@ -1058,18 +1085,24 @@ def shadow_bucket(count):
 
 
 def sim_shadow(a, b):
+    if not a.get("shadowCount") and not b.get("shadowCount"):
+        return None
     return 1.0 - abs(shadow_bucket(a.get("shadowCount", 0)) - shadow_bucket(b.get("shadowCount", 0))) / 2.0
 
 
 def sim_motion(a, b):
     ma, mb = a.get("motion") or {}, b.get("motion") or {}
-    keys = ("transition", "animation")
+    keys = [k for k in ("transition", "animation") if ma.get(k) or mb.get(k)]
+    if not keys:
+        return None
     return sum(1.0 for k in keys if bool(ma.get(k)) == bool(mb.get(k))) / len(keys)
 
 
 def sim_font_sizes(a, b):
     x, y = a.get("fontSizeCount", 0), b.get("fontSizeCount", 0)
-    return 1.0 - abs(x - y) / float(max(x, y, 1))
+    if not x and not y:
+        return None
+    return 1.0 - abs(x - y) / float(max(x, y))
 
 
 def sim_copy(a, b):
@@ -1094,6 +1127,8 @@ def stacking(a, b):
     rules = []
     if run < STACK_RUN:
         return run, rules
+    if run >= STACK_RUN_ALONE:
+        rules.append("STACK_SKELETON_RUN")
     if len(a.get("copyCliches") or []) >= STACK_CLICHES and len(b.get("copyCliches") or []) >= STACK_CLICHES:
         rules.append("STACK_SKELETON_COPY")
     if violet_gradient(a) and violet_gradient(b):
@@ -1137,13 +1172,67 @@ def load_json(path):
         return json.load(handle)
 
 
+FP_LISTS = ("skeleton", "typefaces", "palette", "radii", "copyCliches")
+FP_NUMBERS = ("fontSizeCount", "chromaShare", "gradients", "backdropBlur", "decorBlobs",
+              "glowShadows", "shadowCount")
+FP_OPTIONAL_NUMBERS = ("hueSpread", "dominantHue", "dominantRadius")
+
+
+def _is_number(value):
+    return isinstance(value, (int, float)) and not isinstance(value, bool)
+
+
+def validate_fingerprint(fp, where):
+    """Raise ValueError when a fingerprint does not have the shape that compare() reads."""
+    if not isinstance(fp, dict):
+        raise ValueError("%s: a fingerprint must be a JSON object" % where)
+    if not isinstance(fp.get("skeleton"), list):
+        raise ValueError("%s: 'skeleton' must be a list" % where)
+    for key in FP_LISTS:
+        value = fp.get(key, [])
+        if not isinstance(value, list) or not all(isinstance(x, (str, int, float)) for x in value):
+            raise ValueError("%s: '%s' must be a list of strings or numbers" % (where, key))
+    for key in ("skeleton", "typefaces", "palette", "copyCliches"):
+        if not all(isinstance(x, str) for x in fp.get(key, [])):
+            raise ValueError("%s: '%s' must be a list of strings" % (where, key))
+    if not all(_is_number(x) for x in fp.get("radii", [])):
+        raise ValueError("%s: 'radii' must be a list of numbers" % where)
+    for key in FP_NUMBERS:
+        if key in fp and not _is_number(fp[key]):
+            raise ValueError("%s: '%s' must be a number" % (where, key))
+    for key in FP_OPTIONAL_NUMBERS:
+        if fp.get(key) is not None and not _is_number(fp[key]):
+            raise ValueError("%s: '%s' must be a number or null" % (where, key))
+    hist = fp.get("hueHistogram", [0] * 12)
+    if not isinstance(hist, list) or len(hist) != 12 or not all(_is_number(x) for x in hist):
+        raise ValueError("%s: 'hueHistogram' must be a list of 12 numbers" % where)
+    if not isinstance(fp.get("motion", {}), dict):
+        raise ValueError("%s: 'motion' must be an object" % where)
+    if not isinstance(fp.get("ground", "unknown"), str):
+        raise ValueError("%s: 'ground' must be a string" % where)
+    return fp
+
+
+def archetype_entries(doc, where, source):
+    items = doc.get("archetypes")
+    if not isinstance(items, list):
+        raise ValueError("%s: 'archetypes' must be a list" % where)
+    entries = []
+    for index, item in enumerate(items):
+        label = "%s archetype %d" % (where, index + 1)
+        if not isinstance(item, dict) or not isinstance(item.get("id"), str) or not item["id"]:
+            raise ValueError("%s: needs an 'id' string" % label)
+        validate_fingerprint(item.get("fingerprint"), "%s (%s)" % (label, item["id"]))
+        entries.append({"id": item["id"], "name": str(item.get("name", item["id"])), "source": source,
+                        "fingerprint": item["fingerprint"]})
+    return entries
+
+
 def load_library(path):
     doc = load_json(path)
-    entries = []
-    for item in doc.get("archetypes", []):
-        entries.append({"id": item["id"], "name": item.get("name", item["id"]), "source": "library",
-                        "fingerprint": item["fingerprint"]})
-    return doc, entries
+    if not isinstance(doc, dict):
+        raise ValueError("%s: the library must be a JSON object" % path)
+    return doc, archetype_entries(doc, path, "library")
 
 
 def load_reference(path):
@@ -1166,12 +1255,13 @@ def load_reference(path):
     if path.lower().endswith(".json"):
         doc = load_json(path)
         if isinstance(doc, dict) and "archetypes" in doc:
-            for item in doc["archetypes"]:
-                out.append({"id": item["id"], "name": item.get("name", item["id"]), "source": path,
-                            "fingerprint": item["fingerprint"]})
+            out.extend(archetype_entries(doc, path, path))
         elif isinstance(doc, dict) and "skeleton" in doc:
+            validate_fingerprint(doc, path)
             label = os.path.splitext(os.path.basename(path))[0]
             out.append({"id": label, "name": label, "source": path, "fingerprint": doc})
+        else:
+            raise ValueError("%s: neither a fingerprint nor a library file" % path)
         return out
     fp, _skipped = fingerprint([path])
     if fp["files"]:
@@ -1285,6 +1375,8 @@ def cmd_check(args):
     except (OSError, ValueError, KeyError) as error:
         print("originality.py: %s" % error, file=sys.stderr)
         return 2
+    if not fp["skeleton"]:
+        return report_none(args, fp, skipped, library_doc, references)
     matches = []
     for ref in references:
         result = compare(fp, ref["fingerprint"])
@@ -1331,6 +1423,30 @@ def cmd_check(args):
         print(line)
         print(NOTE)
     return 1 if verdict == "derivative" else 0
+
+
+NONE_LINE = "Originality: none (insufficient evidence: no page structure was read)"
+
+
+def report_none(args, fp, skipped, library_doc, references):
+    """A file with no section structure gives no verdict. Exit 0, no findings."""
+    if args.json:
+        print(json.dumps(OrderedDict([
+            ("verdict", "none"), ("score", None), ("nearest", None), ("findings", []),
+            ("threshold", args.threshold), ("watch", args.watch), ("line", NONE_LINE),
+            ("reason", "The files hold no page structure, so there is no skeleton to compare."),
+            ("library", OrderedDict([("version", library_doc.get("version")),
+                                     ("archetypes", len(library_doc.get("archetypes", [])))])),
+            ("matches", []), ("fingerprint", fp),
+            ("skipped", [{"path": p, "reason": r} for p, r in skipped]), ("note", NOTE)]), indent=2))
+    else:
+        print("originality check: %d file(s); no page structure read; %d reference(s) not compared"
+              % (len(fp["files"]), len(references)))
+        for path, reason in skipped:
+            print("skipped %s: %s" % (path, reason))
+        print(NONE_LINE)
+        print("Pass the HTML, JSX or TSX of the page with its CSS, or a saved render.")
+    return 0
 
 
 def cmd_list(args):
@@ -1391,7 +1507,11 @@ def main(argv=None):
         return 2
     handler = {"fingerprint": cmd_fingerprint, "compare": cmd_compare,
                "check": cmd_check, "list": cmd_list}[args.command]
-    return handler(args)
+    try:
+        return handler(args)
+    except Exception as error:  # an unexpected error must never look like a derivative verdict (exit 1)
+        print("originality.py: internal error: %s: %s" % (type(error).__name__, error), file=sys.stderr)
+        return 2
 
 
 if __name__ == "__main__":

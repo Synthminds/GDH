@@ -1,6 +1,6 @@
 # The human tests
 
-Read this file at step 8 of `originality-gate`. It holds the five tests that the script cannot run, the rule that turns their results and the script result into one verdict, and the review file template.
+Read this file at step 8 of `originality-gate`. It holds the five tests that the script cannot run (swap, squint, logo removal, first five seconds and signature moment), the rule that turns their results and the script result into one verdict, and the review file template.
 
 Each test needs the work in its running medium: a render, a screenshot, a printed proof or a played clip. Source reading does not pass a test. A test with no render is UNTESTED, and the review says why.
 
@@ -97,21 +97,24 @@ Why it works: one designed peak at the end of a key step shapes the memory of th
 
 ## 7. The verdict rule
 
-Combine the script and the tests in this order. The first rule that applies sets the verdict.
+The script is evidence, not the judge. The five human tests decide, and the script result sets how much they must prove. Combine them in this order. The first rule that applies sets the verdict.
 
 | Rule | Verdict |
 | --- | --- |
-| The script says derivative, and the drivers are not all `brand-required` | derivative |
-| Two or more human tests fail (Default: two) | derivative |
-| The swap test fails and the signature moment is missing | derivative |
+| The script says derivative, and any of the five human tests fails | derivative |
+| The script says derivative, and all five human tests pass | watch. Write why the script is wrong: the drivers it names and the evidence that they belong to this subject or are `brand-required` |
+| Two or more human tests fail (Default: two), at any script result | derivative |
+| The swap test fails and the signature moment is missing, at any script result | derivative |
 | The script says watch, or one human test fails | watch |
-| The script says derivative, and every driver is `brand-required` | watch, with the source of each requirement |
+| The script says none (no page structure read) and all five tests pass | original, labelled "tests only" |
 | Everything else | original |
 
 Notes:
 
-- The score in the verdict line is the script's nearest similarity, unchanged. The human tests change the verdict word, never the number.
+- The five tests are swap, squint, logo removal, first five seconds and signature moment. A test marked UNTESTED does not pass. With a derivative script result and an untested test, the verdict is derivative.
+- The score in the verdict line is the script's nearest similarity, unchanged. The human tests change the verdict word, never the number. With a script result of none, write `score n/a` and `nearest none`.
 - The nearest name in the verdict line is the archetype id or the file name of the nearest fingerprint.
+- The verdict line keeps its format: `Originality: original | watch | derivative (score 0.xx, nearest <archetype>)`. The script word none never appears in the review verdict line; the rule above turns it into one of the three words.
 - A watch verdict may ship when the user accepts it in writing. Log the acceptance in `design/decisions.md`.
 - A derivative verdict does not ship (kernel rule 17).
 

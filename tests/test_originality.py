@@ -77,6 +77,47 @@ CANONICAL = (
     '<div>Enterprise</div></section></body></html>')
 
 
+ROPE = """<!doctype html><html><head><style>
+body{font-family:"Tiempos Text",serif;background:#efe6d2;color:#2a1d12}
+h1,h2{font-family:"Druk Wide",sans-serif;text-transform:uppercase}
+h1{font-size:64px} h2{font-size:28px} p{font-size:18px} td{font-size:15px}
+.tar{color:#3b2a1a} .hemp{background:#c9b27c} .ledger td{border-bottom:1px solid #8a7350}
+</style></head><body>
+<header><nav><a href="/">Calder Rope Walk</a><a href="/orders">Orders</a></nav></header>
+<main>
+<section class="intro"><h1>Every rope here is walked 300 yards before it is coiled</h1>
+<p>We lay three strands by hand along the old rope walk by the river.</p></section>
+<section class="ledger"><h2>This week's lay</h2><table><tr><th>Line</th><th>Fibre</th><th>Length</th></tr>
+<tr><td>Mooring line</td><td>Manila</td><td>40 fathoms</td></tr></table></section>
+<section class="knots"><h2>Knots we splice to order</h2><div><article><h3>Eye splice</h3><p>For moorings.</p></article>
+<article><h3>Back splice</h3><p>For ends.</p></article><article><h3>Long splice</h3><p>For blocks.</p></article></div></section>
+<section><p>The rope walk is 300 yards long.</p><p>Each order carries the walker's name.</p><p>Offcuts go to the harbor.</p></section>
+</main>
+<footer><p>Calder Rope Walk, River Lane</p></footer>
+</body></html>"""
+
+EMERALD = """<!doctype html><html><head><style>
+body{font-family:Inter,sans-serif;background:#ffffff;color:#0f172a}
+.hero{text-align:center} h1{font-size:56px} h2{font-size:36px} h3{font-size:20px} p{font-size:16px}
+.card{border-radius:12px;box-shadow:0 10px 25px rgba(15,23,42,.08)}
+.cta-btn{background:linear-gradient(90deg,#10b981,#059669);border-radius:12px;transition:opacity .2s}
+</style></head><body>
+<nav class="navbar"><a>Ledgerly</a><a>Features</a><a>Pricing</a><a class="cta-btn">Sign up</a></nav>
+<section class="hero"><h1>Invoices for small agencies</h1><p>Send an invoice, see when it was opened.</p>
+<a class="cta-btn">Create an invoice</a></section>
+<section class="logos"><img><img><img><img><img></section>
+<section class="features"><h2>What it does</h2><div class="grid"><div class="card"><h3>Send</h3><p>Email or link.</p></div>
+<div class="card"><h3>Track</h3><p>Opened and paid.</p></div><div class="card"><h3>Remind</h3><p>Polite reminders.</p></div></div></section>
+<section class="testimonials"><h2>From agencies</h2><blockquote>We send them on Fridays.</blockquote>
+<blockquote>Clients pay sooner.</blockquote></section>
+<section class="pricing"><h2>Plans</h2><div class="card"><h3>Solo</h3><p>$0/mo</p></div>
+<div class="card"><h3>Studio</h3><p>$15/mo</p></div><div class="card"><h3>Agency</h3><p>$40/mo</p></div></section>
+<section class="faq"><h2>Questions</h2><details><summary>Card fees?</summary></details><details><summary>Currencies?</summary></details></section>
+<section class="cta"><h2>Send your first invoice</h2><a class="cta-btn">Create an invoice</a></section>
+<footer><ul><li>Product</li></ul><ul><li>Company</li></ul><ul><li>Legal</li></ul></footer>
+</body></html>"""
+
+
 def run(argv):
     out, err = io.StringIO(), io.StringIO()
     with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
@@ -253,6 +294,87 @@ class CheckTests(Case):
         ids = [item["id"] for item in json.loads(out)["archetypes"]]
         self.assertIn("ai-saas-landing", ids)
         self.assertIn("default-shadcn-admin", ids)
+
+
+class EvidenceTests(Case):
+    def test_absence_on_both_sides_is_dropped(self):
+        a, _ = originality.fingerprint([self.write("ferry.html", DISTINCT)])
+        b, _ = originality.fingerprint([self.write("rope.html", ROPE)])
+        dims = originality.compare(a, b)["dimensions"]
+        for name in ("gradient", "effects", "shadow", "motion", "copy", "radius"):
+            self.assertIsNone(dims[name], name)
+
+    def test_empty_file_gives_none(self):
+        code, out, _ = run(["check", self.write("empty.html", ""), "--json"])
+        self.assertEqual(code, 0)
+        report = json.loads(out)
+        self.assertEqual(report["verdict"], "none")
+        self.assertEqual(report["findings"], [])
+        self.assertIsNone(report["score"])
+        self.assertTrue(report["line"].startswith("Originality: none"))
+
+    def test_css_only_partial_gives_none(self):
+        code, out, _ = run(["check", self.write("partial.css", ".btn{padding:8px 12px}\n"), "--json"])
+        self.assertEqual(code, 0)
+        self.assertEqual(json.loads(out)["verdict"], "none")
+
+    def test_single_svg_mark_gives_none(self):
+        svg = '<svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="1" fill="#000"/></svg>'
+        code, out, _ = run(["check", self.write("dot.svg", svg), "--json"])
+        self.assertEqual(code, 0)
+        self.assertEqual(json.loads(out)["verdict"], "none")
+
+    def test_subject_led_page_without_gradient_is_not_derivative(self):
+        code, out, _ = run(["check", self.write("rope.html", ROPE), "--json"])
+        self.assertEqual(code, 0)
+        report = json.loads(out)
+        self.assertIn(report["verdict"], ("original", "watch"))
+        self.assertNotIn("gradient", report["nearest"]["drivers"])
+        self.assertIsNone(report["nearest"]["dimensions"]["gradient"])
+
+
+class RunRuleTests(Case):
+    def test_long_generic_run_is_derivative_without_stock_copy(self):
+        path = self.write("emerald.html", EMERALD)
+        fp, _ = originality.fingerprint([path])
+        self.assertEqual(fp["copyCliches"], [])
+        code, out, _ = run(["check", path, "--json", "--threshold", "0.99", "--watch", "0.98"])
+        self.assertEqual(code, 1)
+        report = json.loads(out)
+        self.assertEqual(report["verdict"], "derivative")
+        self.assertGreaterEqual(report["nearest"]["genericRun"], 5)
+        self.assertIn("STACK_SKELETON_RUN", report["nearest"]["stacking"])
+
+
+class RobustnessTests(Case):
+    def test_deep_nesting_does_not_crash(self):
+        html = "<body>" + "<div>" * 5000 + "<section><h1>Deep</h1><p>x</p></section>" + "</div>" * 5000 + "</body>"
+        code, out, err = run(["check", self.write("deep.html", html), "--json"])
+        self.assertIn(code, (0, 1))
+        self.assertEqual(err, "")
+        self.assertIn(json.loads(out)["verdict"], ("original", "watch", "derivative"))
+
+    def test_malformed_against_exits_two(self):
+        page = self.write("ferry.html", DISTINCT)
+        for name, text in (("bad1.json", '{"skeleton": "oops"}'),
+                           ("bad2.json", '{"archetypes": [{"id": "x", "fingerprint": {"skeleton": [], "hueHistogram": [1]}}]}'),
+                           ("bad3.json", "[1, 2]"), ("bad4.json", "{not json")):
+            code, _out, err = run(["check", page, "--against", self.write(name, text)])
+            self.assertEqual(code, 2, name)
+            self.assertTrue(err.startswith("originality.py:"), name)
+
+    def test_unexpected_error_exits_two(self):
+        original = originality.cmd_check
+
+        def boom(_args):
+            raise RuntimeError("simulated")
+        originality.cmd_check = boom
+        try:
+            code, _out, err = run(["check", self.write("ferry.html", DISTINCT)])
+        finally:
+            originality.cmd_check = original
+        self.assertEqual(code, 2)
+        self.assertIn("internal error", err)
 
 
 if __name__ == "__main__":

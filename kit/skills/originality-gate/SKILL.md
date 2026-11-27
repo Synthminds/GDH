@@ -1,6 +1,6 @@
 ---
 name: originality-gate
-description: "Tests whether a design is derivative before it is called done. Fingerprints the layout, type, color and motion, compares them with generic AI defaults and earlier directions, and runs the swap, squint and logo-removal tests. Use before delivery, or when work looks templated."
+description: "Tests whether a design is derivative before it is called done. Fingerprints the layout, type, color and motion, compares them with generic AI defaults and earlier directions, and runs five human tests: swap, squint, logo removal, first five seconds and signature moment. Use before delivery, or when work looks templated."
 ---
 
 # originality-gate
@@ -22,6 +22,7 @@ This skill decides whether a design belongs to its subject or copies a known pat
 2. Collect the comparison set: earlier directions in `design/directions/`, rejected options in `design/decisions.md`, and competitor pages the user named.
 3. Fingerprint each earlier direction and competitor once: `ORIG fingerprint <files> -o design/reviews/fingerprints/<name>.json`.
 4. Run the check: `ORIG check <files> --against design/reviews/fingerprints`. Drop `--against` when the folder is empty.
+   A `none` result means the files hold no page structure. Pass the page markup with its CSS, or a saved render, and run it again. With no markup at all, the human tests decide alone.
 5. Read the result with [references/fingerprint.md](references/fingerprint.md). Note the nearest match, the score and the dimensions that drive it.
 6. Mark each driving dimension that the design system requires as `brand-required`, with its source.
 7. Capture the render at the main breakpoint. With no render, ask the user for a screenshot and label the visual tests UNTESTED.
@@ -38,7 +39,7 @@ When the host supports subagents, give steps 5 to 9 to the `originality-auditor`
 
 Capabilities, in preference order: `critique`, `capture`. Vocabulary: [capabilities.json](../../catalogs/capabilities.json).
 
-- Fingerprint and check: [scripts/originality.py](scripts/originality.py). Standard library only, no network. It writes only the `-o` path. Exit 0: original or watch. Exit 1: derivative. Exit 2: a usage error or no file read; exit 2 is never a pass.
+- Fingerprint and check: [scripts/originality.py](scripts/originality.py). Standard library only, no network. It writes only the `-o` path. Exit 0: original, watch, or none (no page structure read). Exit 1: derivative. Exit 2: a usage error, bad input, no file read or an internal error; exit 2 is never a pass.
 - Generic library: [references/generic-fingerprints.json](references/generic-fingerprints.json). `ORIG list` prints its archetypes.
 - Render capture for the squint and five-second tests: any tool of the `capture` capability. Example card: [headless-browser](../../references/tools/headless-browser.md).
 - A second opinion on generic looks, offered and never started for the user: [impeccable](../../references/tools/impeccable.md).
@@ -54,17 +55,17 @@ Gates:
 - A design is not done with a derivative verdict (kernel rule 17).
 - The review file holds the verdict line in the exact format under Output.
 - Each of the five human tests has a written result and its evidence, or is marked UNTESTED with the reason.
-- The script ran with exit 0 or 1 on at least one file. An exit 2 run is no result.
+- The script ran with exit 0 or 1 on the page markup. An exit 2 run is no result, and a `none` result is no script evidence.
 - Every `brand-required` driver names its source in the user's words or in `DESIGN.md`.
 
 Defaults. The user, the design system or the brief can replace each one.
 
 - Default: `--threshold 0.75` makes a derivative script verdict; `--watch 0.60` makes a watch verdict.
 - Default: the dimension weights in [references/fingerprint.md](references/fingerprint.md), section 3.
-- Default: the stacking rules in [references/fingerprint.md](references/fingerprint.md), section 4. A shared run of three generic sections plus template copy or a violet gradient is derivative at any score.
+- Default: the stacking rules in [references/fingerprint.md](references/fingerprint.md), section 4. A shared run of five generic sections, or of three plus template copy or a violet gradient, is a derivative script result at any score.
 - Default: the library is reviewed with the tell list, every 90 days. Its version is the date in the file.
 
-The script reads source text and renders nothing. A low score does not prove an original design. The human tests decide.
+The script reads source text and renders nothing. A low score does not prove an original design, and a high score does not prove a copy. The human tests decide, by the rule in [references/human-tests.md](references/human-tests.md), section 7.
 
 ## Output
 
