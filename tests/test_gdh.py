@@ -180,6 +180,29 @@ GH_TOKEN = 'token = "' + "gh" + 'p_abcdefghijklmnopqrstuvwxyz0123456789"'
 DS_SCRIPT = os.path.join(REPO, "kit", "skills", "design-system", "scripts", "ds.py")
 
 
+LOCAL_CLIS_SCRIPT = os.path.join(REPO, "kit", "skills", "ask-gdh", "scripts", "local_clis.py")
+
+
+def local_cli_catalog(commit="0123456789abcdef0123456789abcdef01234567", network="none", exposes=False):
+    """A one-entry local-clis.json that fits the fixture vocabulary."""
+    return {"version": 1, "note": "Fixture.",
+            "upstream": {"repo": "https://github.com/example/harnesses", "commit": commit,
+                         "license": "Apache-2.0", "readAt": "2026-11-27"},
+            "clis": [{"id": "painter", "name": "Painter", "capabilities": ["image-gen"], "disciplines": ["color"],
+                      "harness": "cli-anything-painter", "installPath": "painter/agent-harness",
+                      "backend": [["painter"]], "backendNote": "Painter on PATH.", "network": network,
+                      "exposes": exposes, "spendsCredits": False,
+                      "upstreamSkill": "skills/cli-anything-painter/SKILL.md", "evidence": "DOCUMENTED",
+                      "evidenceNote": "Fixture."}]}
+
+
+def install_local_clis(root, catalog):
+    target = os.path.join(root, "kit", "skills", "ask-gdh", "scripts", "local_clis.py")
+    os.makedirs(os.path.dirname(target), exist_ok=True)
+    shutil.copy(LOCAL_CLIS_SCRIPT, target)
+    write_json(root, "kit/catalogs/local-clis.json", catalog)
+
+
 def scaffold_pack(root):
     """Give the fixture the real design-system script and a pack that still holds the init colors."""
     target = os.path.join(root, "kit", "skills", "design-system", "scripts", "ds.py")
@@ -233,6 +256,7 @@ MUTATIONS = {
         r, "kit/catalogs/capabilities.json", lambda d: d["disciplines"]["color"].update(skill="ghost")),
     "GDH_TOOL_FIELD": alpha("spendsCredits", "yes"),
     "GDH_TOOL_ENUM": alpha("kind", "saas"),
+    "GDH_LOCAL_CLI": lambda r: install_local_clis(r, local_cli_catalog(commit="main")),
     "GDH_TOOL_ID": alpha("id", "other"),
     "GDH_TOOL_CAPABILITY": alpha("capabilities", ["teleport"]),
     "GDH_TOOL_DISCIPLINE": alpha("disciplines", ["alchemy"]),
@@ -288,6 +312,17 @@ class CheckTests(FixtureCase):
         code, out = run("check", "--root", root)
         self.assertEqual(code, 0)
         self.assertIn("0 finding(s)", out)
+
+    def test_local_cli_catalog_is_checked(self):
+        root = self.fresh()
+        install_local_clis(root, local_cli_catalog())
+        self.assertNotIn("GDH_LOCAL_CLI", codes(root))
+        install_local_clis(root, local_cli_catalog(network="internet", exposes=False))
+        self.assertIn("GDH_LOCAL_CLI", codes(root))
+        bad = local_cli_catalog()
+        bad["clis"][0]["capabilities"] = ["teleport"]
+        install_local_clis(root, bad)
+        self.assertIn("GDH_LOCAL_CLI", codes(root))
 
     def test_every_code_has_a_mutation(self):
         self.assertEqual(set(MUTATIONS), set(gdh.CODES))

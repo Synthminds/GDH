@@ -75,6 +75,7 @@ Each tool card in `kit/references/tools/` names its own source page and says wha
 | Boards and diagrams | tldraw, Excalidraw, Mermaid Chart, Felt | Guides read |
 | The owner's asset library and reverse-engineering server | DAM, REA | Repository documents read; servers not connected |
 | Claude artifact types and design sync | Design, Design System, Slides, Data, Whiteboard, DesignSync | Rule files read; nothing created |
+| Local creative programs | CLI-Anything harnesses (HKUDS, Apache-2.0): Inkscape, GIMP, Krita, Blender, FreeCAD, 3MF, draw.io, Mermaid, MLT, Openscreen, LibreOffice, ComfyUI, QGIS, SoX, OBS | Source, security policy and registry read at a pinned commit; PyPI metadata read; nothing installed or run |
 
 ## Asset sources
 

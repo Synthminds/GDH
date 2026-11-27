@@ -1,6 +1,6 @@
-# Other changes: assets, capabilities, brand packs, retiring, review
+# Other changes: assets, capabilities, brand packs, retiring, review, local programs
 
-Read this file when the change is not a new tool: a new asset source, a new capability word, a new brand pack, retiring a tool, re-verifying stale entries, or the quarterly doctor review.
+Read this file when the change is not a new tool: a new asset source, a new capability word, a new brand pack, retiring a tool, re-verifying stale entries, the quarterly doctor review, or a new local program.
 
 Evidence. The schemas and commands were read and run on 2026-11-23: VERIFIED for the commands. The review interval and the license-before-use rule come from the kit principles and the DesignOps Handbook, chapters 4 and 5: DOCUMENTED as method. The quarterly interval is a default.
 
@@ -118,7 +118,23 @@ Also, by hand:
 
 Write the result as a dated entry in `CHANGELOG.md` under "Unreleased": what was re-verified, raised, lowered, retired and left open.
 
-## 7. Failure patterns
+## 7. A local program
+
+A local program is creative software on the user's machine that an agent drives through a CLI-Anything harness. It goes into `kit/catalogs/local-clis.json`, not into the tool catalog. The umbrella entry `cli-anything` and its card already cover the family.
+
+1. Find the harness in the upstream repository at the pinned commit in `local-clis.json`. Read its folder, its `setup.py` and its skill file. Read its backend calls for `shell=True`, for network calls and for script text built from input.
+2. Stop when the harness calls a paid API, needs an account, or builds shell or script text from raw input. A harness that sends work to a web service is added only with `network: internet` and `exposes: true`.
+3. To move the pin, read the upstream changes since the old commit for every harness in the list. A new pin covers all entries at once.
+4. ASK: show the harness, its backend program, its network use and the pinned install line. "Add it?"
+5. Add one object to `clis`. Map it to capability words that exist. A program that needs a new word goes through section 2 first.
+6. Add each new capability to the `capabilities` list of `kit/catalogs/tools/cli-anything.json`, and a row to the Key tools table of its card.
+7. Run `python3 kit/skills/ask-gdh/scripts/local_clis.py validate`, then `build`, `check`, the tests and `doctor`. `check` reports `GDH_LOCAL_CLI` for a schema break.
+8. Keep the label DOCUMENTED until a harness ran against its real backend. Write what ran into the entry's `evidenceNote`.
+9. Log it. A new harness is a patch change; a new capability word is a minor one.
+
+Never install a harness to test it without the user's yes. Never pin a branch, a tag or a PyPI build.
+
+## 8. Failure patterns
 
 | Pattern | Sign | Counter-move |
 | --- | --- | --- |

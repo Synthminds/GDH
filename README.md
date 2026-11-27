@@ -119,7 +119,7 @@ The kit holds 29 skills. Eight are model-invoked: the agent starts them from the
 | `originality-gate` | model | critique | Tests whether a design is derivative before it is called done. |
 [//]: # (gdh-catalog:end)
 
-The kit also ships five subagents: `art-director` writes direction files; `design-critic`, `a11y-auditor` and `originality-auditor` are read-only reviewers; `asset-scout` searches and reads licenses. It ships a catalog of design tools with one card for each, and a catalog of free asset sources with license notes.
+The kit also ships five subagents: `art-director` writes direction files; `design-critic`, `a11y-auditor` and `originality-auditor` are read-only reviewers; `asset-scout` searches and reads licenses. It ships a catalog of design tools with one card for each, a catalog of local creative programs (Inkscape, GIMP, Blender, FreeCAD and others) that agents drive through pinned CLI-Anything harnesses, and a catalog of free asset sources with license notes.
 
 ## How GDH evolves
 

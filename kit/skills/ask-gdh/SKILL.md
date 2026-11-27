@@ -5,7 +5,7 @@ description: Routes a design-led request in the Global Design Harness once align
 
 # ask-gdh
 
-This skill is the router. It classifies a design request, runs the pre-flight, states a plan and starts the first skill. It designs nothing; the discipline skills do.
+This skill is the router: it classifies a design request, runs the pre-flight, plans and starts the first skill. It designs nothing.
 
 ## Before you start
 
@@ -78,12 +78,13 @@ GCH governs code work; its `ux-laws` numbers hold for screens. Pre-flight sectio
 
 ## Tools
 
-This skill uses no capability itself. It reports which capabilities this session can serve.
+It reports which capabilities this session can serve.
 
 - Vocabulary and discipline map: [capabilities.json](../../catalogs/capabilities.json).
 - Tool entries: `kit/catalogs/tools/<id>.json`. Tool cards: `kit/references/tools/<id>.md`.
 - A hosted design system counts as a design system. Example card: [claude-design-system](../../references/tools/claude-design-system.md).
 - A brand library can hold a brand pack. Example card: [dam](../../references/tools/dam.md).
+- Local programs: [scripts/local_clis.py](scripts/local_clis.py) `probe` lists CLI-Anything harnesses on PATH. Card: [cli-anything](../../references/tools/cli-anything.md).
 - When a tool is absent, name its catalog `fallback` in the plan.
 
 ## Checks
