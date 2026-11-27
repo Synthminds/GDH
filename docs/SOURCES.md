@@ -79,7 +79,7 @@ Each tool card in `kit/references/tools/` names its own source page and says wha
 
 ## Asset sources
 
-`kit/catalogs/assets.json` lists 174 free asset sources. For 108 of them the license page was read on 2026-11-23. For 66 it was not, and `verifiedOn` is `null`. The catalog records each license in the source's own words in short form; `find-assets` reads the license page again before any use.
+`kit/catalogs/assets.json` lists 186 free asset sources. For 108 of them the license page was read on 2026-11-23, and for the 12 print-model sources on 2026-11-27. For 66 it was not, and `verifiedOn` is `null`. The catalog records each license in the source's own words in short form; `find-assets` reads the license page again before any use.
 
 ## The coding harness
 

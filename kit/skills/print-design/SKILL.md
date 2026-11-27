@@ -24,7 +24,7 @@ Terms. A functional part must fit, hold or move. A decorative part must look rig
 ## Procedure
 
 1. Classify the part: functional, decorative or both. Name the load, the fits and the faces that show.
-2. Choose the modeling route. Read [references/modeling-routes.md](references/modeling-routes.md).
+2. Search first when the part is common: a hook, a clip, a box, a planter. Read [references/find-a-model.md](references/find-a-model.md). Follow each site's access rule. Then choose the modeling route. Read [references/modeling-routes.md](references/modeling-routes.md).
    - Functional: a parametric script. Dimensions stay editable.
    - Decorative: a generated or sculpted form, repaired before use.
    - Both: a generated form joined with parametric mounts, holes and fits.
@@ -49,6 +49,7 @@ Capabilities, in preference order: `fabricate`, `3d-gen`, `asset-library`, `3d-s
 - `asset-library`: a licensed model to adapt, through `find-assets`.
 - `3d-scene` and `capture`: a render for review.
 - Mesh check, no install: [scripts/print_check.py](scripts/print_check.py). Printer profiles: [references/printers.json](references/printers.json).
+- Model search plan, no network: [scripts/model_search.py](scripts/model_search.py), with [references/model-sites.json](references/model-sites.json).
 
 Pick the tool by kernel rule 8. Read its card before the first call. Read prices and quotas live.
 
@@ -60,7 +61,7 @@ Gates. Each one blocks delivery.
 2. The mesh check reports no BLOCK finding on the delivered file.
 3. The part fits the printer's build volume with the margin, or it is split with joints.
 4. Every fit and hole has a stated clearance from the design rules or from a coupon.
-5. No generation or upload ran without a quote and a yes.
+5. No generation or upload ran without a quote and a yes. No links-only model site was fetched or scraped.
 6. No print started, and no job reached a printer, without the user.
 7. A model from outside has a license read and a manifest record. A generated model has origin `generated` and the tool's terms recorded.
 
@@ -93,6 +94,7 @@ Next: the user prints the coupon | refine-round | originality-gate
 
 ## References
 
+- [references/find-a-model.md](references/find-a-model.md) and [references/model-sites.json](references/model-sites.json): searching model sites under their access rules. Step 2.
 - [references/modeling-routes.md](references/modeling-routes.md): parametric, generated and hybrid routes, with tools. Step 2.
 - [references/design-for-print.md](references/design-for-print.md): walls, overhangs, bridges, fits, holes, orientation, splitting, materials. Step 3.
 - [references/printers.json](references/printers.json) and [references/print-profile.md](references/print-profile.md): printer data and the project profile template. Before you start.

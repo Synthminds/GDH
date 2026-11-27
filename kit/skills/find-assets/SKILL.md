@@ -113,7 +113,7 @@ Evidence: VERIFIED <license text read today> | DOCUMENTED <catalog date> | UNTES
 - [references/license-decision.md](references/license-decision.md): use profiles, the nine questions, verdicts, known limits. Read at step 9.
 - [references/vet-a-source.md](references/vet-a-source.md): web search and the five checks for an unknown source. Read at step 7.
 - [references/fetch-and-record.md](references/fetch-and-record.md): fetch routes, the manifest, check codes, credits. Read at step 13.
-- Group files, read at step 6: [components](references/group-components.md), [icons](references/group-icons.md), [fonts](references/group-fonts.md), [illustration](references/group-illustration.md), [photo and video](references/group-photo-video.md), [3D](references/group-3d.md), [motion](references/group-motion.md), [dataviz](references/group-dataviz.md), [color and type tools](references/group-color-type-tools.md), [inspiration galleries](references/group-inspiration.md), [logo aids](references/group-logo-aids.md).
+- Group files, read at step 6: [components](references/group-components.md), [icons](references/group-icons.md), [fonts](references/group-fonts.md), [illustration](references/group-illustration.md), [photo and video](references/group-photo-video.md), [3D](references/group-3d.md), [print models](references/group-print-models.md), [motion](references/group-motion.md), [dataviz](references/group-dataviz.md), [color and type tools](references/group-color-type-tools.md), [inspiration galleries](references/group-inspiration.md), [logo aids](references/group-logo-aids.md).
 - [scripts/assets.py](scripts/assets.py): the tool. Run it; do not copy its logic into prose.
 
 ## Sources

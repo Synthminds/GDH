@@ -120,7 +120,7 @@ class RealCatalogTests(unittest.TestCase):
     def test_loads_without_problems(self):
         sources, problems = assets.load_catalog(CATALOG)
         self.assertEqual(problems, [])
-        self.assertEqual(len(sources), 174)
+        self.assertEqual(len(sources), 186)
 
     def test_shape_and_field_set(self):
         self.assertEqual(self.doc["version"], 1)
@@ -140,7 +140,7 @@ class RealCatalogTests(unittest.TestCase):
     def test_groups_match_the_declared_list(self):
         declared = set(self.doc["groups"])
         self.assertEqual({entry["group"] for entry in self.sources}, declared)
-        self.assertEqual(len(declared), 11)
+        self.assertEqual(len(declared), 12)
 
     def test_enums(self):
         for entry in self.sources:
@@ -175,7 +175,7 @@ class RealCatalogTests(unittest.TestCase):
     def test_main_groups_have_a_ready_entry(self):
         code, doc = run_json(["search", CATALOG, "--limit", "0", "--today", "2026-11-23"])
         self.assertEqual(code, 0)
-        self.assertEqual(doc["count"], 174)
+        self.assertEqual(doc["count"], 186)
         ready = {r["group"] for r in doc["results"] if r["status"] == "catalog-verified"}
         self.assertNotIn("inspiration", ready)
         for group in ("components", "icons", "fonts", "3d", "motion", "dataviz", "color-type-tools", "logo-aids"):
