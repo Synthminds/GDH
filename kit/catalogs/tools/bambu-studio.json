@@ -12,7 +12,7 @@
   "readOnly": false,
   "toolPrefix": "bambu-studio",
   "firstCall": "bambu-studio --help, to confirm the installed version and its flags",
-  "fallback": "none",
+  "fallback": "orca-slicer",
   "card": "references/tools/bambu-studio.md",
   "source": "https://github.com/bambulab/BambuStudio/wiki/Command-Line-Usage",
   "verifiedAt": "2026-11-27",

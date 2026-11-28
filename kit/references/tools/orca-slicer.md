@@ -66,7 +66,8 @@ orca-slicer --arrange 1 \
 
 ## Best for
 
-- One slicer for both a Bambu and a Flashforge printer.
+- The default slicer for the Flashforge Adventurer 5M and 5M Pro.
+- The fallback for Bambu printers when Bambu Studio is absent.
 - Repeatable job files from the command line.
 
 ## Wrong for

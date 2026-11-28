@@ -8,8 +8,10 @@ Evidence. The command flags come from each slicer's own documentation, read on 2
 
 | Printer | First choice | Second choice | Job file |
 | --- | --- | --- | --- |
-| Bambu Lab P2S | Bambu Studio 2.3.0 or later | OrcaSlicer | `.gcode.3mf` |
-| Flashforge Adventurer 5M, 5M Pro | OrcaSlicer, or the maker's Orca-Flashforge fork | FlashPrint 5 (no command line found) | `.gcode` |
+| Bambu Lab P2S | Bambu Studio 2.3.0 or later, the maker's own slicer | OrcaSlicer | `.gcode.3mf` |
+| Flashforge Adventurer 5M, 5M Pro | OrcaSlicer | The maker's Orca-Flashforge fork, then FlashPrint 5 (no command line found) | `.gcode` |
+
+These are the defaults. A slicer named in `design/print-profile.md` replaces them.
 
 Cards: [bambu-studio](../../../references/tools/bambu-studio.md), [orca-slicer](../../../references/tools/orca-slicer.md). Both are AGPL-3.0 desktop programs. Install nothing without the user's yes.
 

@@ -12,7 +12,7 @@
   "readOnly": false,
   "toolPrefix": "orca-slicer",
   "firstCall": "orca-slicer --help, to confirm the installed version and its flags",
-  "fallback": "bambu-studio",
+  "fallback": "none",
   "card": "references/tools/orca-slicer.md",
   "source": "https://www.orcaslicer.com/wiki/cli/cli_mode",
   "verifiedAt": "2026-11-27",

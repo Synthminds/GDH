@@ -66,7 +66,8 @@ bambu-studio --orient --arrange 1 \
 
 ## Best for
 
-- Bambu printers, multi-color jobs with the material system, and jobs the user will open in the same app.
+- The default slicer for Bambu printers: the maker's own, with its newest printer and firmware support first.
+- Multi-color jobs with the material system, and jobs the user will open in the same app.
 
 ## Wrong for
 
