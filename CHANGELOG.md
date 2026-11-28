@@ -14,6 +14,7 @@ Added:
 - Tool entries and cards: `orca-slicer`, `bambu-studio`, `meshy` (generation and print tools; spends; output license depends on the plan).
 - The FreeCAD and 3MF harnesses now serve `fabricate`.
 - Model search for printable models. Asset group `print-models` with 12 sources and their license and terms notes: Thingiverse, Printables, MakerWorld, Cults3D, MyMiniFactory, Thangs, Yeggi, NIH 3D, Smithsonian 3D, NASA 3D Resources, GrabCAD and McMaster-Carr CAD (reference only). `model_search.py` plans a search: for each site, the search link and the access rule. `api` sites are queried with the user's key, `fetch` sites may be read, and `links-only` sites, whose terms forbid automated access, get a link the user opens. `print-design` searches before it models a common part.
+- Model finds with images, download and modification. `model_results.py` maps saved API responses from Thingiverse, Sketchfab and the Smithsonian, plus hand-built records from fetch sites, to one record shape. It reads each license into plain terms (sell prints, remix, credit) and writes an image gallery: a card per model with a thumbnail, licence chips for the user's intended use and links, plus browse buttons for links-only sites. `model-apis.md` gives the calls, the key handling and the download steps. `find-a-model.md` adds the gallery step and a table of common modifications, gated on the license.
 
 Not added: the laser and embroidery harnesses. They come from separate publishers outside the pinned upstream and need their own vetting.
 

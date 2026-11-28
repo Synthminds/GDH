@@ -49,7 +49,7 @@ Capabilities, in preference order: `fabricate`, `3d-gen`, `asset-library`, `3d-s
 - `asset-library`: a licensed model to adapt, through `find-assets`.
 - `3d-scene` and `capture`: a render for review.
 - Mesh check, no install: [scripts/print_check.py](scripts/print_check.py). Printer profiles: [references/printers.json](references/printers.json).
-- Model search plan, no network: [scripts/model_search.py](scripts/model_search.py), with [references/model-sites.json](references/model-sites.json).
+- Model search plan, no network: [scripts/model_search.py](scripts/model_search.py), with [references/model-sites.json](references/model-sites.json). Results and the image gallery: [scripts/model_results.py](scripts/model_results.py), with the API calls in [references/model-apis.md](references/model-apis.md).
 
 Pick the tool by kernel rule 8. Read its card before the first call. Read prices and quotas live.
 
