@@ -42,7 +42,7 @@ Boundary. It does not use the tool for design work; the discipline skill does. O
 18. Log the change in the owning skill's `refinement-log.md` and in `CHANGELOG.md`.
 19. Write the closing report. Tell the user how the change reaches installs: after the owner merges and pushes, users update the marketplace and run `/reload-plugins`.
 
-Other changes: an asset source, a capability word, a brand pack, retiring a tool, stale entries, the quarterly review. Read [references/other-changes.md](references/other-changes.md). A full run on a fictional tool: [references/worked-example.md](references/worked-example.md).
+Other changes: an asset source, a capability word, a brand pack, retiring a tool, stale entries, the quarterly review, a local program. Read [references/other-changes.md](references/other-changes.md). A full run on a fictional tool: [references/worked-example.md](references/worked-example.md).
 
 ## Tools
 

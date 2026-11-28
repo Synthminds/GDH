@@ -103,6 +103,7 @@ What `build` writes from it: both plugin manifests, both marketplace files, [kit
 | `GDH_TOOL_FALLBACK` | A tool fallback is neither an existing tool id nor 'none'. |
 | `GDH_TOOL_CARD` | A tool card path is wrong or the card file is absent. |
 | `GDH_TOOL_DATE` | A tool verifiedAt value is not an ISO date. |
+| `GDH_LOCAL_CLI` | local-clis.json breaks its schema: a pin, a path, a capability or an exposure flag. |
 | `GDH_TOOL_SOURCE` | A tool source is neither an https URL nor 'none'. |
 | `GDH_ASSETS_FIELD` | assets.json is malformed or a source lacks a required field. |
 | `GDH_ASSETS_DUPLICATE_ID` | Two asset sources share one id. |
@@ -143,6 +144,7 @@ Rules of use:
 | [capabilities.json](../kit/catalogs/capabilities.json) | The fixed capability words. For each discipline: the owning skill and the capabilities it may use, in preference order. | A new word needs the owner's yes. |
 | `kit/catalogs/tools/<id>.json` | One tool: kind, capabilities, install, auth, `spendsCredits`, `exposes`, `readOnly`, `toolPrefix`, `firstCall`, `fallback`, card, source, `verifiedAt`, `evidence`, `evidenceNote`. | `id` equals the file name. Every capability is in the vocabulary. |
 | `kit/references/tools/<id>.md` | The card: twelve headings from "What it makes" to "Evidence". | Own words. No price that goes stale. |
+| [local-clis.json](../kit/catalogs/local-clis.json) | Local creative programs an agent drives through CLI-Anything harnesses: harness command, install path, backend binaries, network use, capabilities. One upstream commit pins them all. | The pin is a full commit SHA. A harness that uses the internet sets `exposes`. `ask-gdh` probes it in pre-flight; nothing installs without a yes. See [ADR 0007](adr/0007-local-programs-through-pinned-cli-harnesses.md). |
 | [assets.json](../kit/catalogs/assets.json) | Free asset sources: group, what it holds, license, attribution, commercial use, fetch route, risk, `verifiedOn`. | `verifiedOn: null` means the license page was not read. `find-assets` reads it before any use. |
 
 How a skill uses them: it names a capability; the agent lists the tools that hold it, confirms one is present in the session by its `toolPrefix`, reads the card, calls the `firstCall`, and falls back by the `fallback` id when the tool is absent. A skill body names a tool only as an example.

@@ -75,10 +75,11 @@ Each tool card in `kit/references/tools/` names its own source page and says wha
 | Boards and diagrams | tldraw, Excalidraw, Mermaid Chart, Felt | Guides read |
 | The owner's asset library and reverse-engineering server | DAM, REA | Repository documents read; servers not connected |
 | Claude artifact types and design sync | Design, Design System, Slides, Data, Whiteboard, DesignSync | Rule files read; nothing created |
+| Local creative programs | CLI-Anything harnesses (HKUDS, Apache-2.0): Inkscape, GIMP, Krita, Blender, FreeCAD, 3MF, draw.io, Mermaid, MLT, Openscreen, LibreOffice, ComfyUI, QGIS, SoX, OBS | Source, security policy and registry read at a pinned commit; PyPI metadata read; nothing installed or run |
 
 ## Asset sources
 
-`kit/catalogs/assets.json` lists 174 free asset sources. For 108 of them the license page was read on 2026-11-23. For 66 it was not, and `verifiedOn` is `null`. The catalog records each license in the source's own words in short form; `find-assets` reads the license page again before any use.
+`kit/catalogs/assets.json` lists 186 free asset sources. For 108 of them the license page was read on 2026-11-23, and for the 12 print-model sources on 2026-11-27. For 66 it was not, and `verifiedOn` is `null`. The catalog records each license in the source's own words in short form; `find-assets` reads the license page again before any use.
 
 ## The coding harness
 

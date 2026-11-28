@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "note": "How the agent may reach each print-model source, and the search link for a query. License facts live in kit/catalogs/assets.json under the same id. access: api (the official API with the user's key), fetch (the agent may fetch the search page), links-only (the agent builds the link; the user opens it). linkChecked: the link pattern was opened live on readAt; false means a likely pattern that may need a fix.",
+  "readAt": "2026-11-27",
+  "sites": [
+    {"id": "thingiverse", "access": "api", "searchUrl": "https://www.thingiverse.com/search?q={q}&type=things&sort=relevant", "linkChecked": true},
+    {"id": "printables", "access": "links-only", "searchUrl": "https://www.printables.com/search/models?q={q}", "linkChecked": true},
+    {"id": "sketchfab", "access": "api", "searchUrl": "https://sketchfab.com/search?q={q}&type=models&features=downloadable", "linkChecked": false},
+    {"id": "makerworld", "access": "links-only", "searchUrl": "https://makerworld.com/en/search/models?keyword={q}", "linkChecked": true},
+    {"id": "cults3d", "access": "links-only", "searchUrl": "https://cults3d.com/en/search?q={q}", "linkChecked": false},
+    {"id": "myminifactory", "access": "links-only", "searchUrl": "https://www.myminifactory.com/search/?query={q}", "linkChecked": true},
+    {"id": "thangs", "access": "links-only", "searchUrl": "https://thangs.com/search/{q}?scope=all", "linkChecked": true},
+    {"id": "yeggi", "access": "fetch", "searchUrl": "https://www.yeggi.com/q/{q}/?s=f", "linkChecked": true},
+    {"id": "nih-3d", "access": "fetch", "searchUrl": "https://3d.nih.gov/discover?q={q}", "linkChecked": false},
+    {"id": "smithsonian-3d", "access": "api", "searchUrl": "https://3d.si.edu/search/collection?edan_q={q}", "linkChecked": false},
+    {"id": "nasa-3d", "access": "fetch", "searchUrl": "https://science.nasa.gov/3d-resources/?search={q}", "linkChecked": false},
+    {"id": "grabcad", "access": "links-only", "searchUrl": "https://grabcad.com/library?query={q}", "linkChecked": false},
+    {"id": "mcmaster-cad", "access": "links-only", "searchUrl": "https://www.mcmaster.com/{q}", "linkChecked": false}
+  ]
+}

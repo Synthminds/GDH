@@ -1,0 +1,21 @@
+{
+  "id": "cli-anything",
+  "name": "CLI-Anything local harnesses",
+  "what": "A family of local command-line harnesses that let an agent drive real creative software on the user's machine: Inkscape, GIMP, Krita, Blender, FreeCAD, draw.io, LibreOffice, MLT video, QGIS, SoX, OBS and a local ComfyUI. Each harness prints JSON and writes project files. Most send nothing out and spend nothing. The per-program list, pins and probes live in kit/catalogs/local-clis.json.",
+  "kind": "cli",
+  "capabilities": ["vector", "image-edit", "3d-scene", "3d-gen", "fabricate", "diagram", "video-compose", "slides", "image-gen", "maps", "audio", "capture"],
+  "disciplines": ["logo", "brand", "infographic", "assets", "website", "3d", "fabrication", "network-graph", "motion-video", "ui-motion", "dataviz", "moodboard"],
+  "install": "One harness at a time, after the user says yes. Print the pinned command with local_clis.py install <id>; it installs from the upstream commit pinned in local-clis.json. The program itself (for example inkscape or blender) is the user's install.",
+  "auth": "none",
+  "spendsCredits": false,
+  "exposes": true,
+  "readOnly": false,
+  "toolPrefix": "cli-anything-",
+  "firstCall": "python3 <ask-gdh skill folder>/scripts/local_clis.py probe --json, to list which harnesses and programs are on PATH",
+  "fallback": "none",
+  "card": "references/tools/cli-anything.md",
+  "source": "https://github.com/HKUDS/CLI-Anything",
+  "verifiedAt": "2026-11-27",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "On 2026-11-27 the upstream repository was read at commit 34f519533bc1: the Apache-2.0 license, the security policy, the registry and the 16 harness folders in local-clis.json. The probe script ran in a GDH session and found no harness installed. No harness was installed or run, so every capability claim is DOCUMENTED. The PyPI builds of eight harnesses date from 2026-03-13, before later upstream fixes, so GDH pins the commit instead. exposes is true because the Mermaid harness renders through a web service."
+}

@@ -11,6 +11,7 @@
     "audio": "Generate or edit speech, music or sound effects, or transcribe audio.",
     "3d-gen": "Generate, texture or remesh a 3D model.",
     "3d-scene": "Compose, light and deliver a 3D scene, or place a model in a page.",
+    "fabricate": "Make a model ready for a physical machine: check a mesh for printing, repair it, slice it into a printer job, or prepare a cut or stitch file.",
     "motion": "Author interface motion or animated effects in code.",
     "ui-components": "Find, read or adapt interface components and blocks.",
     "templates": "Start from a ready layout, page or document template.",
@@ -78,6 +79,11 @@
     "3d": {
       "skill": "three-d",
       "capabilities": ["asset-library", "3d-gen", "3d-scene", "image-gen", "capture"]
+    },
+    "fabrication": {
+      "skill": "print-design",
+      "capabilities": ["fabricate", "3d-gen", "asset-library", "3d-scene", "image-gen", "capture"],
+      "note": "A part or object made on a 3D printer: functional fits, decorative forms, or both. print-design owns the path from concept to a checked, sliced job file. three-d owns 3D on screens."
     },
     "ui-motion": {
       "skill": "ui-motion",

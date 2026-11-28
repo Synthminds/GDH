@@ -12,7 +12,7 @@
   "readOnly": false,
   "toolPrefix": "mcp__Higgsfield__",
   "firstCall": "get_workflow_instructions (no argument lists the workflows); for a 3D scene, get_preset_instructions with preset /3d-jutsu",
-  "fallback": "none",
+  "fallback": "cli-anything",
   "card": "references/tools/higgsfield.md",
   "source": "https://higgsfield.ai",
   "verifiedAt": "2026-11-23",

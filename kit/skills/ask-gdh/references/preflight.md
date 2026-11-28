@@ -63,16 +63,17 @@ The goal is a capability report, not a tool tour.
 4. Make no call to the tool at this point. Presence is read from the session's tool list.
 5. A tool that is listed but needs sign-in is `needs sign-in`. Tell the user. Do not try to sign in.
 6. A tool that failed to connect is `failed`. That is not the same as absent. Say so.
-7. For each needed capability, name the first tool present, in the order of the discipline's entry in `kit/catalogs/capabilities.json`.
-8. For a needed capability with no tool present, name the `fallback`. When the fallback is `none`, name the manual route: the agent writes the HTML, SVG or Markdown itself.
+7. Local programs. When a needed capability appears in [local-clis.json](../../../catalogs/local-clis.json), run `python3 scripts/local_clis.py probe --capability <word> --json` from this skill's folder. It reads PATH and runs nothing it finds. A `ready` harness counts as a present tool. A `needs-harness` or `needs-backend` harness is an install offer for the plan, never an install. Card: [cli-anything](../../../references/tools/cli-anything.md).
+8. For each needed capability, name the first tool present, in the order of the discipline's entry in `kit/catalogs/capabilities.json`. Default: when a ready local harness and a connector that spends both serve the capability, name the local harness first.
+9. For a needed capability with no tool present, name the `fallback`, or the local harness to install. When neither exists, name the manual route: the agent writes the HTML, SVG or Markdown itself.
 
 Report line:
 
 ```
-Tools: image-gen (present, spends), fonts (present), capture (absent: ask for a screenshot), deploy (present, exposes)
+Tools: image-gen (present, spends), vector (local: inkscape ready), 3d-scene (local: blender, offer install), capture (absent: ask for a screenshot), deploy (present, exposes)
 ```
 
-Mark `spends` when `spendsCredits` is true. Mark `exposes` when `exposes` is true. These marks feed the "Gates ahead" line of the plan.
+Mark `spends` when `spendsCredits` is true. Mark `exposes` when `exposes` is true. An install offer is a gate too: the user says yes before any install. These marks feed the "Gates ahead" line of the plan.
 
 Catalog absent or empty: say "tool catalog: none". Route by what the session lists, and label every tool claim UNTESTED.
 
@@ -110,6 +111,7 @@ Not checked: <what, labelled UNTESTED>
 | --- | --- | --- |
 | Template taken as a system | The agent finds the unfilled `DESIGN.md` template and reports "design system found" | Read the `status` line first |
 | Tool tour | The agent calls every connector's guide tool "to see what it does" | Read catalog entries. Call a guide only inside the skill that uses the tool |
+| Silent install | The agent installs a harness, or a whole CLI-Hub matrix, because the probe showed it missing | Print the pinned command and ask. One harness, only for this task |
 | Ask before look | The agent asks the user for brand colors that sit in a theme file | Search first. Ask only for what no file answers |
 | Silent merge | Tokens in two files differ and the agent averages them | Name the conflict and ask |
 | Restart | A confirmed brief and a chosen direction exist, and the agent starts a new interview | `align` re-aligns in three questions. Resume from the last decision entry |

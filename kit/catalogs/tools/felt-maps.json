@@ -19,7 +19,7 @@
   "readOnly": false,
   "toolPrefix": "mcp__Felt_Maps__",
   "firstCall": "none as one init call; call the guidance tool for the job first: get_geocoding_guidance, get_print_item_guidance or get_sql_editing_guidance",
-  "fallback": "none",
+  "fallback": "cli-anything",
   "card": "references/tools/felt-maps.md",
   "source": "https://felt.com",
   "verifiedAt": "2026-11-23",

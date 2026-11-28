@@ -12,7 +12,8 @@
     "dataviz": "Chart, map and graph libraries, plus chart-choice guidance (reference only).",
     "color-type-tools": "Color scales, palette tools, type scale tools and font metric tools.",
     "inspiration": "Reference galleries. Reference only: nothing from them enters a project.",
-    "logo-aids": "Vector tools, favicon tools and trademark search services."
+    "logo-aids": "Vector tools, favicon tools and trademark search services.",
+    "print-models": "3D-print model repositories and model search, with each site's access rule: official API, fetch, or links only."
   },
   "legend": {
     "commercialUse": {
@@ -2294,6 +2295,162 @@
       "fetch": "Manual search",
       "risk": "Not verified on 2026-11-23. Terms were not verified; read the license page before use.",
       "verifiedOn": null
+    },
+    {
+      "id": "thingiverse",
+      "name": "Thingiverse",
+      "url": "https://www.thingiverse.com",
+      "group": "print-models",
+      "holds": "Print-ready STL and 3MF models from a large community, mostly functional and hobby parts.",
+      "license": "Per model, chosen by the creator: mostly Creative Commons variants (BY, BY-SA, BY-ND, BY-NC and others), some open-hardware licenses.",
+      "attribution": "varies: most CC licenses require credit to the creator",
+      "commercialUse": "varies",
+      "fetch": "Official API at api.thingiverse.com with an OAuth2 app token. The site search page is for the user's browser.",
+      "risk": "The terms bar automated searches and scraping outside the API. NC and ND licenses are common. Owned by MyMiniFactory since February 2026.",
+      "verifiedOn": "2026-11-27"
+    },
+    {
+      "id": "printables",
+      "name": "Printables",
+      "url": "https://www.printables.com",
+      "group": "print-models",
+      "holds": "Print-ready models from the Prusa community, with a separate paid Store and Clubs.",
+      "license": "Per model: Creative Commons, GNU, BSD, Apache 2.0, CERN OHL, Prusa's Open Community License and variants, a Standard Digital File License and commercial-use licenses.",
+      "attribution": "varies: per model",
+      "commercialUse": "varies",
+      "fetch": "Links only. The user opens the search in a browser and downloads.",
+      "risk": "The terms forbid manual or automated extraction, scraping included. The Open Community License forbids selling remixes and keeps remixes under the same license. Search results load by script.",
+      "verifiedOn": "2026-11-27"
+    },
+    {
+      "id": "makerworld",
+      "name": "MakerWorld",
+      "url": "https://makerworld.com",
+      "group": "print-models",
+      "holds": "Print-ready 3MF models with print profiles, made for Bambu Lab printers; an Open in Bambu Studio button.",
+      "license": "Per model, from the creator's free license choice, Creative Commons included. A Standard Digital File License is reported as the default; it forbids sharing or selling the files or the prints.",
+      "attribution": "varies: per model",
+      "commercialUse": "varies",
+      "fetch": "Links only. The user opens the search, then downloads or uses Open in Bambu Studio.",
+      "risk": "The terms forbid page scrapers, robots, spiders and AI services that access or copy content. Selling prints needs a paid commercial membership; files are never resold. The default-license reading is from a forum, not the license page.",
+      "verifiedOn": "2026-11-27"
+    },
+    {
+      "id": "cults3d",
+      "name": "Cults3D",
+      "url": "https://cults3d.com",
+      "group": "print-models",
+      "holds": "Free and paid print models, strong in decor, figures and cosplay.",
+      "license": "Per model: Creative Commons (CC0 to BY-NC-ND), CERN OHL, GPL, LGPL, MIT, or Cults licenses: private use, commercial use (sell prints, no file resale) and commercial use without derivatives. No stated license means private use only.",
+      "attribution": "varies: per model",
+      "commercialUse": "varies",
+      "fetch": "Links only. A GraphQL API with a key exists for metadata; it does not give access to files.",
+      "risk": "The terms forbid scraping and copying content without authorization, and AI exploitation. Many models are paid.",
+      "verifiedOn": "2026-11-27"
+    },
+    {
+      "id": "myminifactory",
+      "name": "MyMiniFactory",
+      "url": "https://www.myminifactory.com",
+      "group": "print-models",
+      "holds": "Curated print models, strong in tabletop miniatures and sculpture; mostly paid.",
+      "license": "Store files carry a store license that forbids sharing, selling or remixing the files or the prints. Free files carry their own license; some creator tiers grant commercial rights.",
+      "attribution": "varies: per model",
+      "commercialUse": "varies",
+      "fetch": "Links only. An OAuth2 API exists; its guidelines forbid using it to recreate the site.",
+      "risk": "The default search showed paid results only. Treat every result as paid and no-commercial until its page says otherwise.",
+      "verifiedOn": "2026-11-27"
+    },
+    {
+      "id": "thangs",
+      "name": "Thangs",
+      "url": "https://thangs.com",
+      "group": "print-models",
+      "holds": "A model search and host that also indexes models from other sites; free, bundle and member-only models mixed.",
+      "license": "Per model or per membership. A bundle purchase does not include a commercial license; selling prints needs that designer's membership.",
+      "attribution": "varies: per model",
+      "commercialUse": "varies",
+      "fetch": "Links only. No public API found.",
+      "risk": "The page carries a no-AI robots tag and the terms bar harvesting personal data. Results mix in models hosted elsewhere: read the license on the source site.",
+      "verifiedOn": "2026-11-27"
+    },
+    {
+      "id": "yeggi",
+      "name": "Yeggi",
+      "url": "https://www.yeggi.com",
+      "group": "print-models",
+      "holds": "A search engine across many print-model sites. It indexes and links; it hosts no models.",
+      "license": "None of its own. Each result keeps the license of the site it links to.",
+      "attribution": "varies: per source site",
+      "commercialUse": "varies",
+      "fetch": "Fetch the search page, free results only with s=f. Then open each result on its source site and apply that site's access rule.",
+      "risk": "Not a license source. A result can point to a site that forbids automated access: follow the source site's rule.",
+      "verifiedOn": "2026-11-27"
+    },
+    {
+      "id": "nih-3d",
+      "name": "NIH 3D",
+      "url": "https://3d.nih.gov",
+      "group": "print-models",
+      "holds": "Scientific and medical models: anatomy, molecules, lab equipment, prosthetics.",
+      "license": "Per entry: many public domain or Creative Commons, some more restrictive.",
+      "attribution": "varies: per entry",
+      "commercialUse": "varies",
+      "fetch": "Fetch or browse; anyone may browse and download. No documented public API.",
+      "risk": "Read each entry's license. Clinical models are not medical devices.",
+      "verifiedOn": "2026-11-27"
+    },
+    {
+      "id": "smithsonian-3d",
+      "name": "Smithsonian 3D",
+      "url": "https://3d.si.edu",
+      "group": "print-models",
+      "holds": "Scans of museum objects and specimens; a CC0 subset of a few thousand models.",
+      "license": "CC0 for the marked Open Access subset; other models carry their own terms.",
+      "attribution": "none: for CC0 items; credit the museum as a courtesy",
+      "commercialUse": "varies",
+      "fetch": "Browse the CC0 page. The Open Access API at api.si.edu needs a free api.data.gov key. Files are mostly OBJ, glTF and PLY; STL is rare.",
+      "risk": "Only CC0-marked items are free to use. Scans need repair and a solid base before printing.",
+      "verifiedOn": "2026-11-27"
+    },
+    {
+      "id": "nasa-3d",
+      "name": "NASA 3D Resources",
+      "url": "https://science.nasa.gov/3d-resources/",
+      "group": "print-models",
+      "holds": "Models of spacecraft, planets and landers, many print-ready; also on GitHub.",
+      "license": "Free to download and use under NASA media guidelines. NASA insignia and logos are not public domain.",
+      "attribution": "requested: NASA asks for a credit line",
+      "commercialUse": "yes-with-limits",
+      "fetch": "Fetch the page or clone the GitHub repository nasa/NASA-3D-Resources.",
+      "risk": "Check each credit line for third-party rights. Never imply NASA endorsement or print the insignia on a product.",
+      "verifiedOn": "2026-11-27"
+    },
+    {
+      "id": "grabcad",
+      "name": "GrabCAD Community",
+      "url": "https://grabcad.com/library",
+      "group": "print-models",
+      "holds": "Engineering CAD models, many in STEP: parts, assemblies, enclosures.",
+      "license": "A cross-license for each user's own benefit and non-commercial internal use.",
+      "attribution": "unknown: per model page",
+      "commercialUse": "yes-with-limits",
+      "fetch": "Links only. Login appears needed to download.",
+      "risk": "Non-commercial internal use only under the site license. Good for reference geometry; model your own part for anything sold.",
+      "verifiedOn": "2026-11-27"
+    },
+    {
+      "id": "mcmaster-cad",
+      "name": "McMaster-Carr CAD",
+      "url": "https://www.mcmaster.com",
+      "group": "print-models",
+      "holds": "Manufacturer CAD of hardware: screws, bearings, fittings, extrusions. For fit dimensions.",
+      "license": "CAD is for deciding whether to buy the part. Printing the objects, keeping or sharing the files is not allowed.",
+      "attribution": "n/a: reference only",
+      "commercialUse": "reference-only",
+      "fetch": "Links only, for reading dimensions. The API is for approved customers.",
+      "risk": "Never print or redistribute this CAD. Read a dimension, then model your own mating part.",
+      "verifiedOn": "2026-11-27"
     }
   ]
 }

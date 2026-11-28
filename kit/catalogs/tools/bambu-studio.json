@@ -1,0 +1,21 @@
+{
+  "id": "bambu-studio",
+  "name": "Bambu Studio",
+  "what": "Bambu Lab's desktop slicer, with a documented command line. It slices for Bambu printers, the P2S from version 2.3.0, and writes a sliced 3MF that holds the G-code for each plate. From its interface it can also send a job to a printer over the cloud or the LAN.",
+  "kind": "cli",
+  "capabilities": ["fabricate"],
+  "disciplines": ["fabrication", "3d"],
+  "install": "The user installs the desktop app from Bambu Lab or the project's GitHub releases. The command line is the same binary.",
+  "auth": "none",
+  "spendsCredits": false,
+  "exposes": true,
+  "readOnly": false,
+  "toolPrefix": "bambu-studio",
+  "firstCall": "bambu-studio --help, to confirm the installed version and its flags",
+  "fallback": "orca-slicer",
+  "card": "references/tools/bambu-studio.md",
+  "source": "https://github.com/bambulab/BambuStudio/wiki/Command-Line-Usage",
+  "verifiedAt": "2026-11-27",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "On 2026-11-27 the command-line wiki page, the release notes for 2.3.0 and the repository README were read. AGPL-3.0, based on PrusaSlicer. exposes is true because the app can send jobs to the maker's cloud; the command-line slice itself sends nothing. No slice ran in a GDH session."
+}

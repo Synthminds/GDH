@@ -1,0 +1,21 @@
+{
+  "id": "meshy",
+  "name": "Meshy",
+  "what": "A hosted 3D generation service with print tools. It makes a model from text, from one image or from two to four views, then textures, remeshes, converts, splits and colors it. Its print tools check printability for free, repair a mesh, split a model into printable parts, export a multi-color 3MF and turn a photo into a relief. A local MCP server exposes the API to an agent.",
+  "kind": "mcp-stdio",
+  "capabilities": ["3d-gen", "fabricate", "image-gen"],
+  "disciplines": ["fabrication", "3d"],
+  "install": "The user adds the official stdio server @meshy-ai/meshy-mcp-server (repository meshy-dev/meshy-mcp-server) to the project's .mcp.json as a server named meshy, run through npx, with the API key in the MESHY_API_KEY environment variable of their own machine. The key never goes in chat or in a tracked file.",
+  "auth": "env:MESHY_API_KEY",
+  "spendsCredits": true,
+  "exposes": true,
+  "readOnly": false,
+  "toolPrefix": "mcp__meshy__",
+  "firstCall": "the balance call, which is free, before any task that creates a model",
+  "fallback": "cli-anything",
+  "card": "references/tools/meshy.md",
+  "source": "https://docs.meshy.ai/api/ai.md",
+  "verifiedAt": "2026-11-27",
+  "evidence": "DOCUMENTED",
+  "evidenceNote": "On 2026-11-27 the Meshy API and MCP documentation, the asset retention page and the terms of use were read. The server was not connected and no call ran. Credits are charged when a task is created; failed tasks are refunded. API downloads expire, and non-Enterprise API assets are deleted after three days. Free-plan output is licensed to the customer under CC BY 4.0 with credit to Meshy; paid-plan customers own their output. Non-Enterprise inputs and outputs may be used for training. The terms page carried a last-updated date later than the read date; read it again before quoting it."
+}

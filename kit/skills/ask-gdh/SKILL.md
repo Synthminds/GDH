@@ -5,7 +5,7 @@ description: Routes a design-led request in the Global Design Harness once align
 
 # ask-gdh
 
-This skill is the router. It classifies a design request, runs the pre-flight, states a plan and starts the first skill. It designs nothing; the discipline skills do.
+This skill is the router: it classifies a design request, runs the pre-flight, plans and starts the first skill. It designs nothing.
 
 ## Before you start
 
@@ -26,7 +26,7 @@ This skill is the router. It classifies a design request, runs the pre-flight, s
 7. ASK: only when two disciplines fit equally, or the deliverable is unclear. Ask one question. Put the recommended answer first.
    A brief that does not cover this request goes back to `align` as an escalation. Do not interview here.
 8. State the plan in three to six lines, in the format under Output.
-9. Start the first skill. Tell the user in one line which skill runs now. Give it the restated request and the pre-flight result.
+9. Start the first skill. Name it in one line. Give it the restated request and the pre-flight result.
    - A model-invoked skill: start it by name.
    - A user-invoked skill: read `../<name>/SKILL.md` from this skill's folder and follow it as if the skill had started.
    - When the file cannot be read, print the command for the user to type, such as `/gdh:refine-round`, and wait.
@@ -56,6 +56,7 @@ This skill is the router. It classifies a design request, runs the pre-flight, s
 | Transitions, micro-interactions, motion tokens | `ui-motion` | `design-system`, a built screen | `handoff-to-code` |
 | Video, motion graphic, animated explainer | `motion-video` | `mood-board` (styleframes) | `design-critique` |
 | 3D model, hero scene, product viewer | `three-d` | `mood-board` | `website-design` |
+| 3D-printed part, print file, printable model | `print-design` | `design-brief` | the user prints |
 | Generate an image, a clip, a voice or music | `generate-media` | chosen direction | `find-assets` record |
 | Outside font, icon, photo, component, model | `find-assets` | brief or design system | the skill that asked |
 | "Make it like this site": study a reference | `reverse-engineer-reference` | `design-brief` | `mood-board` |
@@ -78,12 +79,13 @@ GCH governs code work; its `ux-laws` numbers hold for screens. Pre-flight sectio
 
 ## Tools
 
-This skill uses no capability itself. It reports which capabilities this session can serve.
+It reports which capabilities this session can serve.
 
 - Vocabulary and discipline map: [capabilities.json](../../catalogs/capabilities.json).
 - Tool entries: `kit/catalogs/tools/<id>.json`. Tool cards: `kit/references/tools/<id>.md`.
 - A hosted design system counts as a design system. Example card: [claude-design-system](../../references/tools/claude-design-system.md).
 - A brand library can hold a brand pack. Example card: [dam](../../references/tools/dam.md).
+- Local programs: [scripts/local_clis.py](scripts/local_clis.py) `probe` lists CLI-Anything harnesses on PATH. Card: [cli-anything](../../references/tools/cli-anything.md).
 - When a tool is absent, name its catalog `fallback` in the plan.
 
 ## Checks
@@ -124,6 +126,4 @@ Gates ahead: spend <where or none>; exposure <where or none>
 ## Sources
 
 - GDH kernel and principles: `kit/canon/KERNEL.md`, `kit/canon/PRINCIPLES.md`.
-- Design Leadership Handbook (DesignBetter), ch. 3: name the mode, exploration or refinement.
-- DesignOps Handbook (DesignBetter), ch. 5: visible intake before work starts.
-- Principles of Product Design (DesignBetter), ch. 3: low fidelity first.
+- DesignBetter handbooks: Design Leadership ch. 3 (name the mode), DesignOps ch. 5 (visible intake), Principles of Product Design ch. 3 (low fidelity first).

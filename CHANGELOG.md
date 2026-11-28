@@ -2,6 +2,39 @@
 
 Format: one section for each release, newest first. A catalog-only change is a patch. A new skill or a new capability word is a minor change. A change to the kernel or to the registry schema is a major change.
 
+## 1.2.0 (2026-11-27)
+
+Minor: a new capability word, a new discipline and a new skill.
+
+Added:
+- Capability word `fabricate`: make a model ready for a physical machine (mesh check and repair, slicing, cut or stitch files). Discipline `fabrication`, owned by the new skill.
+- `print-design` skill (user-invoked): FDM 3D print design from concept to a checked, sliced job file. Parametric, generated and hybrid modeling routes; design-for-print defaults for walls, overhangs, bridges, fits, holes, orientation, splitting and materials; a print-profile template; slicing commands; a send gate so the user starts every print.
+- `print_check.py`: a standard-library mesh check for STL and 3MF. Watertightness, non-manifold and misoriented edges, degenerate and inverted faces, overhang share, and fit to a printer's build volume.
+- Printer profiles: Bambu Lab P2S, Flashforge Adventurer 5M and 5M Pro, and a generic default, from the makers' pages.
+- Tool entries and cards: `orca-slicer`, `bambu-studio`, `meshy` (generation and print tools; spends; output license depends on the plan). Default slicers: Bambu Studio for Bambu printers, as the maker recommends, with OrcaSlicer as its fallback; OrcaSlicer for the Flashforge printers.
+- The FreeCAD and 3MF harnesses now serve `fabricate`.
+- Model search for printable models. Asset group `print-models` with 12 sources and their license and terms notes: Thingiverse, Printables, MakerWorld, Cults3D, MyMiniFactory, Thangs, Yeggi, NIH 3D, Smithsonian 3D, NASA 3D Resources, GrabCAD and McMaster-Carr CAD (reference only). `model_search.py` plans a search: for each site, the search link and the access rule. `api` sites are queried with the user's key, `fetch` sites may be read, and `links-only` sites, whose terms forbid automated access, get a link the user opens. `print-design` searches before it models a common part.
+- Model finds with images, download and modification. `model_results.py` maps saved API responses from Thingiverse, Sketchfab and the Smithsonian, plus hand-built records from fetch sites, to one record shape. It reads each license into plain terms (sell prints, remix, credit) and writes an image gallery: a card per model with a thumbnail, licence chips for the user's intended use and links, plus browse buttons for links-only sites. `model-apis.md` gives the calls, the key handling and the download steps. `find-a-model.md` adds the gallery step and a table of common modifications, gated on the license.
+
+Not added: the laser and embroidery harnesses. They come from separate publishers outside the pinned upstream and need their own vetting.
+
+## 1.1.0 (2026-11-27)
+
+Minor: a new catalog file, a probe script and a check code. No new skill and no new capability word.
+
+Added:
+- Local creative programs through CLI-Anything harnesses (HKUDS, Apache-2.0). `kit/catalogs/local-clis.json` lists 16 harnesses that serve GDH capabilities: Inkscape (vector), GIMP and Krita (image-edit), Blender (3d-scene, 3d-gen), FreeCAD and a 3MF editor (3d-gen), draw.io and Mermaid (diagram), Kdenlive, Shotcut and Openscreen (video-compose), LibreOffice (slides), a local ComfyUI (image-gen), QGIS (maps), SoX (audio) and OBS (capture). One upstream commit pins them all. See ADR 0007.
+- `kit/skills/ask-gdh/scripts/local_clis.py`: `probe` reports which harnesses and backends are on PATH and runs nothing it finds; `install` prints the pinned install line and installs nothing; `validate` checks the catalog.
+- Tool entry and card `cli-anything`: the family's install gates, call order, harness table, limits and evidence.
+- Check code `GDH_LOCAL_CLI`: a pin that is not a full commit SHA, a path with `..`, a non-command harness name, a backend name with shell characters, a capability outside the vocabulary, or an internet harness without `exposes`.
+- `add-design-tool` other-changes section 7: how to add a harness or move the pin.
+
+Changed:
+- `ask-gdh` pre-flight step 7 probes local programs. A ready harness counts as present. Default: a free local harness comes before a connector that spends. An install offer is a gate in the plan.
+- The fallback chains of Adobe, Felt and Higgsfield end in `cli-anything` instead of `none`.
+
+Evidence: DOCUMENTED. The upstream source, security policy and registry were read at the pinned commit, and PyPI metadata was read. No harness was installed or run.
+
 ## 1.0.0 (2026-11-27)
 
 Major: the kernel gains rule 17, so this release is a major change under the format rule above.

@@ -60,6 +60,7 @@ CODES = {
     "GDH_CAPABILITIES_DISCIPLINE": "A discipline in capabilities.json names an unregistered skill.",
     "GDH_TOOL_FIELD": "A tool entry lacks a required field or a field has the wrong type.",
     "GDH_TOOL_ENUM": "A tool entry has a kind, auth or evidence value outside the allowed set.",
+    "GDH_LOCAL_CLI": "local-clis.json breaks its schema: a pin, a path, a capability or an exposure flag.",
     "GDH_TOOL_ID": "A tool id differs from its file name or is not kebab-case.",
     "GDH_TOOL_CAPABILITY": "A tool names a capability outside the vocabulary.",
     "GDH_TOOL_DISCIPLINE": "A tool names a discipline that capabilities.json does not hold.",
@@ -1210,6 +1211,27 @@ def brand_scaffold(root, tokens_path):
     return [item["message"] for item in module.scaffold_findings(doc)]
 
 
+def check_local_clis(root, report, load):
+    """Validate kit/catalogs/local-clis.json with the ask-gdh probe script's own rules."""
+    rel = "kit/catalogs/local-clis.json"
+    if not os.path.isfile(os.path.join(root, rel)):
+        return
+    doc = load(rel)
+    if doc is None:
+        return
+    script = os.path.join(root, "kit", "skills", "ask-gdh", "scripts", "local_clis.py")
+    try:
+        spec = importlib.util.spec_from_file_location("gdh_local_clis", script)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+    except (OSError, SyntaxError, ImportError, AttributeError):
+        report.add("GDH_LOCAL_CLI", rel, "the validator kit/skills/ask-gdh/scripts/local_clis.py cannot be loaded")
+        return
+    vocab, disciplines = load_capabilities(load("kit/catalogs/capabilities.json"))
+    for finding in module.validate(doc, set(vocab) if vocab else None, set(disciplines) if disciplines else None):
+        report.add("GDH_LOCAL_CLI", rel, "%s %s: %s" % (finding["code"], finding["where"], finding["message"]))
+
+
 def check_brands_and_evals(root, kit, report, load):
     model_skills = set(name for name, entry in kit["skills"].items() if entry.get("invocation") == "model")
     brands = os.path.join(root, "brands")
@@ -1319,6 +1341,7 @@ def run_check(root):
     check_repository(root, report)
     check_canon(root, kit, report)
     check_catalogs(root, kit, report, load)
+    check_local_clis(root, report, load)
     check_brands_and_evals(root, kit, report, load)
     if raw:
         for path, message in drift(root, raw):

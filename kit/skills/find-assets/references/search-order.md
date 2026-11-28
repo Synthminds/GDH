@@ -108,6 +108,7 @@ A search <catalog> --query "dense time series" --verified --json
 | `illustration` | Illustration sets, patterns, backgrounds | `group-illustration.md` |
 | `photo-video` | Stock and open-access photos and video | `group-photo-video.md` |
 | `3d` | Models, HDRIs, materials, the web 3D toolchain | `group-3d.md` |
+| `print-models` | Models to 3D print, with each site's access rule | `group-print-models.md` |
 | `motion` | Animation libraries, players, video-in-code | `group-motion.md` |
 | `dataviz` | Chart, map and graph libraries, chart guidance | `group-dataviz.md` |
 | `color-type-tools` | Color scales, palette and type scale tools | `group-color-type-tools.md` |
